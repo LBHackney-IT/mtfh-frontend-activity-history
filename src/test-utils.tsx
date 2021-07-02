@@ -1,8 +1,10 @@
 import { Router, Route } from 'react-router-dom';
 import React from 'react';
 import fetch from 'node-fetch';
+import { rest } from 'msw';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, RenderResult } from '@testing-library/react';
+import { queries } from '@mtfh/common';
 import { server } from './mocks';
 
 Object.defineProperty(global, 'fetch', {
@@ -22,23 +24,38 @@ afterAll(() => {
     server.close();
 });
 
-interface CustomRenderResult extends RenderResult {
-    history: MemoryHistory;
+interface RouteRenderConfig {
+    url: string;
+    path: string;
+    query: keyof typeof queries;
 }
 
-export const customRender = (
+export const routeRender = (
     component: JSX.Element,
-    id = 'be8c805c-b1de-11eb-8529-0242ac130003'
-): CustomRenderResult => {
-    const history = createMemoryHistory();
-    history.push(`/activities/person/${id}`);
-    const utils = render(
-        <Router history={history}>
-            <Route path="/activities/:type/:id">{component}</Route>
-        </Router>
-    );
-    return {
-        ...utils,
-        history,
+    options?: Partial<RouteRenderConfig>
+): [RenderResult, MemoryHistory] => {
+    const config: RouteRenderConfig = {
+        url: '/person/be8c805c-b1de-11eb-8529-0242ac130003',
+        path: '/person/:personId',
+        query: 'lg',
+        ...options,
     };
+    const history = createMemoryHistory();
+    history.push(config.url);
+    return [
+        render(
+            <Router history={history}>
+                <Route path={config.path}>{component}</Route>
+            </Router>
+        ),
+        history,
+    ];
+};
+
+export const get = (path: string, data: unknown, code = 200): void => {
+    server.use(
+        rest.get(path, (req, res, ctx) => {
+            return res(ctx.status(code), ctx.json(data));
+        })
+    );
 };

@@ -1,8 +1,3 @@
-export interface GetPersonRequestData {
-    id: string;
-    options?: RequestInit;
-}
-
 export type Person = {
     id: string;
     title: string;

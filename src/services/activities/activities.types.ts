@@ -1,12 +1,7 @@
 export type ActivityType = 'create' | 'update' | 'delete';
 export type ActivityTargetType = 'person' | 'asset' | 'tenure';
 
-export interface GetActivityHistoryRequestData {
-    targetId: string;
-    options?: RequestInit;
-}
-
-interface Data {
+interface PersonName {
     id: string;
     title: string;
     forename: string;
@@ -27,7 +22,7 @@ export interface Activity {
     targetId: string;
     createdAt: any;
     timeToLiveForRecordInDays: number;
-    oldData: Data;
-    newData: Data;
+    oldData: PersonName;
+    newData: PersonName;
     authorDetails: AuthorDetails;
 }
