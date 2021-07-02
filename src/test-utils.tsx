@@ -31,12 +31,13 @@ export const routeRender = (
 ): [RenderResult, MemoryHistory] => {
     const config: RouteRenderConfig = {
         url: 'activities/person/be8c805c-b1de-11eb-8529-0242ac130003',
-        path: '/activities/person/:personId',
+        path: '/activities/:type/:personId',
         query: 'lg',
         ...options,
     };
     const history = createMemoryHistory();
     history.push(config.url);
+
     return [
         render(
             <SWRConfig value={{ dedupingInterval: 0, errorRetryInterval: 0 }}>
