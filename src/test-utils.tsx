@@ -1,6 +1,5 @@
 import { Router, Route } from 'react-router-dom';
 import React from 'react';
-import fetch from 'node-fetch';
 import { rest } from 'msw';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, RenderResult } from '@testing-library/react';
