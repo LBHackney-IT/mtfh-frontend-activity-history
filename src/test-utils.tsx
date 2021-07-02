@@ -1,3 +1,4 @@
+import { SWRConfig } from 'swr';
 import { Router, Route } from 'react-router-dom';
 import React from 'react';
 import { rest } from 'msw';
@@ -29,8 +30,8 @@ export const routeRender = (
     options?: Partial<RouteRenderConfig>
 ): [RenderResult, MemoryHistory] => {
     const config: RouteRenderConfig = {
-        url: '/person/be8c805c-b1de-11eb-8529-0242ac130003',
-        path: '/person/:personId',
+        url: 'activities/person/be8c805c-b1de-11eb-8529-0242ac130003',
+        path: '/activities/person/:personId',
         query: 'lg',
         ...options,
     };
@@ -38,9 +39,11 @@ export const routeRender = (
     history.push(config.url);
     return [
         render(
-            <Router history={history}>
-                <Route path={config.path}>{component}</Route>
-            </Router>
+            <SWRConfig value={{ dedupingInterval: 0, errorRetryInterval: 0 }}>
+                <Router history={history}>
+                    <Route path={config.path}>{component}</Route>
+                </Router>
+            </SWRConfig>
         ),
         history,
     ];
