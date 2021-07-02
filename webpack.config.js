@@ -3,8 +3,6 @@ const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
 const webpack = require('webpack');
 const path = require('path');
 const dotenv = require('dotenv').config();
-const cssnano = require('cssnano');
-const autoprefixer = require('autoprefixer');
 
 module.exports = (webpackConfigEnv, argv) => {
     const defaultConfig = singleSpaDefaults({

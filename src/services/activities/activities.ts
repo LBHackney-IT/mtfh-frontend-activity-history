@@ -10,18 +10,21 @@ const headers = {
 
 export const getActivityHistory = async ({
     options = {},
-    targetId
+    targetId,
 }: GetActivityHistoryRequestData): Promise<Activity> => {
-    const response = await fetch(`${config.activitiesApiUrl}/activities/${targetId}`, {
-        method: 'GET',
-        ...options,
-        headers: {
-            ...options.headers,
-            ...headers,
-        },
-    });
+    const response = await fetch(
+        `${config.activitiesApiUrl}/activities/${targetId}`,
+        {
+            method: 'GET',
+            ...options,
+            headers: {
+                ...options.headers,
+                ...headers,
+            },
+        }
+    );
 
     const result = await response.json();
-    
+
     return result;
 };

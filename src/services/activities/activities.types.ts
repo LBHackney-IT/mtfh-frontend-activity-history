@@ -7,27 +7,27 @@ export interface GetActivityHistoryRequestData {
 }
 
 interface Data {
-    id: string,
-    title: string,
-    forename: string,
-    middleName: string,
-    surename: string,
+    id: string;
+    title: string;
+    forename: string;
+    middleName: string;
+    surename: string;
 }
 
-interface AuthorDetails { 
-    id: string,
-    fullName: string,
-    email: string,
+interface AuthorDetails {
+    id: string;
+    fullName: string;
+    email: string;
 }
 
 export interface Activity {
-    id: string,
-    type: ActivityType,
-    targetType: ActivityTargetType,
-    targetId: string,
-    createdAt: any,
-    timeToLiveForRecordInDays: number,
-    oldData: Data,
-    newData: Data,
-    authorDetails: AuthorDetails
+    id: string;
+    type: ActivityType;
+    targetType: ActivityTargetType;
+    targetId: string;
+    createdAt: any;
+    timeToLiveForRecordInDays: number;
+    oldData: Data;
+    newData: Data;
+    authorDetails: AuthorDetails;
 }
