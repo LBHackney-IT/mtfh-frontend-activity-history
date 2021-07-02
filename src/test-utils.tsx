@@ -7,11 +7,6 @@ import { render, RenderResult } from '@testing-library/react';
 import { queries } from '@mtfh/common';
 import { server } from './mocks';
 
-Object.defineProperty(global, 'fetch', {
-    value: fetch,
-    writable: true,
-});
-
 beforeAll(() => {
     server.listen();
 });
