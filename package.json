@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-        "pre-commit": "pretty-quick --staged && concurrently yarn:test yarn:lint"
+      "pre-commit": "pretty-quick --staged && concurrently yarn:test yarn:lint"
     }
   },
   "devDependencies": {
@@ -33,11 +33,9 @@
     "@types/testing-library__jest-dom": "^5.9.5",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "autoprefixer": "^10.2.5",
     "babel-jest": "^26.6.3",
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
-    "cssnano": "^5.0.2",
     "dotenv": "^8.5.1",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^7.0.0",
@@ -45,7 +43,6 @@
     "eslint-plugin-html": "^6.1.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.2.0",
-    "eslint-plugin-unicorn": "^31.0.0",
     "history": "^5.0.0",
     "husky": "^4.3.5",
     "identity-obj-proxy": "^3.0.0",
@@ -53,8 +50,6 @@
     "jest-cli": "^26.6.3",
     "msw": "^0.28.2",
     "node-fetch": "^2.6.1",
-    "postcss": "^8.2.14",
-    "postcss-loader": "^5.2.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "sass": "^1.32.12",
@@ -85,7 +80,6 @@
     "@types/webpack-env": "^1.16.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.21.2",
-    "formik": "^2.2.6",
     "govuk-frontend": "^3.11.0",
     "lbh-frontend": "^3.5.2",
     "react": "^17.0.1",

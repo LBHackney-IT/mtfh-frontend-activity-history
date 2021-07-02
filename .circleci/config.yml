@@ -96,14 +96,12 @@ jobs:
             - run:
                 name: build
                 command: |
-                    export NOTES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text)
-                    export NOTES_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-key --query Parameter.Value --output text)
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
                     export PERSON_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-key --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
-                  command: aws s3 sync dist s3://lbh-housing-tl-activity-history-frontend-development.hackney.gov.uk/
+                  command: aws s3 sync dist s3://lbh-housing-tl-activity-frontend-development.hackney.gov.uk/
     build-deploy-staging:
         executor: node-executor
         environment:
@@ -117,14 +115,12 @@ jobs:
             - run:
                 name: build
                 command: |
-                    export NOTES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text)
-                    export NOTES_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-key --query Parameter.Value --output text)
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
                     export PERSON_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-key --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
-                  command: aws s3 sync dist s3://lbh-housing-tl-activity-history-frontend-staging.hackney.gov.uk/
+                  command: aws s3 sync dist s3://lbh-housing-tl-activity-frontend-staging.hackney.gov.uk/
     build-deploy-production:
         executor: node-executor
         environment:
@@ -138,14 +134,12 @@ jobs:
             - run:
                 name: build
                 command: |
-                    export NOTES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text)
-                    export NOTES_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-key --query Parameter.Value --output text)
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
                     export PERSON_API_KEY=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-key --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
-                  command: aws s3 sync dist s3://lbh-housing-tl-activity-history-frontend-production.hackney.gov.uk/
+                  command: aws s3 sync dist s3://lbh-housing-tl-activity-frontend-production.hackney.gov.uk/
 
     assume-role-development:
         executor: node-executor

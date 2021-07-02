@@ -23,23 +23,6 @@ module.exports = (webpackConfigEnv, argv) => {
                         'style-loader',
                         { loader: 'css-loader', options: { sourceMap: false } },
                         {
-                            loader: 'postcss-loader',
-                            options: {
-                                postcssOptions: {
-                                    plugins: [
-                                        cssnano({
-                                            autoprefixer: false,
-                                            discardComments: {
-                                                removeAll: true,
-                                            },
-                                        }),
-                                        autoprefixer({ remove: false }),
-                                    ],
-                                },
-                                sourceMap: false,
-                            },
-                        },
-                        {
                             loader: 'sass-loader',
                             options: { sourceMap: false },
                         },
