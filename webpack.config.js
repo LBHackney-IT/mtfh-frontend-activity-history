@@ -3,8 +3,6 @@ const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
 const webpack = require('webpack');
 const path = require('path');
 const dotenv = require('dotenv').config();
-const cssnano = require('cssnano');
-const autoprefixer = require('autoprefixer');
 
 module.exports = (webpackConfigEnv, argv) => {
     const defaultConfig = singleSpaDefaults({
@@ -34,7 +32,6 @@ module.exports = (webpackConfigEnv, argv) => {
             alias: {
                 '@components': path.resolve(__dirname, 'src/components'),
                 '@services': path.resolve(__dirname, 'src/services'),
-                '@utilities': path.resolve(__dirname, 'src/utils'),
             },
             extensions: ['.ts', '.tsx', '.js'],
         },

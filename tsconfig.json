@@ -12,8 +12,7 @@
         "esModuleInterop": true,
         "paths": {
             "@components": ["components"],
-            "@services": ["services"],
-            "@utilities": ["utils"]
+            "@services": ["services"]
         }
     }
 }

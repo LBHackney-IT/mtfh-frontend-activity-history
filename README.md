@@ -8,7 +8,7 @@ This app is not intended to be run in isolation in production, but managed throu
 Create a `.env` file in the root of the repo with the following required key-value pairs:
 
 ```env
-PERSON_API_KEY=
+ACTIVITIES_API_URL=
 PERSON_API_URL=
 ```
 

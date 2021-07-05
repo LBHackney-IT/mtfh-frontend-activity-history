@@ -8,7 +8,6 @@ module.exports = {
         '\\.(css|scss)$': 'identity-obj-proxy',
         '@components': '<rootDir>/components',
         '@services': '<rootDir>/services',
-        '@utilities': '<rootDir>/utils',
     },
     setupFilesAfterEnv: ['@testing-library/jest-dom', './test-utils.tsx'],
     coverageDirectory: '../coverage',
