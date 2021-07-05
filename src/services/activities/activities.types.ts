@@ -1,12 +1,13 @@
+import { Person } from '../';
 export type ActivityType = 'create' | 'update' | 'delete';
 export type ActivityTargetType = 'person' | 'asset' | 'tenure';
 
-interface PersonName {
+interface ModifiedData {
     id: string;
     title: string;
-    forename: string;
+    firstName: string;
     middleName: string;
-    surename: string;
+    surname: string;
 }
 
 interface AuthorDetails {
@@ -22,7 +23,7 @@ export interface Activity {
     targetId: string;
     createdAt: any;
     timeToLiveForRecordInDays: number;
-    oldData: PersonName;
-    newData: PersonName;
+    oldData: Partial<Person>;
+    newData: Partial<Person>;
     authorDetails: AuthorDetails;
 }
