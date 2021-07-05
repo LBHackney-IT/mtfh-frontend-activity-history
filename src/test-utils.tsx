@@ -30,7 +30,7 @@ export const routeRender = (
     options?: Partial<RouteRenderConfig>
 ): [RenderResult, MemoryHistory] => {
     const config: RouteRenderConfig = {
-        url: 'activities/person/be8c805c-b1de-11eb-8529-0242ac130003',
+        url: '/activities/person/be8c805c-b1de-11eb-8529-0242ac130003',
         path: '/activities/:type/:personId',
         query: 'lg',
         ...options,
