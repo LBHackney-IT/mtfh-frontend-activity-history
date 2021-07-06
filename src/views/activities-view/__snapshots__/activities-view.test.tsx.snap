@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the activities view 1`] = `
+<div>
+  <div
+    data-testid="activities"
+  >
+    <a
+      class="govuk-back-link lbh-back-link lbh-link--no-visited-state"
+      href="/person/undefined"
+    >
+       
+    </a>
+    <h1
+      class="lbh-heading-h1"
+    >
+      Activity history
+    </h1>
+    <h2
+      class="lbh-heading-h2"
+    >
+       
+    </h2>
+    <a
+      class="govuk-button lbh-button govuk-secondary lbh-button--secondary"
+      href="/person/undefined"
+    >
+      Close activity history
+    </a>
+  </div>
+</div>
+`;
