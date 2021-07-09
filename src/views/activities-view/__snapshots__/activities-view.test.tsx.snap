@@ -73,6 +73,7 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
+            Edit to:
              
             person
           </td>
@@ -118,6 +119,7 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
+            Edit to:
              
             person
           </td>
@@ -163,6 +165,7 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
+            Edit to:
              
             person
           </td>

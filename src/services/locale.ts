@@ -8,6 +8,7 @@ const locale = {
         previouslyLabel: 'Previously:',
         changedToLabel: 'Changed to:',
         noEntryLabel: '[no entry]',
+        editToLabel: 'Edit to:',
         removedLabel: 'Removed:',
         addedLabel: 'Added:',
         closeButton: 'Close activity history',
