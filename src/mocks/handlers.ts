@@ -11,7 +11,7 @@ export const handlers = [
     ),
 
     rest.get(
-        `${config.activitiesApiUrl}/activities/:id`,
+        `${config.activitiesApiUrl}//activityHistory/:id`,
         (request, response, context) => {
             return response(context.status(200), context.json(mockActivities));
         }
