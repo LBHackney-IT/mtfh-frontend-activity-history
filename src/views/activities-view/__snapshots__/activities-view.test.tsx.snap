@@ -7,7 +7,7 @@ exports[`renders the activities view 1`] = `
   >
     <a
       class="govuk-back-link lbh-back-link lbh-link--no-visited-state"
-      href="/person/undefined"
+      href="/undefined/undefined"
     >
        
     </a>
@@ -56,7 +56,7 @@ exports[`renders the activities view 1`] = `
         class="govuk-table__body"
       >
         <tr
-          class="govuk-table__row govuk-table__row mtfh-activities-history"
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
         >
           <td
             class="govuk-table__cell"
@@ -73,7 +73,8 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Edit to person
+             
+            person
           </td>
           <td
             class="govuk-table__cell"
@@ -100,7 +101,7 @@ exports[`renders the activities view 1`] = `
           </th>
         </tr>
         <tr
-          class="govuk-table__row govuk-table__row mtfh-activities-history"
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
         >
           <td
             class="govuk-table__cell"
@@ -117,7 +118,8 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Edit to person
+             
+            person
           </td>
           <td
             class="govuk-table__cell"
@@ -144,7 +146,7 @@ exports[`renders the activities view 1`] = `
           </th>
         </tr>
         <tr
-          class="govuk-table__row govuk-table__row mtfh-activities-history"
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
         >
           <td
             class="govuk-table__cell"
@@ -161,7 +163,8 @@ exports[`renders the activities view 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Edit to person
+             
+            person
           </td>
           <td
             class="govuk-table__cell"
@@ -219,7 +222,7 @@ exports[`renders the activities view 1`] = `
     </table>
     <a
       class="govuk-button lbh-button govuk-secondary lbh-button--secondary"
-      href="/person/undefined"
+      href="/undefined/undefined"
     >
       Close activity history
     </a>

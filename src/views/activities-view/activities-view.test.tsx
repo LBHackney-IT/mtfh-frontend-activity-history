@@ -7,7 +7,9 @@ import { ActivitiesView } from '../activities-view';
 import { routeRender } from '../../test-utils';
 
 test('renders the activities view', async () => {
-    const [{ container }] = routeRender(<ActivitiesView />);
+    const [{ container }] = routeRender(<ActivitiesView />, {
+        url: '/activities/person/123',
+    });
     expect(container).toMatchSnapshot();
 
     await waitFor(() =>
