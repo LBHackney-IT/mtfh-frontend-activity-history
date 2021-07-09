@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { parseISO, format } from 'date-fns';
-import { Table, Thead, Tbody, Tr, Th, Td } from '@mtfh/common';
+import {
+    Center,
+    Spinner,
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    SimplePagination,
+    SimplePaginationButton,
+} from '@mtfh/common';
 import { locale, Activity, useActivityHistory } from '@services';
 import { mockActivities } from '../../mocks/data';
 
@@ -118,6 +129,10 @@ const updatedData = (activity: Activity) => {
     }
 };
 
+function NoActivitiyHistory() {
+    return <p>No activity history</p>;
+}
+
 export interface ActivityHistoryListProps {
     targetId: string;
 }
@@ -125,34 +140,76 @@ export interface ActivityHistoryListProps {
 export const ActivityHistoryList = ({
     targetId,
 }: ActivityHistoryListProps): JSX.Element => {
-    const { data: activities } = useActivityHistory(targetId);
+    const { data, size, setSize, error } = useActivityHistory(targetId);
+
+    const response = useMemo(() => {
+        if (!data) return null;
+        return data[size - 1];
+    }, [data, size]);
+
+    if (error?.response?.status === 404) {
+        return <NoActivitiyHistory />;
+    }
+
+    if (!response) {
+        return (
+            <Center>
+                <Spinner />
+            </Center>
+        );
+    }
+
+    const {
+        results: activityHistory,
+        paginationDetails: { nextToken },
+    } = response;
 
     const { results } = mockActivities;
     return (
-        <Table>
-            <Thead>
-                <Tr>
-                    <Th>{tableDate}</Th>
-                    <Th>{tableCategory}</Th>
-                    <Th>{tableEditDetails}</Th>
-                    <Th>{tableEdittedBy}</Th>
-                </Tr>
-            </Thead>
-            <Tbody>
-                {results.map((activity, index) => (
-                    <Tr
-                        key={index}
-                        className="govuk-table__row mtfh-activity-history"
-                    >
-                        <Td>{formattedDate(activity.createdAt)}</Td>
-                        <Td>
-                            {editToLabel} {activity.targetType}
-                        </Td>
-                        <Td>{updatedData(activity)}</Td>
-                        <Th>{activity.authorDetails.fullName}</Th>
+        <div>
+            <Table>
+                <Thead>
+                    <Tr>
+                        <Th>{tableDate}</Th>
+                        <Th>{tableCategory}</Th>
+                        <Th>{tableEditDetails}</Th>
+                        <Th>{tableEdittedBy}</Th>
                     </Tr>
-                ))}
-            </Tbody>
-        </Table>
+                </Thead>
+                <Tbody>
+                    {activityHistory.map((activity, index) => (
+                        <Tr
+                            key={index}
+                            className="govuk-table__row mtfh-activity-history"
+                        >
+                            <Td>{formattedDate(activity.createdAt)}</Td>
+                            <Td>
+                                {editToLabel} {activity.targetType}
+                            </Td>
+                            <Td>{updatedData(activity)}</Td>
+                            <Th>{activity.authorDetails.fullName}</Th>
+                        </Tr>
+                    ))}
+                </Tbody>
+            </Table>
+            <SimplePagination>
+                {size !== 1 && (
+                    <SimplePaginationButton
+                        variant="previous"
+                        onClick={() => setSize(size - 1)}
+                    >
+                        Previous
+                    </SimplePaginationButton>
+                )}
+                {nextToken && (
+                    <SimplePaginationButton
+                        variant="next"
+                        onClick={() => setSize(size + 1)}
+                    >
+                        Next
+                    </SimplePaginationButton>
+                )}
+            </SimplePagination>
+        </div>
     );
 };

@@ -6,7 +6,7 @@ import { ActivitiesView } from './views/activities-view';
 export default function App(): JSX.Element {
     return (
         <Switch>
-            <Route path="/activities/:type/:id" exact>
+            <Route path="/activities/:entityType/:id" exact>
                 <ActivitiesView />
             </Route>
             <Route path="*">// 404</Route>

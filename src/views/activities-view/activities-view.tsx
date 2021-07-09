@@ -8,7 +8,6 @@ const { pageTitle, closeButton } = locale.activities;
 
 export const ActivitiesView = (): JSX.Element => {
     const { id, entityType } = useParams<{ id: string; entityType: string }>();
-
     const { data: person } = usePerson(id);
 
     return (

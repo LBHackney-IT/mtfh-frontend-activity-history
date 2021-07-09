@@ -7,7 +7,7 @@ exports[`renders the activities view 1`] = `
   >
     <a
       class="govuk-back-link lbh-back-link lbh-link--no-visited-state"
-      href="/undefined/undefined"
+      href="/person/undefined"
     >
        
     </a>
@@ -21,211 +21,54 @@ exports[`renders the activities view 1`] = `
     >
        
     </h2>
-    <table
-      class="govuk-table lbh-table"
+    <div
+      class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
     >
-      <thead
-        class="govuk-table__head"
+      <svg
+        class="mtfh-icon"
+        focusable="false"
+        height="50"
+        stroke="#00703c"
+        viewBox="0 0 42 42"
+        width="50"
       >
-        <tr
-          class="govuk-table__row"
+        <title>
+          Loading...
+        </title>
+        <g
+          fill="none"
+          fill-rule="evenodd"
         >
-          <th
-            class="govuk-table__cell govuk-table__header"
+          <g
+            stroke-width="5"
+            transform="translate(3 3)"
           >
-            date
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            category
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            edit details
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            edited by
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class="govuk-table__body"
-      >
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                19.09.19
-              </p>
-              <p>
-                03:12
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Edit to:
-             
-            person
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                <b>
-                  Last name
-                </b>
-              </p>
-              <p>
-                Removed:
-                 
-                <b>
-                  Baker
-                </b>
-              </p>
-            </div>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Paul Fox
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                19.09.19
-              </p>
-              <p>
-                03:12
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Edit to:
-             
-            person
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                <b>
-                  First name
-                </b>
-              </p>
-              <p>
-                Added:
-                 
-                <b>
-                  Susanna
-                </b>
-              </p>
-            </div>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Paul Fox
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                19.02.21
-              </p>
-              <p>
-                03:12
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Edit to:
-             
-            person
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                <b>
-                  Title
-                </b>
-              </p>
-              <p>
-                Previously:
-                 
-                <b>
-                  Ms
-                </b>
-              </p>
-              <p>
-                Changed to:
-                 
-                <b>
-                  Mrs
-                </b>
-              </p>
-            </div>
-            <div>
-              <p>
-                <b>
-                  Preferred Last name
-                </b>
-              </p>
-              <p>
-                Previously:
-                 
-                <b>
-                  Baker
-                </b>
-              </p>
-              <p>
-                Changed to:
-                 
-                <b>
-                  Georgia
-                </b>
-              </p>
-            </div>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Mary Smith
-          </th>
-        </tr>
-      </tbody>
-    </table>
+            <circle
+              cx="18"
+              cy="18"
+              r="18"
+              stroke-opacity=".5"
+            />
+            <path
+              d="M36 18c0-9.94-8.06-18-18-18"
+              transform="rotate(112.708 18 18)"
+            >
+              <animatetransform
+                attributeName="transform"
+                dur="1s"
+                from="0 18 18"
+                repeatCount="indefinite"
+                to="360 18 18"
+                type="rotate"
+              />
+            </path>
+          </g>
+        </g>
+      </svg>
+    </div>
     <a
       class="govuk-button lbh-button govuk-secondary lbh-button--secondary"
-      href="/undefined/undefined"
+      href="/person/undefined"
     >
       Close activity history
     </a>

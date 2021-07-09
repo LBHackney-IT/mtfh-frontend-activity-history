@@ -4,7 +4,7 @@ import { routeRender } from './test-utils';
 import App from './app';
 
 test('it renders activities view', async () => {
-    routeRender(<App />, { url: '/activities/:type/:id', path: '/' });
+    routeRender(<App />, { url: '/activities/:entityType/:id', path: '/' });
 
     await waitFor(() =>
         expect(screen.getByTestId('activities')).toBeInTheDocument()

@@ -1,7 +1,7 @@
 import { GetActivityHistoryByTargetIdResponse } from 'services/activities/activities';
 import { Activity, Person } from '../services';
 
-const mockRemovedLastName: Activity = {
+export const mockRemovedLastName: Activity = {
     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     type: 'create',
     targetType: 'person',
@@ -23,7 +23,7 @@ const mockRemovedLastName: Activity = {
     },
 };
 
-const mockAddedFirstName: Activity = {
+export const mockAddedFirstName: Activity = {
     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     type: 'create',
     targetType: 'person',
