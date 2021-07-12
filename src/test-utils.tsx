@@ -31,7 +31,7 @@ export const routeRender = (
 ): [RenderResult, MemoryHistory] => {
     const config: RouteRenderConfig = {
         url: '/activities/person/be8c805c-b1de-11eb-8529-0242ac130003',
-        path: '/activities/:type/:personId',
+        path: '/activities/:entityType/:personId',
         query: 'lg',
         ...options,
     };
