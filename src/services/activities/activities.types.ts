@@ -1,5 +1,5 @@
 import { Person } from '../';
-export type ActivityType = 'create' | 'update' | 'delete';
+export type ActivityType = 'create' | 'update' | 'delete' | 'migrate';
 export type ActivityTargetType = 'person' | 'asset' | 'tenure';
 
 interface ModifiedData {

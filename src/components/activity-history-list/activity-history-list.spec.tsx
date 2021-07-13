@@ -3,7 +3,11 @@ import { screen, waitFor } from '@testing-library/react';
 
 import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
-import { mockAddedFirstName, mockRemovedLastName } from '../../mocks';
+import {
+    mockAddedFirstName,
+    mockMigratedPerson,
+    mockRemovedLastName,
+} from '../../mocks';
 
 test('it renders correctly', async () => {
     routeRender(<ActivityHistoryList targetId="123" />);
@@ -44,6 +48,20 @@ test('it pages the results', async () => {
     );
     await waitFor(() =>
         expect(screen.getByText(/Last name/)).toBeInTheDocument()
+    );
+});
+
+test('it pages the results for migrated person information', async () => {
+    get('/api/activityhistory', {
+        results: [mockMigratedPerson],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
     );
 });
 

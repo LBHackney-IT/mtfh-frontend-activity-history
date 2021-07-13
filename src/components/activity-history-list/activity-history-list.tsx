@@ -13,7 +13,6 @@ import {
     SimplePaginationButton,
 } from '@mtfh/common';
 import { locale, Activity, useActivityHistory } from '@services';
-import { mockActivities } from '../../mocks/data';
 
 import './activity-history-list.styles.scss';
 
@@ -53,7 +52,16 @@ const updatedData = (activity: Activity) => {
         preferredFirstname: 'Preferred first name',
         preferredMiddlename: 'Preferred middle name',
         preferredSurname: 'Preferred last name',
+        personMigrated: 'Person migrated',
     };
+
+    if (type === 'migrate') {
+        return (
+            <p>
+                <b>{dictionaries['personMigrated']}</b>
+            </p>
+        );
+    }
 
     if (
         JSON.stringify(Object.keys(oldData)) ===
@@ -165,7 +173,6 @@ export const ActivityHistoryList = ({
         paginationDetails: { nextToken },
     } = response;
 
-    const { results } = mockActivities;
     return (
         <div>
             <Table>
