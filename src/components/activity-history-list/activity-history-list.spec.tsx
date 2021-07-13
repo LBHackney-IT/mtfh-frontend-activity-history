@@ -48,6 +48,20 @@ test('it renders correctly', () => {
     expect(screen.getByText(/Loading/)).toBeInTheDocument();
 });
 
+test('it displays a created field name on the activity history list', async () => {
+    get('/api/activityhistory', {
+        results: [mockAddedFirstName],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.getByText(/First name/)).toBeInTheDocument()
+    );
+});
+
 test('it pages the results', async () => {
     get('/api/activityhistory', {
         results: [mockAddedFirstName, mockRemovedLastName],
@@ -79,20 +93,6 @@ test('it pages the results', async () => {
 test('it pages the results for migrated person information', async () => {
     get('/api/activityhistory', {
         results: [mockMigratedPerson],
-        paginationDetails: {
-            nextToken: null,
-        },
-    });
-    routeRender(<ActivityHistoryList targetId="123" />);
-
-    await waitFor(() =>
-        expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
-    );
-});
-
-test('it displays a created field name on the activity history list', async () => {
-    get('/api/activityhistory', {
-        results: [mockAddedFirstName],
         paginationDetails: {
             nextToken: null,
         },
