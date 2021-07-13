@@ -10,7 +10,7 @@ export const mockRemovedLastName: Activity = {
     timeToLiveForRecordInDays: 365,
     oldData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
-        lastName: 'Baker',
+        surname: 'Baker',
     },
     newData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',

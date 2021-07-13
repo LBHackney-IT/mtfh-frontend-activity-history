@@ -48,11 +48,11 @@ const updatedData = (activity: Activity) => {
         title: 'Title',
         firstName: 'First name',
         middleName: 'Middle name',
-        lastName: 'Last name',
-        preferredTitle: 'Preferred Title',
-        preferredFirstname: 'Preferred First name',
-        preferredMiddlename: 'Preferred Middle name',
-        preferredSurname: 'Preferred Last name',
+        surname: 'Last name',
+        preferredTitle: 'Preferred title',
+        preferredFirstname: 'Preferred first name',
+        preferredMiddlename: 'Preferred middle name',
+        preferredSurname: 'Preferred last name',
     };
 
     if (
