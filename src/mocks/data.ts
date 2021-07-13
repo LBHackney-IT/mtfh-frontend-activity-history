@@ -8,8 +8,8 @@ export const mockMigratedPerson: Activity = {
     targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     createdAt: '2019-09-19 15:12:00',
     timeToLiveForRecordInDays: 365,
-    oldData: null,
-    newData: null,
+    oldData: {},
+    newData: {},
     authorDetails: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
         fullName: 'Paul Fox',
