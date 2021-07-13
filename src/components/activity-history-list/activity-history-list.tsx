@@ -34,7 +34,7 @@ const {
 const formattedDate = (date: any) => {
     return (
         <div>
-            <p>{format(parseISO(date), 'dd.MM.yy')}</p>
+            <p>{format(parseISO(date), 'dd/MM/yy')}</p>
             <p>{format(parseISO(date), 'hh:mm')}</p>
         </div>
     );
