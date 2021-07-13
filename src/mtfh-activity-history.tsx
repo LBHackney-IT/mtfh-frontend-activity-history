@@ -14,7 +14,9 @@ const lifecycles = singleSpaReact({
         console.error(properties);
 
         return (
-            <h1>Something has gone wrong loading the search application.</h1>
+            <h1>
+                Something has gone wrong loading the activities application.
+            </h1>
         );
     },
 });

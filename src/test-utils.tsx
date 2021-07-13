@@ -1,4 +1,4 @@
-import { SWRConfig } from 'swr';
+import { SWRConfig, cache } from 'swr';
 import { Router, Route } from 'react-router-dom';
 import React from 'react';
 import { rest } from 'msw';
@@ -11,8 +11,9 @@ beforeAll(() => {
     server.listen();
 });
 
-afterEach(() => {
+beforeEach(() => {
     server.resetHandlers();
+    cache.clear();
 });
 
 afterAll(() => {

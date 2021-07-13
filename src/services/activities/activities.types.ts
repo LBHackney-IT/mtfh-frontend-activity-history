@@ -2,19 +2,12 @@ import { Person } from '../';
 export type ActivityType = 'create' | 'update' | 'delete' | 'migrate';
 export type ActivityTargetType = 'person' | 'asset' | 'tenure';
 
-interface ModifiedData {
-    id: string;
-    title: string;
-    firstName: string;
-    middleName: string;
-    surname: string;
-}
-
 interface AuthorDetails {
     id: string;
     fullName: string;
     email: string;
 }
+type Nullable<T> = { [K in keyof T]: T[K] | null };
 
 export interface Activity {
     id: string;
@@ -23,7 +16,7 @@ export interface Activity {
     targetId: string;
     createdAt: any;
     timeToLiveForRecordInDays: number;
-    oldData: Partial<Person>;
-    newData: Partial<Person>;
+    oldData: Partial<Nullable<Person>> | null;
+    newData: Partial<Nullable<Person>> | null;
     authorDetails: AuthorDetails;
 }

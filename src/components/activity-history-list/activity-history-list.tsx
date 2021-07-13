@@ -40,7 +40,11 @@ const formattedDate = (date: any) => {
 };
 
 const updatedData = (activity: Activity) => {
-    const { oldData, newData, type } = activity;
+    const {
+        oldData: oldDataActivity,
+        newData: newDataActivty,
+        type,
+    } = activity;
 
     const dictionaries: any = {
         id: 'ID',
@@ -63,10 +67,10 @@ const updatedData = (activity: Activity) => {
         );
     }
 
-    if (
-        JSON.stringify(Object.keys(oldData)) ===
-        JSON.stringify(Object.keys(newData))
-    ) {
+    const oldData = oldDataActivity || {};
+    const newData = newDataActivty || {};
+
+    if (type === 'update') {
         return Object.keys(oldData).map((paramName: string, index) => {
             if (paramName === 'id') return;
             if (oldData[paramName] === newData[paramName]) return;
@@ -91,14 +95,13 @@ const updatedData = (activity: Activity) => {
         });
     }
 
-    const removedData = Object.keys(oldData).filter(
-        (paramName: string, index) => {
-            if (oldData[paramName] === newData[paramName]) return;
-            return oldData[paramName];
-        }
-    );
-
-    if (removedData.length > 0) {
+    if (type === 'delete') {
+        const removedData = Object.keys(oldData).filter(
+            (paramName: string, index) => {
+                if (oldData[paramName] === newData[paramName]) return;
+                return oldData[paramName];
+            }
+        );
         return removedData.map((paramName: string, index) => {
             if (paramName === 'id') return;
             return (
@@ -114,14 +117,13 @@ const updatedData = (activity: Activity) => {
         });
     }
 
-    const addedData = Object.keys(newData).filter(
-        (paramName: string, index) => {
-            if (oldData[paramName] === newData[paramName]) return;
-            return newData[paramName];
-        }
-    );
-
-    if (addedData.length > 0) {
+    if (type === 'create') {
+        const addedData = Object.keys(newData).filter(
+            (paramName: string, index) => {
+                if (oldData[paramName] === newData[paramName]) return;
+                return newData[paramName];
+            }
+        );
         return addedData.map((paramName: string, index) => {
             if (paramName === 'id') return;
             return (
