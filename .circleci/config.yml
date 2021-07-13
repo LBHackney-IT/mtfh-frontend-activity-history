@@ -97,7 +97,7 @@ jobs:
                 name: build
                 command: |
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activity-history-url --query Parameter.Value --output text)
+                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
@@ -116,7 +116,7 @@ jobs:
                 name: build
                 command: |
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activity-history-url --query Parameter.Value --output text)
+                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
@@ -135,7 +135,7 @@ jobs:
                 name: build
                 command: |
                     export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activity-history-url --query Parameter.Value --output text)
+                    export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
                   name: Deploy to S3
