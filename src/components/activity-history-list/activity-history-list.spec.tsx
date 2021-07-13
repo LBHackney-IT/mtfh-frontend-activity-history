@@ -1,14 +1,9 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
 
 import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
-import {
-    mockActivities,
-    mockAddedFirstName,
-    mockRemovedLastName,
-} from '../../mocks';
+import { mockAddedFirstName, mockRemovedLastName } from '../../mocks';
 
 test('it renders correctly', async () => {
     routeRender(<ActivityHistoryList targetId="123" />);
@@ -16,7 +11,7 @@ test('it renders correctly', async () => {
 });
 
 test('it renders no comments with no results', async () => {
-    get('/api/activities', '123', 404);
+    get('/api/activityhistory', '123', 404);
     routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() =>
@@ -25,7 +20,7 @@ test('it renders no comments with no results', async () => {
 });
 
 test('it pages the results', async () => {
-    get('/api/activities', {
+    get('/api/activityhistory', {
         results: [mockAddedFirstName, mockRemovedLastName],
         paginationDetails: {
             nextToken: null,
@@ -53,7 +48,7 @@ test('it pages the results', async () => {
 });
 
 test('it does not render pagination unnecessarily', async () => {
-    get('/api/activities', {
+    get('/api/activityhistory', {
         results: [mockAddedFirstName],
         paginationDetails: {
             nextToken: null,

@@ -28,6 +28,7 @@ const {
     addedLabel,
     editToLabel,
     noEntryLabel,
+    noActivitiyHistory,
 } = locale.activities;
 
 const formattedDate = (date: any) => {
@@ -130,7 +131,7 @@ const updatedData = (activity: Activity) => {
 };
 
 function NoActivitiyHistory() {
-    return <p>No activity history</p>;
+    return <p className="lbh-label">{noActivitiyHistory}</p>;
 }
 
 export interface ActivityHistoryListProps {
