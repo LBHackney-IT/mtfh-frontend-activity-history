@@ -8,8 +8,8 @@ export const mockMigratedPerson: Activity = {
     targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     createdAt: '2019-09-19 15:12:00',
     timeToLiveForRecordInDays: 365,
-    oldData: {},
-    newData: {},
+    oldData: null,
+    newData: null,
     authorDetails: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
         fullName: 'Paul Fox',
@@ -19,7 +19,7 @@ export const mockMigratedPerson: Activity = {
 
 export const mockRemovedLastName: Activity = {
     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
-    type: 'create',
+    type: 'update',
     targetType: 'person',
     targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     createdAt: '2019-09-19 15:12:00',
@@ -30,7 +30,7 @@ export const mockRemovedLastName: Activity = {
     },
     newData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
-        firstName: 'Bakerinho',
+        surname: null,
     },
     authorDetails: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
@@ -46,9 +46,7 @@ export const mockAddedFirstName: Activity = {
     targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     createdAt: '2019-09-19 15:12:00',
     timeToLiveForRecordInDays: 365,
-    oldData: {
-        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
-    },
+    oldData: null,
     newData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
         firstName: 'Susanna',
