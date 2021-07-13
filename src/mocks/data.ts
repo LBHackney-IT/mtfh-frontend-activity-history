@@ -1,6 +1,22 @@
 import { GetActivityHistoryByTargetIdResponse } from 'services/activities/activities';
 import { Activity, Person } from '../services';
 
+export const mockMigratedPerson: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'migrate',
+    targetType: 'person',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {},
+    newData: {},
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
 export const mockRemovedLastName: Activity = {
     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     type: 'create',
@@ -10,7 +26,7 @@ export const mockRemovedLastName: Activity = {
     timeToLiveForRecordInDays: 365,
     oldData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
-        lastName: 'Baker',
+        surname: 'Baker',
     },
     newData: {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',

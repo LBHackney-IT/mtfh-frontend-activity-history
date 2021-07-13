@@ -13,7 +13,6 @@ import {
     SimplePaginationButton,
 } from '@mtfh/common';
 import { locale, Activity, useActivityHistory } from '@services';
-import { mockActivities } from '../../mocks/data';
 
 import './activity-history-list.styles.scss';
 
@@ -28,12 +27,13 @@ const {
     addedLabel,
     editToLabel,
     noEntryLabel,
+    noActivitiyHistory,
 } = locale.activities;
 
 const formattedDate = (date: any) => {
     return (
         <div>
-            <p>{format(parseISO(date), 'dd.MM.yy')}</p>
+            <p>{format(parseISO(date), 'dd/MM/yy')}</p>
             <p>{format(parseISO(date), 'hh:mm')}</p>
         </div>
     );
@@ -47,12 +47,21 @@ const updatedData = (activity: Activity) => {
         title: 'Title',
         firstName: 'First name',
         middleName: 'Middle name',
-        lastName: 'Last name',
-        preferredTitle: 'Preferred Title',
-        preferredFirstname: 'Preferred First name',
-        preferredMiddlename: 'Preferred Middle name',
-        preferredSurname: 'Preferred Last name',
+        surname: 'Last name',
+        preferredTitle: 'Preferred title',
+        preferredFirstname: 'Preferred first name',
+        preferredMiddlename: 'Preferred middle name',
+        preferredSurname: 'Preferred last name',
+        personMigrated: 'Person migrated',
     };
+
+    if (type === 'migrate') {
+        return (
+            <p>
+                <b>{dictionaries['personMigrated']}</b>
+            </p>
+        );
+    }
 
     if (
         JSON.stringify(Object.keys(oldData)) ===
@@ -130,7 +139,7 @@ const updatedData = (activity: Activity) => {
 };
 
 function NoActivitiyHistory() {
-    return <p>No activity history</p>;
+    return <p className="lbh-label">{noActivitiyHistory}</p>;
 }
 
 export interface ActivityHistoryListProps {
@@ -164,7 +173,6 @@ export const ActivityHistoryList = ({
         paginationDetails: { nextToken },
     } = response;
 
-    const { results } = mockActivities;
     return (
         <div>
             <Table>

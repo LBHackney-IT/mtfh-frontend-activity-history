@@ -11,6 +11,7 @@ const locale = {
         editToLabel: 'Edit to:',
         removedLabel: 'Removed:',
         addedLabel: 'Added:',
+        noActivitiyHistory: 'No activity history',
         closeButton: 'Close activity history',
     },
 };

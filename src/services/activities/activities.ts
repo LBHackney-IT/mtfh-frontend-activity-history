@@ -35,7 +35,9 @@ export const useActivityHistory = (
                 params.paginationToken = previous.paginationDetails.nextToken;
             }
 
-            return `${config.activitiesApiUrl}/activities?${stringify(params)}`;
+            return `${config.activitiesApiUrl}/activityhistory?${stringify(
+                params
+            )}`;
         },
         {
             onErrorRetry:
