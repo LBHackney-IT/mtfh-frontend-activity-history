@@ -28,6 +28,9 @@ const {
     editToLabel,
     noEntryLabel,
     noActivitiyHistory,
+    entityCreated,
+    entityMigrated,
+    entityEdited,
 } = locale.activities;
 
 const formattedDate = (date: any) => {
@@ -44,6 +47,7 @@ const updatedData = (activity: Activity) => {
         oldData: oldDataActivity,
         newData: newDataActivty,
         type,
+        targetType,
     } = activity;
 
     const dictionaries: any = {
@@ -56,13 +60,12 @@ const updatedData = (activity: Activity) => {
         preferredFirstname: 'Preferred first name',
         preferredMiddlename: 'Preferred middle name',
         preferredSurname: 'Preferred last name',
-        personMigrated: 'Person migrated',
     };
 
     if (type === 'migrate') {
         return (
             <p>
-                <b>{dictionaries['personMigrated']}</b>
+                <b>{entityMigrated(targetType)}</b>
             </p>
         );
     }
@@ -72,7 +75,8 @@ const updatedData = (activity: Activity) => {
 
     if (type === 'update') {
         return Object.keys(oldData).map((paramName: string, index) => {
-            if (paramName === 'id') return;
+            if (paramName === 'id' || !dictionaries[paramName]) return;
+
             if (oldData[paramName] === newData[paramName]) return;
             return (
                 <div key={index}>
@@ -118,6 +122,13 @@ const updatedData = (activity: Activity) => {
     }
 
     if (type === 'create') {
+        if (targetType === 'person') {
+            return (
+                <p>
+                    <b>{entityCreated(targetType)}</b>
+                </p>
+            );
+        }
         const addedData = Object.keys(newData).filter(
             (paramName: string, index) => {
                 if (oldData[paramName] === newData[paramName]) return;
@@ -193,9 +204,7 @@ export const ActivityHistoryList = ({
                             className="govuk-table__row mtfh-activity-history"
                         >
                             <Td>{formattedDate(activity.createdAt)}</Td>
-                            <Td>
-                                {editToLabel} {activity.targetType}
-                            </Td>
+                            <Td>{entityEdited(activity.targetType)}</Td>
                             <Td>{updatedData(activity)}</Td>
                             <Th>{activity.authorDetails.fullName}</Th>
                         </Tr>
