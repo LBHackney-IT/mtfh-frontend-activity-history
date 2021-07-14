@@ -86,13 +86,6 @@ test('it pages the results', async () => {
     await waitFor(() =>
         expect(screen.getByText(/Person created/)).toBeInTheDocument()
     );
-
-    // await waitFor(() =>
-    //     expect(screen.getByText(/First name/)).toBeInTheDocument()
-    // );
-    // await waitFor(() =>
-    //     expect(screen.getByText(/Last name/)).toBeInTheDocument()
-    // );
 });
 
 test('it pages the results for migrated person information', async () => {

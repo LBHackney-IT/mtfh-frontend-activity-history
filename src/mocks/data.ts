@@ -82,37 +82,7 @@ export const mockRemovedLastName: Activity = {
 };
 
 export const mockActivities: GetActivityHistoryByTargetIdResponse = {
-    results: [
-        mockUpdatedFirstName,
-        mockCreatedPerson,
-        // {
-        //     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
-        //     type: 'create',
-        //     targetType: 'person',
-        //     targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
-        //     createdAt: '2021-02-19 15:12:00',
-        //     timeToLiveForRecordInDays: 365,
-        //     oldData: {
-        //         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
-        //         title: 'Ms',
-        //         preferredFirstname: 'Susan',
-        //         preferredMiddlename: 'Louise',
-        //         preferredSurname: 'Baker',
-        //     },
-        //     newData: {
-        //         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
-        //         title: 'Mrs',
-        //         preferredFirstname: 'Susan',
-        //         preferredMiddlename: 'Louise',
-        //         preferredSurname: 'Georgia',
-        //     },
-        //     authorDetails: {
-        //         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
-        //         fullName: 'Mary Smith',
-        //         email: 'Mary.Smith@hackney.gov.uk',
-        //     },
-        // },
-    ],
+    results: [mockUpdatedFirstName, mockCreatedPerson],
     paginationDetails: {
         nextToken: 'string',
     },
