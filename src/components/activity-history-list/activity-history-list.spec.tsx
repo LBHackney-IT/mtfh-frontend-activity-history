@@ -5,9 +5,10 @@ import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
 import {
     mockActivities,
-    mockAddedFirstName,
+    mockUpdatedFirstName,
     mockMigratedPerson,
     mockRemovedLastName,
+    mockCreatedPerson,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -48,9 +49,9 @@ test('it renders correctly', () => {
     expect(screen.getByText(/Loading/)).toBeInTheDocument();
 });
 
-test('it displays a created field name on the activity history list', async () => {
+test('it displays a Person created on the activity history list for a new person record', async () => {
     get('/api/activityhistory', {
-        results: [mockAddedFirstName],
+        results: [mockUpdatedFirstName],
         paginationDetails: {
             nextToken: null,
         },
@@ -58,13 +59,13 @@ test('it displays a created field name on the activity history list', async () =
     routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() =>
-        expect(screen.getByText(/First name/)).toBeInTheDocument()
+        expect(screen.getByText(/Person created/)).toBeInTheDocument()
     );
 });
 
 test('it pages the results', async () => {
     get('/api/activityhistory', {
-        results: [mockAddedFirstName, mockRemovedLastName],
+        results: [mockCreatedPerson, mockUpdatedFirstName],
         paginationDetails: {
             nextToken: null,
         },
@@ -83,10 +84,7 @@ test('it pages the results', async () => {
     );
 
     await waitFor(() =>
-        expect(screen.getByText(/First name/)).toBeInTheDocument()
-    );
-    await waitFor(() =>
-        expect(screen.getByText(/Last name/)).toBeInTheDocument()
+        expect(screen.getByText(/Person created/)).toBeInTheDocument()
     );
 });
 
@@ -106,7 +104,7 @@ test('it pages the results for migrated person information', async () => {
 
 test('it does not render pagination unnecessarily', async () => {
     get('/api/activityhistory', {
-        results: [mockAddedFirstName],
+        results: [mockUpdatedFirstName],
         paginationDetails: {
             nextToken: null,
         },

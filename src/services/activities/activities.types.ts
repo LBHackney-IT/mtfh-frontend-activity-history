@@ -1,6 +1,10 @@
 import { Person } from '../';
 export type ActivityType = 'create' | 'update' | 'delete' | 'migrate';
-export type ActivityTargetType = 'person' | 'asset' | 'tenure';
+export type ActivityTargetType =
+    | 'person'
+    | 'asset'
+    | 'tenure'
+    | 'contactDetails';
 
 interface AuthorDetails {
     id: string;
