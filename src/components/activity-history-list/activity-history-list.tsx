@@ -75,34 +75,33 @@ const updatedData = (activity: Activity) => {
     const newData = newDataActivty || {};
 
     if (type === 'update') {
-        return (
-            <>
-                {Object.keys(oldData).map((paramName: string, index) => {
-                    if (paramName === 'id' || !dictionaries[paramName])
-                        return null;
+        const updatedElements = Object.keys(oldData)
+            .filter(key => dictionaries[key] !== undefined)
+            .map((paramName: string, index) => {
+                if (paramName === 'id' || !dictionaries[paramName]) return null;
 
-                    if (oldData[paramName] === newData[paramName]) return null;
-                    return (
-                        <div key={index}>
-                            <p>
-                                <b>{dictionaries[paramName]}</b>
-                            </p>
-                            <p>
-                                {previouslyLabel}{' '}
-                                <b>
-                                    {oldData[paramName]
-                                        ? oldData[paramName]
-                                        : noEntryLabel}
-                                </b>
-                            </p>
-                            <p>
-                                {changedToLabel} <b>{newData[paramName]}</b>
-                            </p>
-                        </div>
-                    );
-                })}
-            </>
-        );
+                if (oldData[paramName] === newData[paramName]) return null;
+                return (
+                    <div key={index}>
+                        <p>
+                            <b>{dictionaries[paramName]}</b>
+                        </p>
+                        <p>
+                            {previouslyLabel}{' '}
+                            <b>
+                                {oldData[paramName]
+                                    ? oldData[paramName]
+                                    : noEntryLabel}
+                            </b>
+                        </p>
+                        <p>
+                            {changedToLabel} <b>{newData[paramName]}</b>
+                        </p>
+                    </div>
+                );
+            });
+
+        return updatedElements;
     }
 
     if (type === 'delete') {
