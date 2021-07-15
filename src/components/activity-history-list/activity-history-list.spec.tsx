@@ -9,6 +9,7 @@ import {
     mockMigratedPerson,
     mockRemovedLastName,
     mockCreatedPerson,
+    mockUpdatedNameAndNationalInsurance,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -112,4 +113,19 @@ test('it does not render pagination unnecessarily', async () => {
     routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() => expect(screen.queryByText(/Next/)).toBe(null));
+});
+
+test('it should only display firstName change and NOT display national insurance number', async () => {
+    get('/api/activityhistory', {
+        results: [mockUpdatedNameAndNationalInsurance],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => expect(screen.queryByText(/AB123456C/)).toBe(null));
+    await waitFor(() =>
+        expect(screen.queryByText(/First name/)).toBeInTheDocument()
+    );
 });
