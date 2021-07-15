@@ -75,29 +75,34 @@ const updatedData = (activity: Activity) => {
     const newData = newDataActivty || {};
 
     if (type === 'update') {
-        return Object.keys(oldData).map((paramName: string, index) => {
-            if (paramName === 'id' || !dictionaries[paramName]) return;
+        return (
+            <>
+                {Object.keys(oldData).map((paramName: string, index) => {
+                    if (paramName === 'id' || !dictionaries[paramName])
+                        return null;
 
-            if (oldData[paramName] === newData[paramName]) return;
-            return (
-                <div key={index}>
-                    <p>
-                        <b>{dictionaries[paramName]}</b>
-                    </p>
-                    <p>
-                        {previouslyLabel}{' '}
-                        <b>
-                            {oldData[paramName]
-                                ? oldData[paramName]
-                                : noEntryLabel}
-                        </b>
-                    </p>
-                    <p>
-                        {changedToLabel} <b>{newData[paramName]}</b>
-                    </p>
-                </div>
-            );
-        });
+                    if (oldData[paramName] === newData[paramName]) return null;
+                    return (
+                        <div key={index}>
+                            <p>
+                                <b>{dictionaries[paramName]}</b>
+                            </p>
+                            <p>
+                                {previouslyLabel}{' '}
+                                <b>
+                                    {oldData[paramName]
+                                        ? oldData[paramName]
+                                        : noEntryLabel}
+                                </b>
+                            </p>
+                            <p>
+                                {changedToLabel} <b>{newData[paramName]}</b>
+                            </p>
+                        </div>
+                    );
+                })}
+            </>
+        );
     }
 
     if (type === 'delete') {
@@ -199,17 +204,22 @@ export const ActivityHistoryList = ({
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {activityHistory.map((activity, index) => (
-                        <Tr
-                            key={index}
-                            className="govuk-table__row mtfh-activity-history"
-                        >
-                            <Td>{formattedDate(activity.createdAt)}</Td>
-                            <Td>{entityEdited(activity.targetType)}</Td>
-                            <Td>{updatedData(activity)}</Td>
-                            <Th>{activity.authorDetails.fullName}</Th>
-                        </Tr>
-                    ))}
+                    {activityHistory.map((activity, index) => {
+                        const dataChange = updatedData(activity);
+                        if (!dataChange) return null;
+
+                        return (
+                            <Tr
+                                key={index}
+                                className="govuk-table__row mtfh-activity-history"
+                            >
+                                <Td>{formattedDate(activity.createdAt)}</Td>
+                                <Td>{entityEdited(activity.targetType)}</Td>
+                                <Td>{dataChange}</Td>
+                                <Th>{activity.authorDetails.fullName}</Th>
+                            </Tr>
+                        );
+                    })}
                 </Tbody>
             </Table>
             <SimplePagination>
