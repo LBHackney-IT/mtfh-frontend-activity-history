@@ -57,9 +57,10 @@ const updatedData = (activity: Activity) => {
         middleName: 'Middle name',
         surname: 'Last name',
         preferredTitle: 'Preferred title',
-        preferredFirstname: 'Preferred first name',
-        preferredMiddlename: 'Preferred middle name',
+        preferredFirstName: 'Preferred first name',
+        preferredMiddleName: 'Preferred middle name',
         preferredSurname: 'Preferred last name',
+        gender: 'Gender',
     };
 
     if (type === 'migrate') {
