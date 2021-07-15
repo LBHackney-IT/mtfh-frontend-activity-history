@@ -95,14 +95,14 @@ export const mockPerson: Person = {
     surname: 'Evans',
     middleName: 'M.',
     preferredTitle: 'Mrs',
-    preferredFirstname: '',
-    preferredMiddlename: '',
+    preferredFirstName: '',
+    preferredMiddleName: '',
     preferredSurname: 'Fisher',
+    gender: 'F',
     // ethnicity: 'Christian',
     // nationality: 'Canadian',
     // placeOfBirth: 'Toronto',
     // dateOfBirth: '04/03/1988',
-    // gender: 'F',
     // identifications: [
     //     {
     //         identificationType: 'NI',

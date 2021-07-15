@@ -1,19 +1,20 @@
 export type Person = {
     id: string;
     title: string;
-    preferredFirstname: string;
-    preferredMiddlename: string;
-    preferredSurname: string;
     firstName: string;
     middleName: string;
     surname: string;
+    preferredTitle: string;
+    preferredFirstName: string;
+    preferredMiddleName: string;
+    preferredSurname: string;
+    gender: string;
+    // languages: Language[];
     // ethnicity: string;
     // nationality: string;
     // placeOfBirth: string;
     // dateOfBirth: string;
-    // gender: string;
     // identifications: Identification[];
-    // languages: Language[];
     // communicationRequirements: string[];
     // personTypes: string[];
     // links: Link[];
