@@ -92,9 +92,9 @@ export const mockUpdatedIdentifications: Activity = {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
         identifications: [
             {
-                identificationType: 'NI',
-                value: 'ABCD',
-                isOriginalDocumentSeen: false,
+                identificationType: 'Passport',
+                value: 'GB03654488992',
+                isOriginalDocumentSeen: true,
                 linkToDocument: 'string',
             },
         ],
@@ -103,9 +103,9 @@ export const mockUpdatedIdentifications: Activity = {
         id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
         identifications: [
             {
-                identificationType: 'NI',
-                value: 'ABCD',
-                isOriginalDocumentSeen: false,
+                identificationType: 'Passport',
+                value: 'GB03654488992',
+                isOriginalDocumentSeen: true,
                 linkToDocument: 'string',
             },
         ],

@@ -1,4 +1,4 @@
-import { ActivityTargetType, Language } from '@services';
+import { ActivityTargetType, Identification, Language } from '@services';
 
 const locale = {
     activities: {
@@ -67,12 +67,26 @@ const locale = {
             },
             languages: {
                 field: 'Languages',
-                output: (value: Language[]) =>
+                output: (value: Language[]): string =>
                     value
                         .map(
                             v =>
                                 `${v.language}${
                                     v.isPrimary ? ' (primary)' : ''
+                                }`
+                        )
+                        .join(', '),
+            },
+            identifications: {
+                field: 'Identitifications',
+                output: (identifications: Identification[]): string =>
+                    identifications
+                        .map(
+                            id =>
+                                `${id.identificationType}, ${id.value} ${
+                                    id.isOriginalDocumentSeen
+                                        ? 'seen'
+                                        : 'not seen'
                                 }`
                         )
                         .join(', '),

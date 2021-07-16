@@ -122,25 +122,25 @@ test('it should display change in Languages', async () => {
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Languages/)).toBeInTheDocument()
     );
-    expect(screen.queryByText(/Abkhaz/)).toBeInTheDocument();
+    await waitFor(() => expect(container).toMatchSnapshot());
 });
 
-// test('it should display change in Identifications', async () => {
-//     get('/api/activityhistory', {
-//         results: [mockUpdatedIdentifications],
-//         paginationDetails: {
-//             nextToken: null,
-//         },
-//     });
-//     routeRender(<ActivityHistoryList targetId="123" />);
+test('it should display change in Identifications', async () => {
+    get('/api/activityhistory', {
+        results: [mockUpdatedIdentifications],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
-//     await waitFor(() =>
-//         expect(screen.queryByText(/Languages/)).toBeInTheDocument()
-//     );
-//     expect(screen.queryByText(/Abkhaz/)).toBeInTheDocument()
-// });
+    await waitFor(() =>
+        expect(screen.queryByText(/Identitifications/)).toBeInTheDocument()
+    );
+    await waitFor(() => expect(container).toMatchSnapshot());
+});
