@@ -4,12 +4,12 @@ import { screen, waitFor } from '@testing-library/react';
 import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
 import {
-    mockActivities,
     mockUpdatedFirstName,
     mockMigratedPerson,
     mockRemovedLastName,
     mockCreatedPerson,
-    mockUpdatedNameAndNationalInsurance,
+    mockUpdatedLanguages,
+    mockUpdatedIdentifications,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -115,17 +115,32 @@ test('it does not render pagination unnecessarily', async () => {
     await waitFor(() => expect(screen.queryByText(/Next/)).toBe(null));
 });
 
-test('it should only display firstName change and NOT display national insurance number', async () => {
+test('it should display change in Languages', async () => {
     get('/api/activityhistory', {
-        results: [mockUpdatedNameAndNationalInsurance],
+        results: [mockUpdatedLanguages],
         paginationDetails: {
             nextToken: null,
         },
     });
     routeRender(<ActivityHistoryList targetId="123" />);
 
-    await waitFor(() => expect(screen.queryByText(/AB123456C/)).toBe(null));
     await waitFor(() =>
-        expect(screen.queryByText(/First name/)).toBeInTheDocument()
+        expect(screen.queryByText(/Languages/)).toBeInTheDocument()
     );
+    expect(screen.queryByText(/Abkhaz/)).toBeInTheDocument();
 });
+
+// test('it should display change in Identifications', async () => {
+//     get('/api/activityhistory', {
+//         results: [mockUpdatedIdentifications],
+//         paginationDetails: {
+//             nextToken: null,
+//         },
+//     });
+//     routeRender(<ActivityHistoryList targetId="123" />);
+
+//     await waitFor(() =>
+//         expect(screen.queryByText(/Languages/)).toBeInTheDocument()
+//     );
+//     expect(screen.queryByText(/Abkhaz/)).toBeInTheDocument()
+// });
