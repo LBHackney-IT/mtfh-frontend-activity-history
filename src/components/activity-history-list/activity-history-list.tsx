@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { parseISO, format } from 'date-fns';
 import {
     Center,
     Spinner,
@@ -12,153 +11,22 @@ import {
     SimplePagination,
     SimplePaginationButton,
 } from '@mtfh/common';
-import { locale, Activity, useActivityHistory } from '@services';
+import { locale, useActivityHistory } from '@services';
 
 import './activity-history-list.styles.scss';
+import { formattedDate, updatedData } from './utils';
 
 const {
     tableDate,
     tableCategory,
     tableEditDetails,
     tableEdittedBy,
-    previouslyLabel,
-    changedToLabel,
-    removedLabel,
-    addedLabel,
-    editToLabel,
-    noEntryLabel,
-    noActivitiyHistory,
-    entityCreated,
-    entityMigrated,
+    noActivityHistory,
     entityEdited,
 } = locale.activities;
 
-const formattedDate = (date: any) => {
-    return (
-        <div>
-            <p>{format(parseISO(date), 'dd/MM/yy')}</p>
-            <p>{format(parseISO(date), 'hh:mm')}</p>
-        </div>
-    );
-};
-
-const updatedData = (activity: Activity) => {
-    const {
-        oldData: oldDataActivity,
-        newData: newDataActivty,
-        type,
-        targetType,
-    } = activity;
-
-    const dictionaries: any = {
-        id: 'ID',
-        title: 'Title',
-        firstName: 'First name',
-        middleName: 'Middle name',
-        surname: 'Last name',
-        preferredTitle: 'Preferred title',
-        preferredFirstName: 'Preferred first name',
-        preferredMiddleName: 'Preferred middle name',
-        preferredSurname: 'Preferred last name',
-        gender: 'Gender',
-    };
-
-    if (type === 'migrate') {
-        return (
-            <p>
-                <b>{entityMigrated(targetType)}</b>
-            </p>
-        );
-    }
-
-    const oldData = oldDataActivity || {};
-    const newData = newDataActivty || {};
-
-    if (type === 'update') {
-        return (
-            <>
-                {Object.keys(oldData).map((paramName: string, index) => {
-                    if (paramName === 'id' || !dictionaries[paramName])
-                        return null;
-
-                    if (oldData[paramName] === newData[paramName]) return null;
-                    return (
-                        <div key={index}>
-                            <p>
-                                <b>{dictionaries[paramName]}</b>
-                            </p>
-                            <p>
-                                {previouslyLabel}{' '}
-                                <b>
-                                    {oldData[paramName]
-                                        ? oldData[paramName]
-                                        : noEntryLabel}
-                                </b>
-                            </p>
-                            <p>
-                                {changedToLabel} <b>{newData[paramName]}</b>
-                            </p>
-                        </div>
-                    );
-                })}
-            </>
-        );
-    }
-
-    if (type === 'delete') {
-        const removedData = Object.keys(oldData).filter(
-            (paramName: string, index) => {
-                if (oldData[paramName] === newData[paramName]) return;
-                return oldData[paramName];
-            }
-        );
-        return removedData.map((paramName: string, index) => {
-            if (paramName === 'id') return;
-            return (
-                <div key={index}>
-                    <p>
-                        <b>{dictionaries[paramName]}</b>
-                    </p>
-                    <p>
-                        {removedLabel} <b>{oldData[paramName]}</b>
-                    </p>
-                </div>
-            );
-        });
-    }
-
-    if (type === 'create') {
-        if (targetType === 'person') {
-            return (
-                <p>
-                    <b>{entityCreated(targetType)}</b>
-                </p>
-            );
-        }
-        const addedData = Object.keys(newData).filter(
-            (paramName: string, index) => {
-                if (oldData[paramName] === newData[paramName]) return;
-                return newData[paramName];
-            }
-        );
-        return addedData.map((paramName: string, index) => {
-            if (paramName === 'id') return;
-            return (
-                <div key={index}>
-                    <p>
-                        <b>{dictionaries[paramName]}</b>
-                    </p>
-                    <p>
-                        {addedLabel} <b>{newData[paramName]}</b>
-                    </p>
-                </div>
-            );
-        });
-    }
-};
-
-function NoActivitiyHistory() {
-    return <p className="lbh-label">{noActivitiyHistory}</p>;
+function NoActivityHistory() {
+    return <p className="lbh-label">{noActivityHistory}</p>;
 }
 
 export interface ActivityHistoryListProps {
@@ -176,7 +44,7 @@ export const ActivityHistoryList = ({
     }, [data, size]);
 
     if (error?.response?.status === 404) {
-        return <NoActivitiyHistory />;
+        return <NoActivityHistory />;
     }
 
     if (!response) {

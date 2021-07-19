@@ -81,6 +81,67 @@ export const mockRemovedLastName: Activity = {
     },
 };
 
+export const mockUpdatedIdentifications: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'person',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
+        identifications: [
+            {
+                identificationType: 'Passport',
+                value: 'GB03654488992',
+                isOriginalDocumentSeen: true,
+                linkToDocument: 'string',
+            },
+        ],
+    },
+    newData: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
+        identifications: [
+            {
+                identificationType: 'Passport',
+                value: 'GB03654488992',
+                isOriginalDocumentSeen: true,
+                linkToDocument: 'string',
+            },
+        ],
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockUpdatedLanguages: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'person',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
+        languages: [{ language: 'English', isPrimary: true }],
+    },
+    newData: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e7',
+        languages: [
+            { language: 'English', isPrimary: true },
+            { language: 'Abkhaz', isPrimary: false },
+        ],
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
 export const mockActivities: GetActivityHistoryByTargetIdResponse = {
     results: [mockUpdatedFirstName, mockCreatedPerson],
     paginationDetails: {
@@ -99,24 +160,24 @@ export const mockPerson: Person = {
     preferredMiddleName: '',
     preferredSurname: 'Fisher',
     gender: 'F',
+    identifications: [
+        {
+            identificationType: 'NI',
+            value: '1234A',
+            isOriginalDocumentSeen: true,
+            linkToDocument: 'string',
+        },
+    ],
+    languages: [
+        {
+            language: 'English',
+            isPrimary: true,
+        },
+    ],
     // ethnicity: 'Christian',
     // nationality: 'Canadian',
     // placeOfBirth: 'Toronto',
     // dateOfBirth: '04/03/1988',
-    // identifications: [
-    //     {
-    //         identificationType: 'NI',
-    //         value: '1234A',
-    //         isOriginalDocumentSeen: true,
-    //         linkToDocument: 'string',
-    //     },
-    // ],
-    // languages: [
-    //     {
-    //         language: 'English',
-    //         isPrimary: true,
-    //     },
-    // ],
     // communicationRequirements: ['Sign Language'],
     // personTypes: ['Housing Officer', 'Tenants'],
     // links: [

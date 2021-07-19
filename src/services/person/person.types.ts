@@ -9,26 +9,26 @@ export type Person = {
     preferredMiddleName: string;
     preferredSurname: string;
     gender: string;
-    // languages: Language[];
+    languages: Language[];
+    identifications: Identification[];
     // ethnicity: string;
     // nationality: string;
     // placeOfBirth: string;
     // dateOfBirth: string;
-    // identifications: Identification[];
     // communicationRequirements: string[];
     // personTypes: string[];
     // links: Link[];
     [key: string]: any;
 };
 
-type Identification = {
+export type Identification = {
     identificationType: string;
     value: string;
     isOriginalDocumentSeen: boolean;
     linkToDocument: string;
 };
 
-type Language = {
+export type Language = {
     language: string;
     isPrimary: boolean;
 };

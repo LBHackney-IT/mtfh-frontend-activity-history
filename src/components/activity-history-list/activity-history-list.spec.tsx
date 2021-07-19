@@ -4,11 +4,12 @@ import { screen, waitFor } from '@testing-library/react';
 import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
 import {
-    mockActivities,
     mockUpdatedFirstName,
     mockMigratedPerson,
     mockRemovedLastName,
     mockCreatedPerson,
+    mockUpdatedLanguages,
+    mockUpdatedIdentifications,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -112,4 +113,34 @@ test('it does not render pagination unnecessarily', async () => {
     routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() => expect(screen.queryByText(/Next/)).toBe(null));
+});
+
+test('it should display change in Languages', async () => {
+    get('/api/activityhistory', {
+        results: [mockUpdatedLanguages],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Languages/)).toBeInTheDocument()
+    );
+    await waitFor(() => expect(container).toMatchSnapshot());
+});
+
+test('it should display change in Identifications', async () => {
+    get('/api/activityhistory', {
+        results: [mockUpdatedIdentifications],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Identitifications/)).toBeInTheDocument()
+    );
+    await waitFor(() => expect(container).toMatchSnapshot());
 });
