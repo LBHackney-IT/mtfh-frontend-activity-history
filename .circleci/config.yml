@@ -145,7 +145,7 @@ jobs:
                   command: aws s3 sync dist s3://lbh-housing-tl-activity-frontend-production.hackney.gov.uk/
 
     assume-role-development:
-        executor: node-executor
+        executor: docker-python
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_DEVELOPMENT
