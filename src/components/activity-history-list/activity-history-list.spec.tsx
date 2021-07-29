@@ -10,6 +10,10 @@ import {
     mockCreatedPerson,
     mockUpdatedLanguages,
     mockUpdatedIdentifications,
+    mockCreatedPhoneNumber,
+    mockCreatedEmail,
+    mockRemovedPhoneNumber,
+    mockRemovedEmail,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -143,4 +147,78 @@ test('it should display change in Identifications', async () => {
         expect(screen.queryByText(/Identitifications/)).toBeInTheDocument()
     );
     await waitFor(() => expect(container).toMatchSnapshot());
+});
+
+test('it should display a row for created phone number', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedPhoneNumber],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => expect(container).toMatchSnapshot());
+    await waitFor(() =>
+        expect(screen.queryByText(/Added/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(screen.queryByText(/07123123123/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for created email', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedEmail],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => expect(container).toMatchSnapshot());
+    await waitFor(() =>
+        expect(screen.queryByText(/Added/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(screen.queryByText(/email@address.com/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for removed phone number', async () => {
+    get('/api/activityhistory', {
+        results: [mockRemovedPhoneNumber],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => expect(container).toMatchSnapshot());
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Removed/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(screen.queryByText(/07123123123/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for removed email', async () => {
+    get('/api/activityhistory', {
+        results: [mockRemovedEmail],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => expect(container).toMatchSnapshot());
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Removed/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(screen.queryByText(/email@address.com/)).toBeInTheDocument()
+    );
 });
