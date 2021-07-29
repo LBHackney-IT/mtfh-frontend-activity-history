@@ -1,4 +1,5 @@
 import { ActivityTargetType, Identification, Language } from '@services';
+import { ContactType } from './person';
 
 const locale = {
     activities: {
@@ -97,6 +98,12 @@ const locale = {
             },
         },
         contactDetails: {
+            contactType: (contactTypeId: number): string => {
+                const contactType = `${ContactType[contactTypeId]}`;
+                const caps =
+                    contactType.charAt(0).toUpperCase() + contactType.slice(1);
+                return caps;
+            },
             value: {
                 output: (value: string): string => value,
             },

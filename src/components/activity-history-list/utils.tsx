@@ -12,6 +12,7 @@ const {
     addedLabel,
     entityCreated,
     entityMigrated,
+    contactDetails,
 } = locale.activities;
 
 const { activities }: any = locale;
@@ -32,6 +33,7 @@ export const updatedData = (activity: Activity) => {
         type,
         targetType,
     } = activity;
+    const { contactType } = contactDetails;
 
     const activitiesOnTargetType = activities[targetType];
 
@@ -86,10 +88,26 @@ export const updatedData = (activity: Activity) => {
     }
 
     if (type === 'delete') {
+        if (targetType === 'contactDetails') {
+            return (
+                <>
+                    <div>
+                        <p>
+                            <b>{contactType(oldData.contactType)}</b>
+                        </p>
+                        <p>
+                            {removedLabel} <b>{oldData.value}</b>
+                        </p>
+                    </div>
+                </>
+            );
+        }
+
         const removedData = Object.keys(oldData).filter((paramName: string) => {
             if (oldData[paramName] === newData[paramName]) return;
             return oldData[paramName];
         });
+
         return removedData.map((paramName: string, index) => {
             if (paramName === 'id') return;
             return (
@@ -111,11 +129,26 @@ export const updatedData = (activity: Activity) => {
     }
 
     if (type === 'create') {
-        if (targetType === 'person' || targetType === 'contactDetails') {
+        if (targetType === 'person') {
             return (
                 <p>
                     <b>{entityCreated(targetType)}</b>
                 </p>
+            );
+        }
+
+        if (targetType === 'contactDetails') {
+            return (
+                <>
+                    <div>
+                        <p>
+                            <b>{contactType(newData.contactType)}</b>
+                        </p>
+                        <p>
+                            {addedLabel} <b>{newData.value}</b>
+                        </p>
+                    </div>
+                </>
             );
         }
 

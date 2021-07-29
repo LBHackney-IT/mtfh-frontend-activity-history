@@ -38,3 +38,9 @@ type Link = {
     rel: string;
     endpointType: string;
 };
+
+export enum ContactType {
+    phone = 0,
+    email = 1,
+    address = 2,
+}
