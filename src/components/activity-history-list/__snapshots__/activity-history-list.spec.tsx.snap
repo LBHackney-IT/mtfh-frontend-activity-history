@@ -55,7 +55,7 @@ exports[`it should display change in Identifications 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Edit to Person
+            Edit to person
           </td>
           <td
             class="govuk-table__cell"
@@ -152,7 +152,7 @@ exports[`it should display change in Languages 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Edit to Person
+            Edit to person
           </td>
           <td
             class="govuk-table__cell"

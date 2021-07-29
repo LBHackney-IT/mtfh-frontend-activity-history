@@ -51,7 +51,7 @@ export const updatedData = (activity: Activity) => {
             (paramName: string, index) => {
                 if (
                     paramName === 'id' ||
-                    !activitiesOnTargetType[paramName].field
+                    activitiesOnTargetType[paramName] === undefined
                 )
                     return null;
 
