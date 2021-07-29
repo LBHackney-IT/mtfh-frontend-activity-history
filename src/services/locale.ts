@@ -26,7 +26,7 @@ const locale = {
         entityMigrated: (type: ActivityTargetType): string =>
             `${locale.activities.targetType[type]} migrated`,
         entityEdited: (type: ActivityTargetType): string =>
-            `Edit to ${locale.activities.targetType[type]}`,
+            `Edit to ${locale.activities.targetType[type].toLowerCase()}`,
         person: {
             title: {
                 field: 'Title',
@@ -59,6 +59,10 @@ const locale = {
             },
             preferredSurname: {
                 field: 'Preferred middle name',
+                output: (value: string): string => value ?? '[No entry]',
+            },
+            placeOfBirth: {
+                field: 'Place of birth',
                 output: (value: string): string => value ?? '[No entry]',
             },
             gender: {
