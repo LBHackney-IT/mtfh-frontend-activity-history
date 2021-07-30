@@ -292,3 +292,43 @@ export const mockRemovedEmail: Activity = {
         email: 'Paul.Fox@hackney.gov.uk',
     },
 };
+
+export const mockUpdatedDateOfBirth: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'person',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        dateOfBirth: '1962-04-22T00:00:00Z',
+    },
+    newData: {
+        dateOfBirth: '1962-04-23T00:00:00',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockUpdatedPlaceOfBirth: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'person',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        placeOfBirth: null,
+    },
+    newData: {
+        placeOfBirth: 'London',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};

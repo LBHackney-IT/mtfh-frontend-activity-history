@@ -1,3 +1,4 @@
+import { parseISO, format } from 'date-fns';
 import { ActivityTargetType, Identification, Language } from '@services';
 import { ContactType } from './person';
 
@@ -65,6 +66,11 @@ const locale = {
             placeOfBirth: {
                 field: 'Place of birth',
                 output: (value: string): string => value ?? '[No entry]',
+            },
+            dateOfBirth: {
+                field: 'Date of birth',
+                output: (value: string): string =>
+                    format(parseISO(value), 'dd/MM/yy'),
             },
             gender: {
                 field: 'Gender',
