@@ -188,3 +188,107 @@ export const mockPerson: Person = {
     //     },
     // ],
 };
+
+export const mockCreatedPhoneNumber: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 0,
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    newData: {
+        contactType: 0,
+        description: 'phone number',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: '07123123123',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockCreatedEmail: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 0,
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    newData: {
+        contactType: 1,
+        description: 'person email 1',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: 'email@address.com',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockRemovedPhoneNumber: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'delete',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 0,
+        description: 'phone number',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: '07123123123',
+    },
+    newData: {
+        contactType: 0,
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockRemovedEmail: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'delete',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 1,
+        description: 'person email 1',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: 'email@address.com',
+    },
+    newData: {
+        contactType: 0,
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
