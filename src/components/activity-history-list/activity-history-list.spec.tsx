@@ -244,25 +244,6 @@ test('it should display a row for change in date of birth', async () => {
     );
 });
 
-test('it should display a row for change in date of birth', async () => {
-    get('/api/activityhistory', {
-        results: [mockUpdatedDateOfBirth],
-        paginationDetails: {
-            nextToken: null,
-        },
-    });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
-
-    await waitFor(() => expect(container).toMatchSnapshot());
-
-    await waitFor(() =>
-        expect(screen.queryByText(/Date of birth/)).toBeInTheDocument()
-    );
-    await waitFor(() =>
-        expect(screen.queryByText('23/04/62')).toBeInTheDocument()
-    );
-});
-
 test('it should display a row for change in place of birth', async () => {
     get('/api/activityhistory', {
         results: [mockUpdatedPlaceOfBirth],
