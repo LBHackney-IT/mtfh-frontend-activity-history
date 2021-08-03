@@ -95,7 +95,7 @@ commands:
                 curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-tl-e2e-tests/pipeline' \
                 --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                 --header 'Content-Type: application/json' \
-                --data '{"branch": "master", "parameters": {"run_workflow_ci": false, "external_trigger": true, "upstream_pipeline_name": "header", '\""$DEPLOYMENT_ENVIRONMENT"\"': true}}'
+                --data '{"branch": "master", "parameters": {"run_workflow_ci": false, "external_trigger": true, "upstream_pipeline_name": "<< pipeline.project.git_url >>", '\""$DEPLOYMENT_ENVIRONMENT"\"': true}}'
 
     failure-downstream:
         docker:
@@ -331,14 +331,10 @@ workflows:
                   filters:
                       branches:
                           only: main
-            - permit-deploy-production:
-                  type: approval
-                  requires:
-                      - terraform-init-and-apply-to-production
             - build-deploy-production:
                   stage: "production"
                   requires:
-                      - permit-deploy-production
+                      - terraform-init-and-apply-to-production
                   filters:
                       branches:
                           only: main
