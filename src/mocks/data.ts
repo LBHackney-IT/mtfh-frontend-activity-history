@@ -332,3 +332,81 @@ export const mockUpdatedPlaceOfBirth: Activity = {
         email: 'Paul.Fox@hackney.gov.uk',
     },
 };
+
+export const mockCreatedPhoneNumberWithContactTypeAsString: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 'phone',
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    newData: {
+        contactType: 'phone',
+        description: 'phone number',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: '07123123123',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockCreatedEmailWithContactTypeAsString: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 'email',
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    newData: {
+        contactType: 'email',
+        description: 'person email 1',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: 'email@address.com',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockCreatedAddressWithContactTypeAsString: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'contactDetails',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        contactType: 'address',
+        description: null,
+        id: '00000000-0000-0000-0000-000000000000',
+        value: null,
+    },
+    newData: {
+        contactType: 'address',
+        description: 'person email 1',
+        id: 'bc337b11-6f53-4081-ad6f-cfca7a8d3c2a',
+        value: 'An address with postcode',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
