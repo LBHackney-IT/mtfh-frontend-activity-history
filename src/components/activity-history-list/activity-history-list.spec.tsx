@@ -16,6 +16,9 @@ import {
     mockRemovedEmail,
     mockUpdatedDateOfBirth,
     mockUpdatedPlaceOfBirth,
+    mockCreatedPhoneNumberWithContactTypeAsString,
+    mockCreatedEmailWithContactTypeAsString,
+    mockCreatedAddressWithContactTypeAsString,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -151,7 +154,7 @@ test('it should display change in Identifications', async () => {
     await waitFor(() => expect(container).toMatchSnapshot());
 });
 
-test('it should display a row for created phone number', async () => {
+test('it should display a row for created phone number (contactType is number)', async () => {
     get('/api/activityhistory', {
         results: [mockCreatedPhoneNumber],
         paginationDetails: {
@@ -169,7 +172,7 @@ test('it should display a row for created phone number', async () => {
     );
 });
 
-test('it should display a row for created email', async () => {
+test('it should display a row for created email (contactType is number)', async () => {
     get('/api/activityhistory', {
         results: [mockCreatedEmail],
         paginationDetails: {
@@ -187,7 +190,7 @@ test('it should display a row for created email', async () => {
     );
 });
 
-test('it should display a row for removed phone number', async () => {
+test('it should display a row for removed phone number (contactType is number)', async () => {
     get('/api/activityhistory', {
         results: [mockRemovedPhoneNumber],
         paginationDetails: {
@@ -206,7 +209,7 @@ test('it should display a row for removed phone number', async () => {
     );
 });
 
-test('it should display a row for removed email', async () => {
+test('it should display a row for removed email (contactType is number)', async () => {
     get('/api/activityhistory', {
         results: [mockRemovedEmail],
         paginationDetails: {
@@ -251,14 +254,78 @@ test('it should display a row for change in place of birth', async () => {
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
-
-    await waitFor(() => expect(container).toMatchSnapshot());
+    routeRender(<ActivityHistoryList targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Place of birth/)).toBeInTheDocument()
     );
     await waitFor(() =>
         expect(screen.queryByText(/London/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for created phone number (contactType is string)', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedPhoneNumberWithContactTypeAsString],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Added/)).toBeInTheDocument()
+    );
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Phone/)).toBeInTheDocument()
+    );
+
+    await waitFor(() =>
+        expect(screen.queryByText(/07123123123/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for created email (contactType is string)', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedEmailWithContactTypeAsString],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Added/)).toBeInTheDocument()
+    );
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Email/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(screen.queryByText(/email@address.com/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row for created address (contactType is string)', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedAddressWithContactTypeAsString],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Added/)).toBeInTheDocument()
+    );
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Address/)).toBeInTheDocument()
+    );
+    await waitFor(() =>
+        expect(
+            screen.queryByText(/An address with postcode/)
+        ).toBeInTheDocument()
     );
 });

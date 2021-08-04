@@ -104,10 +104,15 @@ const locale = {
             },
         },
         contactDetails: {
-            contactType: (contactTypeId: number): string => {
-                const contactType = `${ContactType[contactTypeId]}`;
+            contactType: (contactTypeId: ContactType): string => {
+                const contactType =
+                    typeof contactTypeId === 'string'
+                        ? contactTypeId
+                        : `${ContactType[contactTypeId]}`;
+
                 const caps =
                     contactType.charAt(0).toUpperCase() + contactType.slice(1);
+
                 return caps;
             },
             value: {
