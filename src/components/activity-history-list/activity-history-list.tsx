@@ -73,8 +73,8 @@ export const ActivityHistoryList = ({
                 </Thead>
                 <Tbody>
                     {activityHistory.map((activity, index) => {
-                        const dataChange = updatedData(activity);
-                        if (!dataChange) return null;
+                        const activityRecord = updatedData(activity);
+                        if (!activityRecord) return null;
 
                         return (
                             <Tr
@@ -83,7 +83,7 @@ export const ActivityHistoryList = ({
                             >
                                 <Td>{formattedDate(activity.createdAt)}</Td>
                                 <Td>{entityEdited(activity.targetType)}</Td>
-                                <Td>{dataChange}</Td>
+                                <Td>{activityRecord}</Td>
                                 <Th>{activity.authorDetails.fullName}</Th>
                             </Tr>
                         );
