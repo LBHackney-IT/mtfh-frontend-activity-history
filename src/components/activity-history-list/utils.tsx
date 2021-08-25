@@ -27,7 +27,7 @@ export const formattedDate = (date: any): ReactElement => {
     );
 };
 
-export const updatedData = (activity: Activity) => {
+export const updatedRecord = (activity: Activity) => {
     const {
         oldData: oldDataActivity,
         newData: newDataActivty,
@@ -45,12 +45,12 @@ export const updatedData = (activity: Activity) => {
     };
 
     if (type === 'migrate') {
-        return <MigratedEntity targetType={targetType} />;
+        return <MigratedRecord targetType={targetType} />;
     }
 
     if (type === 'create') {
         return (
-            <CreatedEntity
+            <CreatedRecord
                 {...activityChangeRecord}
                 // targetType={targetType}
                 // newData={newData}
@@ -61,7 +61,7 @@ export const updatedData = (activity: Activity) => {
 
     if (type === 'update') {
         return (
-            <UpdatedEntity
+            <UpdatedRecord
                 {...activityChangeRecord}
                 // targetType={targetType}
                 // newData={newData}
@@ -72,7 +72,7 @@ export const updatedData = (activity: Activity) => {
 
     if (type === 'delete') {
         return (
-            <DeletedEntity
+            <DeletedRecord
                 {...activityChangeRecord}
                 // targetType={targetType}
                 // newData={newData}
@@ -82,13 +82,13 @@ export const updatedData = (activity: Activity) => {
     }
 };
 
-export const MigratedEntity = ({ targetType }: any): ReactElement => (
+export const MigratedRecord = ({ targetType }: any): ReactElement => (
     <p>
         <b>{entityMigrated(targetType)}</b>
     </p>
 );
 
-export const CreatedEntity = ({
+export const CreatedRecord = ({
     targetType,
     newData,
     oldData,
@@ -137,7 +137,7 @@ export const CreatedEntity = ({
     });
 };
 
-export const UpdatedEntity = ({
+export const UpdatedRecord = ({
     targetType,
     newData,
     oldData,
@@ -181,7 +181,7 @@ export const UpdatedEntity = ({
     return updatedElements;
 };
 
-export const DeletedEntity = ({
+export const DeletedRecord = ({
     targetType,
     newData,
     oldData,

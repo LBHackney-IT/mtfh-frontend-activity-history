@@ -14,7 +14,7 @@ import {
 import { locale, useActivityHistory } from '@services';
 
 import './activity-history-list.styles.scss';
-import { formattedDate, updatedData } from './utils';
+import { formattedDate, updatedRecord } from './utils';
 
 const {
     tableDate,
@@ -73,7 +73,7 @@ export const ActivityHistoryList = ({
                 </Thead>
                 <Tbody>
                     {activityHistory.map((activity, index) => {
-                        const activityRecord = updatedData(activity);
+                        const activityRecord = updatedRecord(activity);
                         if (!activityRecord) return null;
 
                         return (
