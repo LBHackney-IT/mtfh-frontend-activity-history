@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { parseISO, format } from 'date-fns';
 
-import { locale, Activity } from '@services';
+import { locale, Activity, ActivityChangeRecord } from '@services';
 
 import './activity-history-list.styles.scss';
 
@@ -16,6 +16,7 @@ const {
 } = locale.activities;
 
 const { activities }: any = locale;
+const { contactType } = contactDetails;
 
 export const formattedDate = (date: any): ReactElement => {
     return (
@@ -33,141 +34,196 @@ export const updatedData = (activity: Activity) => {
         type,
         targetType,
     } = activity;
-    const { contactType } = contactDetails;
-
-    const activitiesOnTargetType = activities[targetType];
-
-    if (type === 'migrate') {
-        return (
-            <p>
-                <b>{entityMigrated(targetType)}</b>
-            </p>
-        );
-    }
 
     const oldData = oldDataActivity || {};
     const newData = newDataActivty || {};
 
-    if (type === 'update') {
-        const updatedElements = Object.keys(oldData).map(
-            (paramName: string, index) => {
-                if (
-                    paramName === 'id' ||
-                    activitiesOnTargetType[paramName] === undefined
-                )
-                    return null;
+    const activityChangeRecord: ActivityChangeRecord = {
+        targetType,
+        newData,
+        oldData,
+    };
 
-                if (oldData[paramName] === newData[paramName]) return null;
-                return (
-                    <div key={index}>
-                        <p>
-                            <b>{activitiesOnTargetType[paramName].field}</b>
-                        </p>
-                        <p>
-                            {previouslyLabel}{' '}
-                            <b>
-                                {activitiesOnTargetType[paramName].output(
-                                    oldData[paramName]
-                                )}
-                            </b>
-                        </p>
-                        <p>
-                            {changedToLabel}{' '}
-                            <b>
-                                {activitiesOnTargetType[paramName].output(
-                                    newData[paramName]
-                                )}
-                            </b>
-                        </p>
-                    </div>
-                );
-            }
+    if (type === 'migrate') {
+        return <MigratedEntity targetType={targetType} />;
+    }
+
+    if (type === 'create') {
+        return (
+            <CreatedEntity
+                {...activityChangeRecord}
+                // targetType={targetType}
+                // newData={newData}
+                // oldData={oldData}
+            />
         );
+    }
 
-        return updatedElements;
+    if (type === 'update') {
+        return (
+            <UpdatedEntity
+                {...activityChangeRecord}
+                // targetType={targetType}
+                // newData={newData}
+                // oldData={oldData}
+            />
+        );
     }
 
     if (type === 'delete') {
-        if (targetType === 'contactDetails') {
-            return (
-                <>
-                    <div>
-                        <p>
-                            <b>{contactType(oldData.contactType)}</b>
-                        </p>
-                        <p>
-                            {removedLabel} <b>{oldData.value}</b>
-                        </p>
-                    </div>
-                </>
-            );
-        }
+        return (
+            <DeletedEntity
+                {...activityChangeRecord}
+                // targetType={targetType}
+                // newData={newData}
+                // oldData={oldData}
+            />
+        );
+    }
+};
 
-        const removedData = Object.keys(oldData).filter((paramName: string) => {
-            if (oldData[paramName] === newData[paramName]) return;
-            return oldData[paramName];
-        });
+export const MigratedEntity = ({ targetType }: any): ReactElement => (
+    <p>
+        <b>{entityMigrated(targetType)}</b>
+    </p>
+);
 
-        return removedData.map((paramName: string, index) => {
-            if (paramName === 'id') return;
+export const CreatedEntity = ({
+    targetType,
+    newData,
+    oldData,
+}: ActivityChangeRecord): any => {
+    if (targetType === 'person') {
+        return (
+            <p>
+                <b>{entityCreated(targetType)}</b>
+            </p>
+        );
+    }
+
+    if (targetType === 'contactDetails') {
+        return (
+            <>
+                <div>
+                    <p>
+                        <b>{contactType(newData.contactType)}</b>
+                    </p>
+                    <p>
+                        {addedLabel} <b>{newData.value}</b>
+                    </p>
+                </div>
+            </>
+        );
+    }
+
+    const addedData = Object.keys(newData).filter((paramName: string) => {
+        if (oldData[paramName] === newData[paramName]) return;
+        return newData[paramName];
+    });
+
+    const activitiesOnTargetType = activities[targetType];
+    return addedData.map((paramName: string, index) => {
+        if (paramName === 'id') return;
+        return (
+            <div key={index}>
+                <p>
+                    <b>{activitiesOnTargetType[paramName].field}</b>
+                </p>
+                <p>
+                    {addedLabel} <b>{newData[paramName]}</b>
+                </p>
+            </div>
+        );
+    });
+};
+
+export const UpdatedEntity = ({
+    targetType,
+    newData,
+    oldData,
+}: ActivityChangeRecord): any => {
+    const activitiesOnTargetType = activities[targetType];
+    const updatedElements = Object.keys(newData).map(
+        (paramName: string, index) => {
+            if (
+                paramName === 'id' ||
+                activitiesOnTargetType[paramName] === undefined
+            )
+                return null;
+
+            if (oldData[paramName] === newData[paramName]) return null;
             return (
                 <div key={index}>
                     <p>
                         <b>{activitiesOnTargetType[paramName].field}</b>
                     </p>
                     <p>
-                        {removedLabel}{' '}
+                        {previouslyLabel}{' '}
                         <b>
                             {activitiesOnTargetType[paramName].output(
                                 oldData[paramName]
                             )}
                         </b>
                     </p>
+                    <p>
+                        {changedToLabel}{' '}
+                        <b>
+                            {activitiesOnTargetType[paramName].output(
+                                newData[paramName]
+                            )}
+                        </b>
+                    </p>
                 </div>
             );
-        });
+        }
+    );
+
+    return updatedElements;
+};
+
+export const DeletedEntity = ({
+    targetType,
+    newData,
+    oldData,
+}: ActivityChangeRecord): any => {
+    const activitiesOnTargetType = activities[targetType];
+
+    if (targetType === 'contactDetails') {
+        return (
+            <>
+                <div>
+                    <p>
+                        <b>{contactType(oldData.contactType)}</b>
+                    </p>
+                    <p>
+                        {removedLabel} <b>{oldData.value}</b>
+                    </p>
+                </div>
+            </>
+        );
     }
 
-    if (type === 'create') {
-        if (targetType === 'person') {
-            return (
+    const removedData = Object.keys(oldData).filter((paramName: string) => {
+        if (oldData[paramName] === newData[paramName]) return;
+        return oldData[paramName];
+    });
+
+    return removedData.map((paramName: string, index) => {
+        if (paramName === 'id') return;
+        return (
+            <div key={index}>
                 <p>
-                    <b>{entityCreated(targetType)}</b>
+                    <b>{activitiesOnTargetType[paramName].field}</b>
                 </p>
-            );
-        }
-
-        if (targetType === 'contactDetails') {
-            return (
-                <>
-                    <div>
-                        <p>
-                            <b>{contactType(newData.contactType)}</b>
-                        </p>
-                        <p>
-                            {addedLabel} <b>{newData.value}</b>
-                        </p>
-                    </div>
-                </>
-            );
-        }
-
-        const addedData = Object.keys(newData).filter((paramName: string) => {
-            if (oldData[paramName] === newData[paramName]) return;
-            return newData[paramName];
-        });
-        return addedData.map((paramName: string, index) => {
-            if (paramName === 'id') return;
-            return (
-                <div key={index}>
-                    <p>
-                        <b>{activitiesOnTargetType[paramName].field}</b>
-                    </p>
-                    <p>
-                        {addedLabel} <b>{newData[paramName]}</b>
-                    </p>
-                </div>
-            );
-        });
-    }
+                <p>
+                    {removedLabel}{' '}
+                    <b>
+                        {activitiesOnTargetType[paramName].output(
+                            oldData[paramName]
+                        )}
+                    </b>
+                </p>
+            </div>
+        );
+    });
 };

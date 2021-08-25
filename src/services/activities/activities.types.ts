@@ -24,3 +24,9 @@ export interface Activity {
     newData: Partial<Nullable<Person>> | null;
     authorDetails: AuthorDetails;
 }
+
+export interface ActivityChangeRecord {
+    targetType: ActivityTargetType;
+    oldData: Partial<Nullable<Person>>;
+    newData: Partial<Nullable<Person>>;
+}
