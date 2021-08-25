@@ -49,36 +49,15 @@ export const updatedRecord = (activity: Activity) => {
     }
 
     if (type === 'create') {
-        return (
-            <CreatedRecord
-                {...activityChangeRecord}
-                // targetType={targetType}
-                // newData={newData}
-                // oldData={oldData}
-            />
-        );
+        return <CreatedRecord {...activityChangeRecord} />;
     }
 
     if (type === 'update') {
-        return (
-            <UpdatedRecord
-                {...activityChangeRecord}
-                // targetType={targetType}
-                // newData={newData}
-                // oldData={oldData}
-            />
-        );
+        return <UpdatedRecord {...activityChangeRecord} />;
     }
 
     if (type === 'delete') {
-        return (
-            <DeletedRecord
-                {...activityChangeRecord}
-                // targetType={targetType}
-                // newData={newData}
-                // oldData={oldData}
-            />
-        );
+        return <DeletedRecord {...activityChangeRecord} />;
     }
 };
 
@@ -103,38 +82,16 @@ export const CreatedRecord = ({
 
     if (targetType === 'contactDetails') {
         return (
-            <>
-                <div>
-                    <p>
-                        <b>{contactType(newData.contactType)}</b>
-                    </p>
-                    <p>
-                        {addedLabel} <b>{newData.value}</b>
-                    </p>
-                </div>
-            </>
-        );
-    }
-
-    const addedData = Object.keys(newData).filter((paramName: string) => {
-        if (oldData[paramName] === newData[paramName]) return;
-        return newData[paramName];
-    });
-
-    const activitiesOnTargetType = activities[targetType];
-    return addedData.map((paramName: string, index) => {
-        if (paramName === 'id') return;
-        return (
-            <div key={index}>
+            <div>
                 <p>
-                    <b>{activitiesOnTargetType[paramName].field}</b>
+                    <b>{contactType(newData.contactType)}</b>
                 </p>
                 <p>
-                    {addedLabel} <b>{newData[paramName]}</b>
+                    {addedLabel} <b>{newData.value}</b>
                 </p>
             </div>
         );
-    });
+    }
 };
 
 export const UpdatedRecord = ({
@@ -190,40 +147,40 @@ export const DeletedRecord = ({
 
     if (targetType === 'contactDetails') {
         return (
-            <>
-                <div>
-                    <p>
-                        <b>{contactType(oldData.contactType)}</b>
-                    </p>
-                    <p>
-                        {removedLabel} <b>{oldData.value}</b>
-                    </p>
-                </div>
-            </>
-        );
-    }
-
-    const removedData = Object.keys(oldData).filter((paramName: string) => {
-        if (oldData[paramName] === newData[paramName]) return;
-        return oldData[paramName];
-    });
-
-    return removedData.map((paramName: string, index) => {
-        if (paramName === 'id') return;
-        return (
-            <div key={index}>
+            <div>
                 <p>
-                    <b>{activitiesOnTargetType[paramName].field}</b>
+                    <b>{contactType(oldData.contactType)}</b>
                 </p>
                 <p>
-                    {removedLabel}{' '}
-                    <b>
-                        {activitiesOnTargetType[paramName].output(
-                            oldData[paramName]
-                        )}
-                    </b>
+                    {removedLabel} <b>{oldData.value}</b>
                 </p>
             </div>
         );
-    });
+    }
+
+    if (targetType === 'person') {
+        const removedData = Object.keys(oldData).filter((paramName: string) => {
+            if (oldData[paramName] === newData[paramName]) return;
+            return oldData[paramName];
+        });
+
+        return removedData.map((paramName: string, index) => {
+            if (paramName === 'id') return;
+            return (
+                <div key={index}>
+                    <p>
+                        <b>{activitiesOnTargetType[paramName].field}</b>
+                    </p>
+                    <p>
+                        {removedLabel}{' '}
+                        <b>
+                            {activitiesOnTargetType[paramName].output(
+                                oldData[paramName]
+                            )}
+                        </b>
+                    </p>
+                </div>
+            );
+        });
+    }
 };
