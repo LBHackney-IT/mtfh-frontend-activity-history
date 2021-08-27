@@ -60,7 +60,7 @@ const locale = {
                 output: (value: string): string => value ?? '[No entry]',
             },
             preferredSurname: {
-                field: 'Preferred middle name',
+                field: 'Preferred last name',
                 output: (value: string): string => value ?? '[No entry]',
             },
             placeOfBirth: {
