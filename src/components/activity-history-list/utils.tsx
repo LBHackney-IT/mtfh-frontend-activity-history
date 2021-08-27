@@ -21,7 +21,7 @@ export const formattedDate = (date: any): ReactElement => {
     return (
         <div>
             <p>{format(parseISO(date), 'dd/MM/yy')}</p>
-            <p>{format(parseISO(date), 'hh:mm')}</p>
+            <p>{format(parseISO(date), 'H:mm')}</p>
         </div>
     );
 };
