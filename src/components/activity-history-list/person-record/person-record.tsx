@@ -65,8 +65,8 @@ export const PersonActivityRecord = ({
         activityRecord = <MigratedEntityRecord targetType={targetType} />;
     }
 
-    activityRecord = updatedRecord(personRecord);
-    if (!activityRecord) return null;
+    // activityRecord = updatedRecord(personRecord);
+    // if (!activityRecord) return null;
 
     return (
         <ActivityRecordItem
@@ -79,15 +79,13 @@ export const PersonActivityRecord = ({
     );
 };
 
-export const CreatedPersonRecord = ({ targetType }: any): JSX.Element => {
-    return (
-        <p>
-            <b>{entityCreated(targetType)}</b>
-        </p>
-    );
-};
+const CreatedPersonRecord = ({ targetType }: any): JSX.Element => (
+    <p>
+        <b>{entityCreated(targetType)}</b>
+    </p>
+);
 
-export const DeletedPersonRecord = ({
+const DeletedPersonRecord = ({
     targetType,
     newData,
     oldData,
