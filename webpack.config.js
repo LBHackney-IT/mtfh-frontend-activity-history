@@ -40,6 +40,7 @@ module.exports = (webpackConfigEnv, argv) => {
             new webpack.EnvironmentPlugin({
                 ACTIVITIES_API_URL: dotenv.ACTIVITIES_API_URL || '',
                 PERSON_API_URL: dotenv.PERSON_API_URL || '',
+                TENURE_API_URL: dotenv.TENURE_API_URL || '',
             }),
         ],
     });

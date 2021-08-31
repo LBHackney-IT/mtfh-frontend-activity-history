@@ -19,6 +19,9 @@ import {
     mockCreatedPhoneNumberWithContactTypeAsString,
     mockCreatedEmailWithContactTypeAsString,
     mockCreatedAddressWithContactTypeAsString,
+    mockCreatedTenure,
+    mockMigratedTenure,
+    mockUpdatedTenure,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -329,3 +332,50 @@ test('it should display a row for created address (contactType is string)', asyn
         ).toBeInTheDocument()
     );
 });
+
+test('it should display a row for migrated tenure', async () => {
+    get('/api/activityhistory', {
+        results: [mockMigratedTenure],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/Tenure migrated/)).toBeInTheDocument()
+    );
+});
+
+// test('it should display a row for created tenure', async () => {
+//     get('/api/activityhistory', {
+//         results: [mockCreatedTenure],
+//         paginationDetails: {
+//             nextToken: null,
+//         },
+//     });
+//     routeRender(<ActivityHistoryList targetId="123" />);
+
+//     await waitFor(() =>
+//         expect(screen.queryByText(/Tenure created/)).toBeInTheDocument()
+//     );
+
+// });
+
+// test('it should display a row for updated tenure status (Activity) details', async () => {
+//     get('/api/activityhistory', {
+//         results: [mockUpdatedTenure],
+//         paginationDetails: {
+//             nextToken: null,
+//         },
+//     });
+//     routeRender(<ActivityHistoryList targetId="123" />);
+
+//     await waitFor(() =>
+//         expect(screen.getByText(/Active/)).toBeInTheDocument()
+//     );
+
+//     await waitFor(() =>
+//         expect(screen.getByText(/Inactive/)).toBeInTheDocument()
+//     );
+// });

@@ -125,7 +125,7 @@ const locale = {
                 output: (value: string): string => value ?? '[No entry]',
             },
             isActive: {
-                field: 'Active state',
+                field: 'Tenure status',
                 output: (value: boolean): string =>
                     value ? 'Active' : 'Inactive',
             },

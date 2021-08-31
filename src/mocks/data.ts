@@ -410,3 +410,60 @@ export const mockCreatedAddressWithContactTypeAsString: Activity = {
         email: 'Paul.Fox@hackney.gov.uk',
     },
 };
+
+export const mockMigratedTenure: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'migrate',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: null,
+    newData: null,
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockCreatedTenure: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'create',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: null,
+    newData: {
+        tenureType: { code: 'A', description: 'Alpha' },
+        isActive: false,
+        startOfTenureDate: '2021-09-19 15:12:00',
+        endOfTenureDate: '2022-09-19 15:12:00',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockUpdatedTenure: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        isActive: false,
+    },
+    newData: {
+        isActive: true,
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
