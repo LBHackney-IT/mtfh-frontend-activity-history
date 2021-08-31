@@ -18,7 +18,7 @@ import {
     PersonActivityRecord,
     TenureActivityRecord,
 } from './';
-import { Activity } from '../../services/activities';
+import { isPerson, isContactDetails, isTenure } from '../../utils';
 
 const {
     tableDate,
@@ -28,19 +28,9 @@ const {
     noActivityHistory,
 } = locale.activities;
 
-const isPerson = (activity: Activity): boolean =>
-    activity.targetType === 'person';
-
-const isContactDetails = (activity: Activity): boolean =>
-    activity.targetType === 'contactDetails';
-
-const isTenure = (activity: Activity): boolean =>
-    activity.targetType === 'tenure';
-
 function NoActivityHistory() {
     return <p className="lbh-label">{noActivityHistory}</p>;
 }
-
 export interface ActivityHistoryListProps {
     targetId: string;
 }
@@ -85,7 +75,8 @@ export const ActivityHistoryList = ({
                 </Thead>
                 <Tbody>
                     {activityHistory.map((activity, index) => {
-                        if (isPerson(activity)) {
+                        const { targetType } = activity;
+                        if (isPerson(targetType)) {
                             return (
                                 <PersonActivityRecord
                                     key={index}
@@ -93,7 +84,7 @@ export const ActivityHistoryList = ({
                                 />
                             );
                         }
-                        if (isContactDetails(activity)) {
+                        if (isContactDetails(targetType)) {
                             return (
                                 <ContactDetailsActivityRecord
                                     key={index}
@@ -101,7 +92,7 @@ export const ActivityHistoryList = ({
                                 />
                             );
                         }
-                        if (isTenure(activity)) {
+                        if (isTenure(targetType)) {
                             return (
                                 <TenureActivityRecord
                                     key={index}

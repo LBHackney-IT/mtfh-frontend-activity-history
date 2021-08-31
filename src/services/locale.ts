@@ -119,6 +119,13 @@ const locale = {
                 output: (value: string): string => value,
             },
         },
+        tenure: {
+            endOfTenureDate: {
+                field: 'End date',
+                output: (value: string): string =>
+                    format(parseISO(value), 'dd/MM/yy'),
+            },
+        },
     },
 };
 

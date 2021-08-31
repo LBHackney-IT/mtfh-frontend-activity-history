@@ -59,6 +59,7 @@ export const TenureActivityRecord = ({
                 newData={newData}
             />
         );
+        // return <h1>yo</h1>
     }
 
     if (type === 'migrate') {
