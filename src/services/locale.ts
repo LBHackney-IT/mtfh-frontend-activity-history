@@ -120,6 +120,20 @@ const locale = {
             },
         },
         tenure: {
+            tenureType: {
+                field: 'Tenure Type',
+                output: (value: string): string => value ?? '[No entry]',
+            },
+            isActive: {
+                field: 'Active state',
+                output: (value: boolean): string =>
+                    value ? 'Active' : 'Inactive',
+            },
+            startOfTenureDate: {
+                field: 'End date',
+                output: (value: string): string =>
+                    format(parseISO(value), 'dd/MM/yy'),
+            },
             endOfTenureDate: {
                 field: 'End date',
                 output: (value: string): string =>
