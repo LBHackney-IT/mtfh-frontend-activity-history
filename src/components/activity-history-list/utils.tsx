@@ -92,6 +92,14 @@ export const CreatedRecord = ({
             </div>
         );
     }
+
+    if (targetType === 'tenure') {
+        return (
+            <p>
+                <b>{entityCreated(targetType)}</b>
+            </p>
+        );
+    }
 };
 
 export const UpdatedRecord = ({
