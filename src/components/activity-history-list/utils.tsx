@@ -45,7 +45,7 @@ export const updatedRecord = (activity: Activity) => {
     };
 
     if (type === 'migrate') {
-        return <MigratedRecord targetType={targetType} />;
+        return <MigratedEntityRecord targetType={targetType} />;
     }
 
     if (type === 'create') {
@@ -53,7 +53,7 @@ export const updatedRecord = (activity: Activity) => {
     }
 
     if (type === 'update') {
-        return <UpdatedRecord {...activityChangeRecord} />;
+        return <UpdatedEntityRecord {...activityChangeRecord} />;
     }
 
     if (type === 'delete') {
@@ -61,7 +61,7 @@ export const updatedRecord = (activity: Activity) => {
     }
 };
 
-export const MigratedRecord = ({ targetType }: any): ReactElement => (
+export const MigratedEntityRecord = ({ targetType }: any): ReactElement => (
     <p>
         <b>{entityMigrated(targetType)}</b>
     </p>
@@ -102,7 +102,7 @@ export const CreatedRecord = ({
     }
 };
 
-export const UpdatedRecord = ({
+export const UpdatedEntityRecord = ({
     targetType,
     newData,
     oldData,
