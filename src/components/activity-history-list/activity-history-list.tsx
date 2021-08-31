@@ -7,15 +7,17 @@ import {
     Tbody,
     Tr,
     Th,
-    Td,
     SimplePagination,
     SimplePaginationButton,
 } from '@mtfh/common';
 import { locale, useActivityHistory } from '@services';
 
 import './activity-history-list.styles.scss';
-import { formattedDate, updatedRecord } from './utils';
-
+import {
+    ContactDetailsActivityRecord,
+    PersonActivityRecord,
+    TenureActivityRecord,
+} from './';
 import { Activity } from '../../services/activities';
 
 const {
@@ -24,20 +26,16 @@ const {
     tableEditDetails,
     tableEdittedBy,
     noActivityHistory,
-    entityEdited,
 } = locale.activities;
 
-const isPerson = (activity: Activity): boolean => {
-    return activity.targetType === 'person';
-};
+const isPerson = (activity: Activity): boolean =>
+    activity.targetType === 'person';
 
-const isContactDetails = (activity: Activity): boolean => {
-    return activity.targetType === 'contactDetails';
-};
+const isContactDetails = (activity: Activity): boolean =>
+    activity.targetType === 'contactDetails';
 
-const isTenure = (activity: Activity): boolean => {
-    return activity.targetType === 'tenure';
-};
+const isTenure = (activity: Activity): boolean =>
+    activity.targetType === 'tenure';
 
 function NoActivityHistory() {
     return <p className="lbh-label">{noActivityHistory}</p>;
@@ -46,29 +44,6 @@ function NoActivityHistory() {
 export interface ActivityHistoryListProps {
     targetId: string;
 }
-
-export interface ActivityRecordProp {
-    date: any;
-    category: any;
-    editDetails: any;
-    editedBy: any;
-}
-
-export const ActivityRecord = ({
-    date,
-    category,
-    editDetails,
-    editedBy,
-}: ActivityRecordProp): JSX.Element | null => {
-    return (
-        <Tr className="govuk-table__row mtfh-activity-history">
-            <Td>{date}</Td>
-            <Td>{category}</Td>
-            <Td>{editDetails}</Td>
-            <Th>{editedBy}</Th>
-        </Tr>
-    );
-};
 
 export const ActivityHistoryList = ({
     targetId,
@@ -110,28 +85,30 @@ export const ActivityHistoryList = ({
                 </Thead>
                 <Tbody>
                     {activityHistory.map((activity, index) => {
-                        // if (isPerson(activity)) {
-                        // }
-                        // if (isContactDetails(activity)) {
-                        // }
-                        // if (isTenure(activity)) {
-                        // }
-
-                        const date = formattedDate(activity.createdAt);
-                        const category = entityEdited(activity.targetType);
-                        const activityRecord = updatedRecord(activity);
-                        const edittedBy = activity.authorDetails.fullName;
-                        if (!activityRecord) return null;
-
-                        return (
-                            <ActivityRecord
-                                key={index}
-                                date={date}
-                                category={category}
-                                editDetails={activityRecord}
-                                editedBy={edittedBy}
-                            />
-                        );
+                        if (isPerson(activity)) {
+                            return (
+                                <PersonActivityRecord
+                                    key={index}
+                                    personRecord={activity}
+                                />
+                            );
+                        }
+                        if (isContactDetails(activity)) {
+                            return (
+                                <ContactDetailsActivityRecord
+                                    key={index}
+                                    contactDetailsRecord={activity}
+                                />
+                            );
+                        }
+                        if (isTenure(activity)) {
+                            return (
+                                <TenureActivityRecord
+                                    key={index}
+                                    tenureRecord={activity}
+                                />
+                            );
+                        }
                     })}
                 </Tbody>
             </Table>
