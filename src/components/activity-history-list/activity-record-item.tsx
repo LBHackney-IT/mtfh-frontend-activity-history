@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Tr, Th, Td } from '@mtfh/common';
 
-export interface ActivityRecordItemProp {
+export interface ActivityRecordItemProps {
     date: any;
     category: any;
     editDetails: any;
@@ -14,7 +14,7 @@ export const ActivityRecordItem = ({
     category,
     editDetails,
     editedBy,
-}: ActivityRecordItemProp): JSX.Element | null => {
+}: ActivityRecordItemProps): JSX.Element | null => {
     return (
         <Tr className="govuk-table__row mtfh-activity-history">
             <Td>{date}</Td>

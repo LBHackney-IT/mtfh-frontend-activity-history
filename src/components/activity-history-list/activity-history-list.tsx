@@ -18,7 +18,6 @@ import {
     PersonActivityRecord,
     TenureActivityRecord,
 } from './';
-import { isPerson, isContactDetails, isTenure } from '../../utils';
 
 const {
     tableDate,
@@ -76,7 +75,7 @@ export const ActivityHistoryList = ({
                 <Tbody>
                     {activityHistory.map((activity, index) => {
                         const { targetType } = activity;
-                        if (isPerson(targetType)) {
+                        if (targetType === 'person') {
                             return (
                                 <PersonActivityRecord
                                     key={index}
@@ -84,7 +83,7 @@ export const ActivityHistoryList = ({
                                 />
                             );
                         }
-                        if (isContactDetails(targetType)) {
+                        if (targetType === 'contactDetails') {
                             return (
                                 <ContactDetailsActivityRecord
                                     key={index}
@@ -92,7 +91,7 @@ export const ActivityHistoryList = ({
                                 />
                             );
                         }
-                        if (isTenure(targetType)) {
+                        if (targetType === 'tenure') {
                             return (
                                 <TenureActivityRecord
                                     key={index}

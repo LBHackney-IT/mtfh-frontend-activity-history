@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { ComponentPropsWithoutRef, useMemo } from 'react';
 import { locale } from '@services';
 import { Activity, ActivityChangeRecord } from '../../../services/activities';
 import {
@@ -6,7 +6,6 @@ import {
     MigratedEntityRecord,
     UpdatedEntityRecord,
     formattedDate,
-    updatedRecord,
 } from '../';
 
 const { activities }: any = locale;
@@ -35,36 +34,32 @@ export const TenureActivityRecord = ({
     const category = entityEdited(tenureRecord.targetType);
     const edittedBy = tenureRecord.authorDetails.fullName;
 
-    let activityRecord: any;
-
-    if (type === 'create') {
-        activityRecord = <CreatedTenureRecord targetType={targetType} />;
-    }
-
-    if (type === 'delete') {
-        activityRecord = (
-            <DeletedTenureRecord
-                targetType={targetType}
-                oldData={oldData}
-                newData={newData}
-            />
-        );
-    }
-
-    if (type === 'update') {
-        activityRecord = (
-            <UpdatedEntityRecord
-                targetType={targetType}
-                oldData={oldData}
-                newData={newData}
-            />
-        );
-        // return <h1>yo</h1>
-    }
-
-    if (type === 'migrate') {
-        activityRecord = <MigratedEntityRecord targetType={targetType} />;
-    }
+    const activityRecord = useMemo(() => {
+        switch (type) {
+            case 'create':
+                return <CreatedTenureRecord targetType={targetType} />;
+            case 'delete':
+                return (
+                    <DeletedTenureRecord
+                        targetType={targetType}
+                        oldData={oldData}
+                        newData={newData}
+                    />
+                );
+            case 'update':
+                return (
+                    <UpdatedEntityRecord
+                        targetType={targetType}
+                        oldData={oldData}
+                        newData={newData}
+                    />
+                );
+            case 'migrate':
+                return <MigratedEntityRecord targetType={targetType} />;
+            default:
+                return null;
+        }
+    }, []);
 
     return (
         <ActivityRecordItem

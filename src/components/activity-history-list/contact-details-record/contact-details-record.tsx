@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { ComponentPropsWithoutRef, useMemo } from 'react';
 import { locale } from '@services';
 import { Activity, ActivityChangeRecord } from '../../../services/activities';
 import {
@@ -6,10 +6,9 @@ import {
     MigratedEntityRecord,
     UpdatedEntityRecord,
     formattedDate,
-    updatedRecord,
 } from '../';
 
-const { activities }: any = locale;
+const { activities } = locale;
 const { addedLabel, contactDetails, entityEdited, removedLabel } = activities;
 const { contactType } = contactDetails;
 
@@ -36,41 +35,38 @@ export const ContactDetailsActivityRecord = ({
     const category = entityEdited(contactDetailsRecord.targetType);
     const edittedBy = contactDetailsRecord.authorDetails.fullName;
 
-    let activityRecord: any;
-
-    if (type === 'create') {
-        activityRecord = (
-            <CreatedContactDetailRecord
-                targetType={targetType}
-                oldData={oldData}
-                newData={newData}
-            />
-        );
-    }
-
-    if (type === 'delete') {
-        activityRecord = (
-            <DeletedContactDetailRecord
-                targetType={targetType}
-                oldData={oldData}
-                newData={newData}
-            />
-        );
-    }
-
-    if (type === 'update') {
-        activityRecord = (
-            <UpdatedEntityRecord
-                targetType={targetType}
-                oldData={oldData}
-                newData={newData}
-            />
-        );
-    }
-
-    if (type === 'migrate') {
-        activityRecord = <MigratedEntityRecord targetType={targetType} />;
-    }
+    const activityRecord = useMemo(() => {
+        switch (type) {
+            case 'create':
+                return (
+                    <CreatedContactDetailRecord
+                        targetType={targetType}
+                        oldData={oldData}
+                        newData={newData}
+                    />
+                );
+            case 'delete':
+                return (
+                    <DeletedContactDetailRecord
+                        targetType={targetType}
+                        oldData={oldData}
+                        newData={newData}
+                    />
+                );
+            case 'update':
+                return (
+                    <UpdatedEntityRecord
+                        targetType={targetType}
+                        oldData={oldData}
+                        newData={newData}
+                    />
+                );
+            case 'migrate':
+                return <MigratedEntityRecord targetType={targetType} />;
+            default:
+                return null;
+        }
+    }, []);
 
     return (
         <ActivityRecordItem
