@@ -130,7 +130,7 @@ const locale = {
                     value ? 'Active' : 'Inactive',
             },
             startOfTenureDate: {
-                field: 'End date',
+                field: 'Start date',
                 output: (value: string): string =>
                     format(parseISO(value), 'dd/MM/yy'),
             },

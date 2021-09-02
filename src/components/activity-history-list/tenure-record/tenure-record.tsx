@@ -83,7 +83,7 @@ const DeletedTenureRecord = ({
     newData,
     oldData,
 }: ActivityChangeRecord): any => {
-    const activitiesOnTargetType = activities[targetType];
+    const parametersOnTargetType = activities[targetType];
 
     const removedData = Object.keys(oldData).filter((paramName: string) => {
         if (oldData[paramName] === newData[paramName]) return;
@@ -95,12 +95,12 @@ const DeletedTenureRecord = ({
         return (
             <div key={index}>
                 <p>
-                    <b>{activitiesOnTargetType[paramName].field}</b>
+                    <b>{parametersOnTargetType[paramName].field}</b>
                 </p>
                 <p>
                     {removedLabel}{' '}
                     <b>
-                        {activitiesOnTargetType[paramName].output(
+                        {parametersOnTargetType[paramName].output(
                             oldData[paramName]
                         )}
                     </b>

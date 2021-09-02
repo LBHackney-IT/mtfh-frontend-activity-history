@@ -50,6 +50,7 @@ test('it pages the results upon clicking next and previous', async () => {
         expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
     );
 
+    // This test breaking after implementing useMemo(..) in person-record
     // userEvent.click(screen.getByText(/Previous/));
 
     // await waitFor(() =>

@@ -83,7 +83,7 @@ const DeletedPersonRecord = ({
     newData,
     oldData,
 }: ActivityChangeRecord): any => {
-    const activitiesOnTargetType = activities[targetType];
+    const parametersOnTargetType = activities[targetType];
 
     if (targetType === 'person') {
         const removedData = Object.keys(oldData).filter((paramName: string) => {
@@ -96,12 +96,12 @@ const DeletedPersonRecord = ({
             return (
                 <div key={index}>
                     <p>
-                        <b>{activitiesOnTargetType[paramName].field}</b>
+                        <b>{parametersOnTargetType[paramName].field}</b>
                     </p>
                     <p>
                         {removedLabel}{' '}
                         <b>
-                            {activitiesOnTargetType[paramName].output(
+                            {parametersOnTargetType[paramName].output(
                                 oldData[paramName]
                             )}
                         </b>

@@ -28,25 +28,29 @@ export const UpdatedEntityRecord = ({
     newData,
     oldData,
 }: ActivityChangeRecord): any => {
-    const activitiesOnTargetType = activities[targetType];
+    const parametersOnTargetType = activities[targetType];
+
     const updatedElements = Object.keys(newData).map(
         (paramName: string, index) => {
-            if (
-                paramName === 'id' ||
-                activitiesOnTargetType[paramName] === undefined
-            )
-                return null;
+            if (paramName === 'id') return null;
 
+            if (parametersOnTargetType[paramName] === undefined) {
+                return (
+                    <p key={index}>
+                        <b>{paramName}</b>
+                    </p>
+                );
+            }
             if (oldData[paramName] === newData[paramName]) return null;
             return (
                 <div key={index}>
                     <p>
-                        <b>{activitiesOnTargetType[paramName].field}</b>
+                        <b>{parametersOnTargetType[paramName].field}</b>
                     </p>
                     <p>
                         {previouslyLabel}{' '}
                         <b>
-                            {activitiesOnTargetType[paramName].output(
+                            {parametersOnTargetType[paramName].output(
                                 oldData[paramName]
                             )}
                         </b>
@@ -54,7 +58,7 @@ export const UpdatedEntityRecord = ({
                     <p>
                         {changedToLabel}{' '}
                         <b>
-                            {activitiesOnTargetType[paramName].output(
+                            {parametersOnTargetType[paramName].output(
                                 newData[paramName]
                             )}
                         </b>
