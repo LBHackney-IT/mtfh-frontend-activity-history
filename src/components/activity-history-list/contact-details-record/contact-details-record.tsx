@@ -72,9 +72,6 @@ export const ContactDetailsActivityRecord = ({
         activityRecord = <MigratedEntityRecord targetType={targetType} />;
     }
 
-    // activityRecord = updatedRecord(contactDetailsRecord);
-    // if (!activityRecord) return null;
-
     return (
         <ActivityRecordItem
             {...props}

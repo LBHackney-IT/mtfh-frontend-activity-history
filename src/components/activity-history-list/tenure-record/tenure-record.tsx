@@ -66,9 +66,6 @@ export const TenureActivityRecord = ({
         activityRecord = <MigratedEntityRecord targetType={targetType} />;
     }
 
-    // activityRecord = updatedRecord(tenureRecord);
-    // if (!activityRecord) return null;
-
     return (
         <ActivityRecordItem
             {...props}
