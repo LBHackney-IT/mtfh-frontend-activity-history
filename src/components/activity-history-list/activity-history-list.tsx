@@ -7,14 +7,17 @@ import {
     Tbody,
     Tr,
     Th,
-    Td,
     SimplePagination,
     SimplePaginationButton,
 } from '@mtfh/common';
 import { locale, useActivityHistory } from '@services';
 
 import './activity-history-list.styles.scss';
-import { formattedDate, updatedData } from './utils';
+import {
+    ContactDetailsActivityRecord,
+    PersonActivityRecord,
+    TenureActivityRecord,
+} from './';
 
 const {
     tableDate,
@@ -22,13 +25,11 @@ const {
     tableEditDetails,
     tableEdittedBy,
     noActivityHistory,
-    entityEdited,
 } = locale.activities;
 
 function NoActivityHistory() {
     return <p className="lbh-label">{noActivityHistory}</p>;
 }
-
 export interface ActivityHistoryListProps {
     targetId: string;
 }
@@ -73,20 +74,31 @@ export const ActivityHistoryList = ({
                 </Thead>
                 <Tbody>
                     {activityHistory.map((activity, index) => {
-                        const dataChange = updatedData(activity);
-                        if (!dataChange) return null;
-
-                        return (
-                            <Tr
-                                key={index}
-                                className="govuk-table__row mtfh-activity-history"
-                            >
-                                <Td>{formattedDate(activity.createdAt)}</Td>
-                                <Td>{entityEdited(activity.targetType)}</Td>
-                                <Td>{dataChange}</Td>
-                                <Th>{activity.authorDetails.fullName}</Th>
-                            </Tr>
-                        );
+                        const { targetType } = activity;
+                        if (targetType === 'person') {
+                            return (
+                                <PersonActivityRecord
+                                    key={index}
+                                    personRecord={activity}
+                                />
+                            );
+                        }
+                        if (targetType === 'contactDetails') {
+                            return (
+                                <ContactDetailsActivityRecord
+                                    key={index}
+                                    contactDetailsRecord={activity}
+                                />
+                            );
+                        }
+                        if (targetType === 'tenure') {
+                            return (
+                                <TenureActivityRecord
+                                    key={index}
+                                    tenureRecord={activity}
+                                />
+                            );
+                        }
                     })}
                 </Tbody>
             </Table>
