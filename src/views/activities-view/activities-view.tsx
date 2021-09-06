@@ -1,8 +1,8 @@
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import React from 'react';
-import { Button, Link } from '@mtfh/common';
+import { Button, Link, useFeatureToggle } from '@mtfh/common';
 import { locale, usePerson, useTenure } from '@services';
-import { ActivityHistoryList } from '@components';
+import { ActivityHistoryList, ActivityHistoryListLegacy } from '@components';
 
 const { pageTitle, closeButton } = locale.activities;
 
@@ -62,10 +62,23 @@ const BasicEntityInformation = () => {
 export const ActivitiesView = (): JSX.Element => {
     const { id, entityType } = useParams<{ id: string; entityType: string }>();
 
+    const activityHistoryFeatureToggle = useFeatureToggle(
+        'MMH.TenureActivityHistory'
+    );
+
     return (
         <div data-testid="activities">
-            <BasicEntityInformation />
-            <ActivityHistoryList targetId={id} />
+            {activityHistoryFeatureToggle ? (
+                <>
+                    <BasicEntityInformation />
+                    <ActivityHistoryList targetId={id} />
+                </>
+            ) : (
+                <>
+                    <PersonInformation id={id} entityType={entityType} />
+                    <ActivityHistoryListLegacy targetId={id} />
+                </>
+            )}
             <Button
                 as={RouterLink}
                 to={`/${entityType}/${id}`}

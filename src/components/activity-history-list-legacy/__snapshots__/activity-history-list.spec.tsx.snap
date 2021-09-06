@@ -1,0 +1,445 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should display a row for change in date of birth 1`] = `
+<div>
+  <div
+    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
+  >
+    <svg
+      class="mtfh-icon"
+      focusable="false"
+      height="50"
+      stroke="#00703c"
+      viewBox="0 0 42 42"
+      width="50"
+    >
+      <title>
+        Loading...
+      </title>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          stroke-width="5"
+          transform="translate(3 3)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            stroke-opacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+            transform="rotate(112.708 18 18)"
+          >
+            <animatetransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`it should display a row for created email (contactType is number) 1`] = `
+<div>
+  <div
+    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
+  >
+    <svg
+      class="mtfh-icon"
+      focusable="false"
+      height="50"
+      stroke="#00703c"
+      viewBox="0 0 42 42"
+      width="50"
+    >
+      <title>
+        Loading...
+      </title>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          stroke-width="5"
+          transform="translate(3 3)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            stroke-opacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+            transform="rotate(112.708 18 18)"
+          >
+            <animatetransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`it should display a row for created phone number (contactType is number) 1`] = `
+<div>
+  <div
+    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
+  >
+    <svg
+      class="mtfh-icon"
+      focusable="false"
+      height="50"
+      stroke="#00703c"
+      viewBox="0 0 42 42"
+      width="50"
+    >
+      <title>
+        Loading...
+      </title>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          stroke-width="5"
+          transform="translate(3 3)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            stroke-opacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+            transform="rotate(112.708 18 18)"
+          >
+            <animatetransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`it should display a row for removed email (contactType is number) 1`] = `
+<div>
+  <div
+    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
+  >
+    <svg
+      class="mtfh-icon"
+      focusable="false"
+      height="50"
+      stroke="#00703c"
+      viewBox="0 0 42 42"
+      width="50"
+    >
+      <title>
+        Loading...
+      </title>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          stroke-width="5"
+          transform="translate(3 3)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            stroke-opacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+            transform="rotate(112.708 18 18)"
+          >
+            <animatetransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`it should display a row for removed phone number (contactType is number) 1`] = `
+<div>
+  <div
+    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
+  >
+    <svg
+      class="mtfh-icon"
+      focusable="false"
+      height="50"
+      stroke="#00703c"
+      viewBox="0 0 42 42"
+      width="50"
+    >
+      <title>
+        Loading...
+      </title>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          stroke-width="5"
+          transform="translate(3 3)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            stroke-opacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+            transform="rotate(112.708 18 18)"
+          >
+            <animatetransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`it should display change in Identifications 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to person
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Identitifications
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Passport, GB03654488992 seen
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Passport, GB03654488992 seen
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display change in Languages 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to person
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Languages
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  English (primary)
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  English (primary), Abkhaz
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
