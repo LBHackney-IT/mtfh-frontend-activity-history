@@ -448,7 +448,107 @@ export const mockCreatedTenure: Activity = {
     },
 };
 
-export const mockUpdatedTenure: Activity = {
+export const mockTenureUpdatedIsActive: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        isActive: false,
+    },
+    newData: {
+        isActive: true,
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockTenureUpdatedTenureType: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        tenureType: { description: 'Secure', code: 'SEC' },
+    },
+    newData: {
+        tenureType: { description: 'Introductory', code: 'INT' },
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockTenureUpdatedStartOfTenureDate: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        startOfTenureDate: '2018-07-09',
+    },
+    newData: {
+        startOfTenureDate: '2018-12-31',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockTenureUpdatedEndOfTenureDate: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        endOfTenureDate: '2018-07-09',
+    },
+    newData: {
+        endOfTenureDate: '2018-12-31',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockTenureUpdatedEndOfTenureDateToNoEntry: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        endOfTenureDate: '2018-07-09',
+    },
+    newData: {
+        endOfTenureDate: null,
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};
+
+export const mockDeletedTenure: Activity = {
     id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
     type: 'update',
     targetType: 'tenure',
