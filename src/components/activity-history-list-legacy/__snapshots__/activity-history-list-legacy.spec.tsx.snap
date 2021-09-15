@@ -249,3 +249,197 @@ exports[`it should display a row for removed phone number (contactType is number
   </div>
 </div>
 `;
+
+exports[`it should display change in Identifications 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to person
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Identitifications
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Passport, GB03654488992 seen
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Passport, GB03654488992 seen
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display change in Languages 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to person
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Languages
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  English (primary)
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  English (primary), Abkhaz
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;

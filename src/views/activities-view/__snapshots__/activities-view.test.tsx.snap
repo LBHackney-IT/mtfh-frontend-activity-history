@@ -67,7 +67,7 @@ exports[`renders the activities view 1`] = `
       </svg>
     </div>
     <a
-      class="govuk-button lbh-button govuk-secondary lbh-button--secondary"
+      class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
       href="/person/undefined"
     >
       Close activity history
