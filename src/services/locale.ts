@@ -131,13 +131,17 @@ const locale = {
             },
             startOfTenureDate: {
                 field: 'Start date',
-                output: (value: string): string =>
-                    format(parseISO(value), 'dd/MM/yy'),
+                output: (value: string): string => {
+                    if (!value) return '[No entry]';
+                    return format(parseISO(value), 'dd/MM/yy');
+                },
             },
             endOfTenureDate: {
                 field: 'End date',
-                output: (value: string): string =>
-                    format(parseISO(value), 'dd/MM/yy'),
+                output: (value: string): string => {
+                    if (!value) return '[No entry]';
+                    return format(parseISO(value), 'dd/MM/yy');
+                },
             },
         },
     },
