@@ -1,8 +1,8 @@
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import React from 'react';
-import { Button, Link, useFeatureToggle } from '@mtfh/common';
-import { locale, usePerson, useTenure } from '@services';
-import { ActivityHistoryList, ActivityHistoryListLegacy } from '@components';
+import { Button, Link } from '@mtfh/common';
+import { locale, usePerson } from '@services';
+import { ActivityHistoryListLegacy } from '@components';
 
 const { pageTitle, closeButton } = locale.activities;
 
@@ -30,55 +30,13 @@ const PersonInformation = ({ id, entityType }: EntityRequestId) => {
     );
 };
 
-const TenureInformation = ({ id, entityType }: EntityRequestId) => {
-    const { data: tenure } = useTenure(id);
-    return (
-        <>
-            <Link
-                as={RouterLink}
-                to={`/${entityType}/${id}`}
-                variant="back-link"
-            >
-                Tenure {tenure?.paymentReference}
-            </Link>
-            <h1 className="lbh-heading-h1">{pageTitle}</h1>
-            <h2 className="lbh-heading-h2">
-                Tenure payment reference {tenure?.paymentReference}
-                <br></br>
-                {tenure?.tenuredAsset?.fullAddress}
-            </h2>
-        </>
-    );
-};
-
-const BasicEntityInformation = () => {
+export const ActivitiesViewLegacy = (): JSX.Element => {
     const { id, entityType } = useParams<{ id: string; entityType: string }>();
-    if (entityType === 'tenure') {
-        return <TenureInformation id={id} entityType={entityType} />;
-    }
-    return <PersonInformation id={id} entityType={entityType} />;
-};
-
-export const ActivitiesView = (): JSX.Element => {
-    const { id, entityType } = useParams<{ id: string; entityType: string }>();
-
-    const activityHistoryFeatureToggle = useFeatureToggle(
-        'MMH.TenureActivityHistory'
-    );
 
     return (
         <div data-testid="activities">
-            {activityHistoryFeatureToggle ? (
-                <>
-                    <BasicEntityInformation />
-                    <ActivityHistoryList targetId={id} />
-                </>
-            ) : (
-                <>
-                    <PersonInformation id={id} entityType={entityType} />
-                    <ActivityHistoryListLegacy targetId={id} />
-                </>
-            )}
+            <PersonInformation id={id} entityType={entityType} />
+            <ActivityHistoryListLegacy targetId={id} />
             <Button
                 as={RouterLink}
                 to={`/${entityType}/${id}`}
