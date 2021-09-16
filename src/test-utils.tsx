@@ -40,7 +40,13 @@ export const routeRender = (
 
     return [
         render(
-            <SWRConfig value={{ provider: () => new Map(), dedupingInterval: 0, errorRetryInterval: 0 }}>
+            <SWRConfig
+                value={{
+                    provider: () => new Map(),
+                    dedupingInterval: 0,
+                    errorRetryInterval: 0,
+                }}
+            >
                 <Router history={history}>
                     <Route path={config.path}>{component}</Route>
                 </Router>
