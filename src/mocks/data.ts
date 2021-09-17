@@ -467,3 +467,23 @@ export const mockUpdatedTenure: Activity = {
         email: 'Paul.Fox@hackney.gov.uk',
     },
 };
+
+export const mockEdittedTenureWithInValidParam: Activity = {
+    id: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    type: 'update',
+    targetType: 'tenure',
+    targetId: '6f22e9ae3e8a4e0eaf46db02eb87f8e6',
+    createdAt: '2019-09-19 15:12:00',
+    timeToLiveForRecordInDays: 365,
+    oldData: {
+        invalidParam: 'oldValue',
+    },
+    newData: {
+        invalidParam: 'newValue',
+    },
+    authorDetails: {
+        id: '6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6',
+        fullName: 'Paul Fox',
+        email: 'Paul.Fox@hackney.gov.uk',
+    },
+};

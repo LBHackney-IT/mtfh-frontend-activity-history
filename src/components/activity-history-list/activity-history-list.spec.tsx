@@ -22,6 +22,7 @@ import {
     mockCreatedTenure,
     mockMigratedTenure,
     mockUpdatedTenure,
+    mockEdittedTenureWithInValidParam,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -359,6 +360,20 @@ test('it should display a row for migrated tenure', async () => {
 
     await waitFor(() =>
         expect(screen.queryByText(/Tenure migrated/)).toBeInTheDocument()
+    );
+});
+
+test('it should display a row with parameter name if the param is not part of the updatable entity', async () => {
+    get('/api/activityhistory', {
+        results: [mockEdittedTenureWithInValidParam],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() =>
+        expect(screen.queryByText(/invalidParam/)).toBeInTheDocument()
     );
 });
 

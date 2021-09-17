@@ -3,13 +3,13 @@
 exports[`renders the activities view 1`] = `
 <div>
   <div
-    data-testid="activities"
+    data-testid="tenure-activities"
   >
     <a
       class="govuk-back-link lbh-back-link lbh-link--no-visited-state"
       href="/tenure/undefined"
     >
-       
+      Tenure 
     </a>
     <h1
       class="lbh-heading-h1"
@@ -19,7 +19,8 @@ exports[`renders the activities view 1`] = `
     <h2
       class="lbh-heading-h2"
     >
-       
+      Tenure payment reference 
+      <br />
     </h2>
     <div
       class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
@@ -68,7 +69,7 @@ exports[`renders the activities view 1`] = `
     </div>
     <a
       class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
-      href="/tenure/undefined"
+      href="/person/undefined"
     >
       Close activity history
     </a>

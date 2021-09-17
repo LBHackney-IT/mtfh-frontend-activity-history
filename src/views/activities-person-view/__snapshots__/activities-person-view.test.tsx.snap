@@ -3,7 +3,7 @@
 exports[`renders the activities view 1`] = `
 <div>
   <div
-    data-testid="activities"
+    data-testid="person-activities"
   >
     <a
       class="govuk-back-link lbh-back-link lbh-link--no-visited-state"

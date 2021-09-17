@@ -3,11 +3,11 @@ import { screen, waitFor } from '@testing-library/react';
 
 import { locale } from '@services';
 
-import { ActivitiesViewLegacy } from '../activities-view';
+import { ActivitiesTenureView } from './';
 import { routeRender } from '../../test-utils';
 
 test('renders the activities view', async () => {
-    const [{ container }] = routeRender(<ActivitiesViewLegacy />, {
+    const [{ container }] = routeRender(<ActivitiesTenureView />, {
         url: '/activities/tenure/123',
     });
     expect(container).toMatchSnapshot();
@@ -17,4 +17,6 @@ test('renders the activities view', async () => {
             locale.activities.pageTitle
         )
     );
+
+    // expect(screen.queryByText(/Joan Evans/)).toBeInTheDocument();
 });
