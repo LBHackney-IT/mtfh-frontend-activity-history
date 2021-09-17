@@ -34,7 +34,7 @@ export const ActivitiesTenureView = (): JSX.Element => {
         <div data-testid="tenure-activities">
             <TenureInformation id={id} />
             <ActivityHistoryList targetId={id} />
-            <Button as={RouterLink} to={`/person/${id}`} variant="secondary">
+            <Button as={RouterLink} to={`/tenure/${id}`} variant="secondary">
                 {closeButton}
             </Button>
         </div>
