@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
-import { ActivityHistoryList } from './activity-history-list';
+import { ActivityHistoryListLegacy } from './activity-history-list-legacy';
 import { get, routeRender } from '../../test-utils';
 import {
     mockUpdatedFirstName,
@@ -19,15 +19,11 @@ import {
     mockCreatedPhoneNumberWithContactTypeAsString,
     mockCreatedEmailWithContactTypeAsString,
     mockCreatedAddressWithContactTypeAsString,
-    mockCreatedTenure,
-    mockMigratedTenure,
-    mockUpdatedTenure,
-    mockEdittedTenureWithInValidParam,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
     get('/api/activityhistory', {}, 404);
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.getByText(/No activity history/)).toBeInTheDocument()
@@ -35,7 +31,10 @@ test('it renders no comments with no results', async () => {
 });
 
 test.skip('it pages the results upon clicking next and previous', async () => {
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
+    await waitFor(() =>
+        expect(screen.getByText(/Loading.../)).toBeInTheDocument()
+    );
 
     await waitFor(() => expect(screen.getByText(/Next/)).toBeInTheDocument());
 
@@ -51,16 +50,15 @@ test.skip('it pages the results upon clicking next and previous', async () => {
         expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
     );
 
-    // This test breaking after implementing useMemo(..) in person-record
-    // userEvent.click(screen.getByText(/Previous/));
+    userEvent.click(screen.getByText(/Previous/));
 
-    // await waitFor(() =>
-    //     expect(screen.getByText(/First name/)).toBeInTheDocument()
-    // );
+    await waitFor(() =>
+        expect(screen.getByText(/First name/)).toBeInTheDocument()
+    );
 });
 
 test('it renders correctly', () => {
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
     expect(screen.getByText(/Loading/)).toBeInTheDocument();
 });
 
@@ -71,7 +69,7 @@ test('it displays a Person created on the activity history list for a new person
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.getByText(/Person created/)).toBeInTheDocument()
@@ -85,7 +83,7 @@ test('it displays a Person editted on the activity history list for a new person
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.getByText(/Edit to person/)).toBeInTheDocument()
@@ -99,7 +97,7 @@ test('it pages the results', async () => {
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() => expect(screen.getByText(/date/)).toBeInTheDocument());
     await waitFor(() =>
@@ -124,7 +122,7 @@ test('it pages the results for migrated person information', async () => {
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
@@ -138,7 +136,7 @@ test('it does not render pagination unnecessarily', async () => {
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() => expect(screen.queryByText(/Next/)).toBe(null));
 });
@@ -150,7 +148,9 @@ test('it should display change in Languages', async () => {
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() =>
         expect(screen.queryByText(/Languages/)).toBeInTheDocument()
@@ -165,7 +165,9 @@ test('it should display change in Identifications', async () => {
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() =>
         expect(screen.queryByText(/Identitifications/)).toBeInTheDocument()
@@ -180,7 +182,9 @@ test('it should display a row for created phone number (contactType is number)',
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() => expect(container).toMatchSnapshot());
     await waitFor(() =>
@@ -198,7 +202,9 @@ test('it should display a row for created email (contactType is number)', async 
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() => expect(container).toMatchSnapshot());
     await waitFor(() =>
@@ -216,7 +222,9 @@ test('it should display a row for removed phone number (contactType is number)',
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() => expect(container).toMatchSnapshot());
 
@@ -235,7 +243,9 @@ test('it should display a row for removed email (contactType is number)', async 
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() => expect(container).toMatchSnapshot());
 
@@ -254,7 +264,9 @@ test('it should display a row for change in date of birth', async () => {
             nextToken: null,
         },
     });
-    const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+    const [{ container }] = routeRender(
+        <ActivityHistoryListLegacy targetId="123" />
+    );
 
     await waitFor(() => expect(container).toMatchSnapshot());
 
@@ -273,7 +285,7 @@ test('it should display a row for change in place of birth', async () => {
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Place of birth/)).toBeInTheDocument()
@@ -290,7 +302,7 @@ test('it should display a row for created phone number (contactType is string)',
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Added/)).toBeInTheDocument()
@@ -312,7 +324,7 @@ test('it should display a row for created email (contactType is string)', async 
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Added/)).toBeInTheDocument()
@@ -333,7 +345,7 @@ test('it should display a row for created address (contactType is string)', asyn
             nextToken: null,
         },
     });
-    routeRender(<ActivityHistoryList targetId="123" />);
+    routeRender(<ActivityHistoryListLegacy targetId="123" />);
 
     await waitFor(() =>
         expect(screen.queryByText(/Added/)).toBeInTheDocument()
@@ -348,64 +360,3 @@ test('it should display a row for created address (contactType is string)', asyn
         ).toBeInTheDocument()
     );
 });
-
-test('it should display a row for migrated tenure', async () => {
-    get('/api/activityhistory', {
-        results: [mockMigratedTenure],
-        paginationDetails: {
-            nextToken: null,
-        },
-    });
-    routeRender(<ActivityHistoryList targetId="123" />);
-
-    await waitFor(() =>
-        expect(screen.queryByText(/Tenure migrated/)).toBeInTheDocument()
-    );
-});
-
-test('it should display a row with parameter name if the param is not part of the updatable entity', async () => {
-    get('/api/activityhistory', {
-        results: [mockEdittedTenureWithInValidParam],
-        paginationDetails: {
-            nextToken: null,
-        },
-    });
-    routeRender(<ActivityHistoryList targetId="123" />);
-
-    await waitFor(() =>
-        expect(screen.queryByText(/invalidParam/)).toBeInTheDocument()
-    );
-});
-
-// test('it should display a row for created tenure', async () => {
-//     get('/api/activityhistory', {
-//         results: [mockCreatedTenure],
-//         paginationDetails: {
-//             nextToken: null,
-//         },
-//     });
-//     routeRender(<ActivityHistoryList targetId="123" />);
-
-//     await waitFor(() =>
-//         expect(screen.queryByText(/Tenure created/)).toBeInTheDocument()
-//     );
-
-// });
-
-// test('it should display a row for updated tenure status (Activity) details', async () => {
-//     get('/api/activityhistory', {
-//         results: [mockUpdatedTenure],
-//         paginationDetails: {
-//             nextToken: null,
-//         },
-//     });
-//     routeRender(<ActivityHistoryList targetId="123" />);
-
-//     await waitFor(() =>
-//         expect(screen.getByText(/Active/)).toBeInTheDocument()
-//     );
-
-//     await waitFor(() =>
-//         expect(screen.getByText(/Inactive/)).toBeInTheDocument()
-//     );
-// });

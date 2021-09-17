@@ -1,5 +1,10 @@
 import { parseISO, format } from 'date-fns';
-import { ActivityTargetType, Identification, Language } from '@services';
+import {
+    ActivityTargetType,
+    Identification,
+    Language,
+    TenureType,
+} from '@services';
 import { ContactType } from './person';
 
 const locale = {
@@ -122,7 +127,9 @@ const locale = {
         tenure: {
             tenureType: {
                 field: 'Tenure Type',
-                output: (value: string): string => value ?? '[No entry]',
+                output: (value: TenureType): string => {
+                    return value?.description ?? '[No entry]';
+                },
             },
             isActive: {
                 field: 'Tenure status',
@@ -131,13 +138,17 @@ const locale = {
             },
             startOfTenureDate: {
                 field: 'Start date',
-                output: (value: string): string =>
-                    format(parseISO(value), 'dd/MM/yy'),
+                output: (value: string): string => {
+                    if (!value) return '[No entry]';
+                    return format(parseISO(value), 'dd/MM/yy');
+                },
             },
             endOfTenureDate: {
                 field: 'End date',
-                output: (value: string): string =>
-                    format(parseISO(value), 'dd/MM/yy'),
+                output: (value: string): string => {
+                    if (!value) return '[No entry]';
+                    return format(parseISO(value), 'dd/MM/yy');
+                },
             },
         },
     },

@@ -30,43 +30,45 @@ export const UpdatedEntityRecord = ({
 }: ActivityChangeRecord): any => {
     const parametersOnTargetType = activities[targetType];
 
-    const updatedElements = Object.keys(newData).map(
-        (paramName: string, index) => {
-            if (paramName === 'id') return null;
+    const updatedParams = [
+        ...new Set([...Object.keys(newData), ...Object.keys(oldData)]),
+    ];
 
-            if (parametersOnTargetType[paramName] === undefined) {
-                return (
-                    <p key={index}>
-                        <b>{paramName}</b>
-                    </p>
-                );
-            }
-            if (oldData[paramName] === newData[paramName]) return null;
+    const updatedElements = updatedParams.map((paramName: string, index) => {
+        if (paramName === 'id') return null;
+
+        if (parametersOnTargetType[paramName] === undefined) {
             return (
-                <div key={index}>
-                    <p>
-                        <b>{parametersOnTargetType[paramName].field}</b>
-                    </p>
-                    <p>
-                        {previouslyLabel}{' '}
-                        <b>
-                            {parametersOnTargetType[paramName].output(
-                                oldData[paramName]
-                            )}
-                        </b>
-                    </p>
-                    <p>
-                        {changedToLabel}{' '}
-                        <b>
-                            {parametersOnTargetType[paramName].output(
-                                newData[paramName]
-                            )}
-                        </b>
-                    </p>
-                </div>
+                <p key={index}>
+                    <b>{paramName}</b>
+                </p>
             );
         }
-    );
+        if (oldData[paramName] === newData[paramName]) return null;
+        return (
+            <div key={index}>
+                <p>
+                    <b>{parametersOnTargetType[paramName].field}</b>
+                </p>
+                <p>
+                    {previouslyLabel}{' '}
+                    <b>
+                        {parametersOnTargetType[paramName].output(
+                            oldData[paramName]
+                        )}
+                    </b>
+                </p>
+                <p>
+                    {changedToLabel}{' '}
+                    <b>
+                        {parametersOnTargetType[paramName].output(
+                            newData[paramName]
+                        )}
+                    </b>
+                </p>
+            </div>
+        );
+    });
 
     return updatedElements;
 };
