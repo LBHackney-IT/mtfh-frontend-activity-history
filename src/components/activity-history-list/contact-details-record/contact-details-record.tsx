@@ -66,7 +66,7 @@ export const ContactDetailsActivityRecord = ({
             default:
                 return null;
         }
-    }, []);
+    }, [type, targetType, oldData, newData]);
 
     return (
         <ActivityRecordItem
@@ -80,9 +80,7 @@ export const ContactDetailsActivityRecord = ({
 };
 
 const CreatedContactDetailRecord = ({
-    targetType,
     newData,
-    oldData,
 }: ActivityChangeRecord): JSX.Element => (
     <div>
         <p>
@@ -94,11 +92,7 @@ const CreatedContactDetailRecord = ({
     </div>
 );
 
-const DeletedContactDetailRecord = ({
-    targetType,
-    newData,
-    oldData,
-}: ActivityChangeRecord): any => {
+const DeletedContactDetailRecord = ({ oldData }: ActivityChangeRecord): any => {
     return (
         <div>
             <p>

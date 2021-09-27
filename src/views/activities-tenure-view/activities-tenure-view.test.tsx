@@ -17,6 +17,4 @@ test('renders the activities view', async () => {
             locale.activities.pageTitle
         )
     );
-
-    // expect(screen.queryByText(/Joan Evans/)).toBeInTheDocument();
 });

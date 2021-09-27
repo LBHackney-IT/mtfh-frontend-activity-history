@@ -25,14 +25,19 @@ export const TenureActivityRecord = ({
         newData: newDataActivty,
         type,
         targetType,
+        createdAt,
+        authorDetails,
     } = tenureRecord;
 
     const oldData = oldDataActivity || {};
     const newData = newDataActivty || {};
 
-    const date = formattedDate(tenureRecord.createdAt);
-    const category = entityEdited(tenureRecord.targetType);
-    const edittedBy = tenureRecord.authorDetails.fullName;
+    const date = formattedDate(createdAt);
+    const category =
+        type === 'create'
+            ? entityCreated(targetType)
+            : entityEdited(targetType);
+    const edittedBy = authorDetails.fullName;
 
     const activityRecord = useMemo(() => {
         switch (type) {
@@ -59,7 +64,7 @@ export const TenureActivityRecord = ({
             default:
                 return null;
         }
-    }, []);
+    }, [type, targetType, oldData, newData]);
 
     return (
         <ActivityRecordItem

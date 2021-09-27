@@ -1,12 +1,12 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
+import { locale } from '@services';
 import { ActivityHistoryList } from './activity-history-list';
 import { get, routeRender } from '../../test-utils';
 import {
     mockUpdatedFirstName,
     mockMigratedPerson,
-    mockRemovedLastName,
     mockCreatedPerson,
     mockUpdatedLanguages,
     mockUpdatedIdentifications,
@@ -19,10 +19,12 @@ import {
     mockCreatedPhoneNumberWithContactTypeAsString,
     mockCreatedEmailWithContactTypeAsString,
     mockCreatedAddressWithContactTypeAsString,
-    mockCreatedTenure,
     mockMigratedTenure,
     mockUpdatedTenure,
+    mockCreatedTenure,
     mockEdittedTenureWithInValidParam,
+    mockAddedPersonToTenure,
+    mockRemovedPersonFromTenure,
 } from '../../mocks';
 
 test('it renders no comments with no results', async () => {
@@ -51,12 +53,11 @@ test.skip('it pages the results upon clicking next and previous', async () => {
         expect(screen.getByText(/Person migrated/)).toBeInTheDocument()
     );
 
-    // This test breaking after implementing useMemo(..) in person-record
-    // userEvent.click(screen.getByText(/Previous/));
+    userEvent.click(screen.getByText(/Previous/));
 
-    // await waitFor(() =>
-    //     expect(screen.getByText(/First name/)).toBeInTheDocument()
-    // );
+    await waitFor(() =>
+        expect(screen.getByText(/First name/)).toBeInTheDocument()
+    );
 });
 
 test('it renders correctly', () => {
@@ -377,35 +378,79 @@ test('it should display a row with parameter name if the param is not part of th
     );
 });
 
-// test('it should display a row for created tenure', async () => {
-//     get('/api/activityhistory', {
-//         results: [mockCreatedTenure],
-//         paginationDetails: {
-//             nextToken: null,
-//         },
-//     });
-//     routeRender(<ActivityHistoryList targetId="123" />);
+test('it should display a row for created tenure', async () => {
+    get('/api/activityhistory', {
+        results: [mockCreatedTenure],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
 
-//     await waitFor(() =>
-//         expect(screen.queryByText(/Tenure created/)).toBeInTheDocument()
-//     );
+    await waitFor(() =>
+        expect(screen.queryAllByText(/Tenure created/).length).toBe(2)
+    );
+});
 
-// });
+test('it should display a row for updated tenure status (Activity) details', async () => {
+    get('/api/activityhistory', {
+        results: [mockUpdatedTenure],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
 
-// test('it should display a row for updated tenure status (Activity) details', async () => {
-//     get('/api/activityhistory', {
-//         results: [mockUpdatedTenure],
-//         paginationDetails: {
-//             nextToken: null,
-//         },
-//     });
-//     routeRender(<ActivityHistoryList targetId="123" />);
+    await waitFor(() => expect(screen.getByText(/Active/)).toBeInTheDocument());
 
-//     await waitFor(() =>
-//         expect(screen.getByText(/Active/)).toBeInTheDocument()
-//     );
+    await waitFor(() =>
+        expect(screen.getByText(/Inactive/)).toBeInTheDocument()
+    );
+});
 
-//     await waitFor(() =>
-//         expect(screen.getByText(/Inactive/)).toBeInTheDocument()
-//     );
-// });
+test('it should display a row for an added person to tenure', async () => {
+    get('/api/activityhistory', {
+        results: [mockAddedPersonToTenure],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => {
+        expect(
+            screen.getByText(locale.activities.personAddedToTenure)
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText(
+                mockAddedPersonToTenure.newData?.householdMembers[0].fullName
+            )
+        ).toBeInTheDocument();
+        expect(screen.getByText('01/01/01')).toBeInTheDocument();
+        expect(screen.getByText('Household member')).toBeInTheDocument();
+    });
+});
+
+test('it should display a row for a removed person from tenure', async () => {
+    get('/api/activityhistory', {
+        results: [mockRemovedPersonFromTenure],
+        paginationDetails: {
+            nextToken: null,
+        },
+    });
+    routeRender(<ActivityHistoryList targetId="123" />);
+
+    await waitFor(() => {
+        expect(
+            screen.getByText(locale.activities.personRemovedFromTenure)
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText(
+                mockRemovedPersonFromTenure.oldData?.householdMembers[0]
+                    .fullName
+            )
+        ).toBeInTheDocument();
+        expect(screen.getByText('01/01/01')).toBeInTheDocument();
+        expect(screen.getByText('Household member')).toBeInTheDocument();
+    });
+});
