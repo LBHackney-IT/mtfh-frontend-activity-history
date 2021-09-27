@@ -1,10 +1,11 @@
-import { Person } from '../';
+import { Person, HouseholdMember } from '../';
 export type ActivityType = 'create' | 'update' | 'delete' | 'migrate';
 export type ActivityTargetType =
     | 'person'
     | 'asset'
     | 'tenure'
-    | 'contactDetails';
+    | 'contactDetails'
+    | 'tenurePerson';
 
 interface AuthorDetails {
     id: string;
@@ -13,6 +14,14 @@ interface AuthorDetails {
 }
 type Nullable<T> = { [K in keyof T]: T[K] | null };
 
+export type PersonActivityData = Partial<Nullable<Person>>;
+export type TenurePersonActivityData = {
+    householdMembers: HouseholdMember[];
+    [key: string]: any;
+};
+
+type ActivityData = PersonActivityData | TenurePersonActivityData;
+
 export interface Activity {
     id: string;
     type: ActivityType;
@@ -20,13 +29,13 @@ export interface Activity {
     targetId: string;
     createdAt: any;
     timeToLiveForRecordInDays: number;
-    oldData: Partial<Nullable<Person>> | null;
-    newData: Partial<Nullable<Person>> | null;
+    oldData: ActivityData | null;
+    newData: ActivityData | null;
     authorDetails: AuthorDetails;
 }
 
 export interface ActivityChangeRecord {
     targetType: ActivityTargetType;
-    oldData: Partial<Nullable<Person>>;
-    newData: Partial<Nullable<Person>>;
+    oldData: ActivityData;
+    newData: ActivityData;
 }

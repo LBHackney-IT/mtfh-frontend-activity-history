@@ -17,6 +17,7 @@ import {
     ContactDetailsActivityRecord,
     PersonActivityRecord,
     TenureActivityRecord,
+    TenurePersonActivityRecord,
 } from './';
 
 const {
@@ -96,6 +97,14 @@ export const ActivityHistoryList = ({
                                 <TenureActivityRecord
                                     key={index}
                                     tenureRecord={activity}
+                                />
+                            );
+                        }
+                        if (targetType === 'tenurePerson') {
+                            return (
+                                <TenurePersonActivityRecord
+                                    key={index}
+                                    tenurePersonRecord={activity}
                                 />
                             );
                         }

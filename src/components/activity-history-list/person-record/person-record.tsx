@@ -59,7 +59,7 @@ export const PersonActivityRecord = ({
             default:
                 return null;
         }
-    }, []);
+    }, [type, targetType, oldData, newData]);
 
     return (
         <ActivityRecordItem

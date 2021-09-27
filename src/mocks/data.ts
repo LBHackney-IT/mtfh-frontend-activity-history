@@ -487,3 +487,61 @@ export const mockEdittedTenureWithInValidParam: Activity = {
         email: 'Paul.Fox@hackney.gov.uk',
     },
 };
+
+export const mockAddedPersonToTenure: Activity = {
+    id: '340d1891-8d4b-407b-a4c3-5bdfcdc6e35f',
+    targetId: 'a14ed7c2-24a4-4998-ab80-619e81f9b5a6',
+    type: 'create',
+    targetType: 'tenurePerson',
+    createdAt: '2021-09-27T13:45:13.6505067Z',
+    timeToLiveForRecordInDays: 1,
+    oldData: {
+        householdMembers: [],
+    },
+    newData: {
+        householdMembers: [
+            {
+                fullName: 'Paco',
+                isResponsible: false,
+                dateOfBirth: '0001-01-01T00:00:00',
+                personTenureType: 'HouseholdMember',
+                id: '1d005aae-c6d6-c6c1-89fb-5abed8a4eee1',
+                type: 'Person',
+            },
+        ],
+    },
+    authorDetails: {
+        id: '',
+        fullName: 'Unai Recio',
+        email: 'unai.recio@hackney.gov.uk',
+    },
+};
+
+export const mockRemovedPersonFromTenure: Activity = {
+    id: '340d1891-8d4b-407b-a4c3-5bdfcdc6e35f',
+    targetId: 'a14ed7c2-24a4-4998-ab80-619e81f9b5a6',
+    type: 'delete',
+    targetType: 'tenurePerson',
+    createdAt: '2021-09-27T13:45:13.6505067Z',
+    timeToLiveForRecordInDays: 1,
+    oldData: {
+        householdMembers: [
+            {
+                fullName: 'Paco',
+                isResponsible: false,
+                dateOfBirth: '0001-01-01T00:00:00',
+                personTenureType: 'HouseholdMember',
+                id: '1d005aae-c6d6-c6c1-89fb-5abed8a4eee1',
+                type: 'Person',
+            },
+        ],
+    },
+    newData: {
+        householdMembers: [],
+    },
+    authorDetails: {
+        id: '',
+        fullName: 'Unai Recio',
+        email: 'unai.recio@hackney.gov.uk',
+    },
+};

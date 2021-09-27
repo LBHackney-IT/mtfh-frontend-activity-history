@@ -5,6 +5,7 @@ import {
     Language,
     TenureType,
 } from '@services';
+import { HouseholdMember } from './tenure';
 import { ContactType } from './person';
 
 const locale = {
@@ -27,6 +28,7 @@ const locale = {
             contactDetails: 'Contact detail',
             tenure: 'Tenure',
             asset: 'Asset',
+            tenurePerson: 'Person',
         },
         entityCreated: (type: ActivityTargetType): string =>
             `${locale.activities.targetType[type]} created`,
@@ -34,6 +36,36 @@ const locale = {
             `${locale.activities.targetType[type]} migrated`,
         entityEdited: (type: ActivityTargetType): string =>
             `Edit to ${locale.activities.targetType[type].toLowerCase()}`,
+        personAddedToTenure: 'Person added to tenure',
+        personRemovedFromTenure: 'Person removed from tenure',
+        personAddedDetailsTitle:
+            'New person created with the following details:',
+        personRemovedDetailsTitle: 'The following person was removed:',
+        tenurePerson: {
+            personTenureType: {
+                field: 'Type',
+                output: (value: string): string => {
+                    switch (value) {
+                        case 'HouseholdMember':
+                            return 'Household member';
+                        default:
+                            return value || locale.activities.noEntryLabel;
+                    }
+                },
+            },
+            fullName: {
+                field: 'Name',
+                output: (value: string): string =>
+                    value ?? locale.activities.noEntryLabel,
+            },
+            dateOfBirth: {
+                field: 'Date of birth',
+                output: (value: string): string =>
+                    value
+                        ? format(parseISO(value), 'dd/MM/yy')
+                        : locale.activities.noEntryLabel,
+            },
+        },
         person: {
             title: {
                 field: 'Title',

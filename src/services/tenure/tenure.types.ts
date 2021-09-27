@@ -18,3 +18,19 @@ export interface Tenure {
     tenureType: TenureType;
     isActive: boolean;
 }
+
+export type PersonTenureType =
+    | 'Tenant'
+    | 'Leaseholder'
+    | 'Freeholder'
+    | 'HouseholdMember';
+
+export interface HouseholdMember {
+    id: string;
+    type: string;
+    fullName: string;
+    isResponsible: boolean;
+    dateOfBirth: string;
+    personTenureType?: PersonTenureType;
+    [key: string]: any;
+}
