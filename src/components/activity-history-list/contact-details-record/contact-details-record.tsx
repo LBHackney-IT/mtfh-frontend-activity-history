@@ -1,106 +1,106 @@
-import React, { ComponentPropsWithoutRef, useMemo } from 'react';
-import { locale } from '@services';
-import { Activity, ActivityChangeRecord } from '../../../services/activities';
+import React, { ComponentPropsWithoutRef, useMemo } from "react";
+
 import {
-    ActivityRecordItem,
-    MigratedEntityRecord,
-    UpdatedEntityRecord,
-    formattedDate,
-} from '../';
+  ActivityRecordItem,
+  MigratedEntityRecord,
+  UpdatedEntityRecord,
+  formattedDate,
+} from "..";
+import { Activity, ActivityChangeRecord } from "../../../services/activities";
+
+import { locale } from "@services";
 
 const { activities } = locale;
 const { addedLabel, contactDetails, entityEdited, removedLabel } = activities;
 const { contactType } = contactDetails;
 
 interface ContactDetailsActivityRecordProps
-    extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
-    contactDetailsRecord: Activity;
+  extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
+  contactDetailsRecord: Activity;
 }
 
 export const ContactDetailsActivityRecord = ({
-    contactDetailsRecord,
-    ...props
+  contactDetailsRecord,
+  ...props
 }: ContactDetailsActivityRecordProps): JSX.Element | null => {
-    const {
-        oldData: oldDataActivity,
-        newData: newDataActivty,
-        type,
-        targetType,
-    } = contactDetailsRecord;
+  const {
+    oldData: oldDataActivity,
+    newData: newDataActivty,
+    type,
+    targetType,
+  } = contactDetailsRecord;
 
-    const oldData = oldDataActivity || {};
-    const newData = newDataActivty || {};
+  const oldData = oldDataActivity || {};
+  const newData = newDataActivty || {};
 
-    const date = formattedDate(contactDetailsRecord.createdAt);
-    const category = entityEdited(contactDetailsRecord.targetType);
-    const edittedBy = contactDetailsRecord.authorDetails.fullName;
+  const date = formattedDate(contactDetailsRecord.createdAt);
+  const category = entityEdited(contactDetailsRecord.targetType);
+  const edittedBy = contactDetailsRecord.authorDetails.fullName;
 
-    const activityRecord = useMemo(() => {
-        switch (type) {
-            case 'create':
-                return (
-                    <CreatedContactDetailRecord
-                        targetType={targetType}
-                        oldData={oldData}
-                        newData={newData}
-                    />
-                );
-            case 'delete':
-                return (
-                    <DeletedContactDetailRecord
-                        targetType={targetType}
-                        oldData={oldData}
-                        newData={newData}
-                    />
-                );
-            case 'update':
-                return (
-                    <UpdatedEntityRecord
-                        targetType={targetType}
-                        oldData={oldData}
-                        newData={newData}
-                    />
-                );
-            case 'migrate':
-                return <MigratedEntityRecord targetType={targetType} />;
-            default:
-                return null;
-        }
-    }, [type, targetType, oldData, newData]);
+  const activityRecord = useMemo(() => {
+    switch (type) {
+      case "create":
+        return (
+          <CreatedContactDetailRecord
+            targetType={targetType}
+            oldData={oldData}
+            newData={newData}
+          />
+        );
+      case "delete":
+        return (
+          <DeletedContactDetailRecord
+            targetType={targetType}
+            oldData={oldData}
+            newData={newData}
+          />
+        );
+      case "update":
+        return (
+          <UpdatedEntityRecord
+            targetType={targetType}
+            oldData={oldData}
+            newData={newData}
+          />
+        );
+      case "migrate":
+        return <MigratedEntityRecord targetType={targetType} />;
+      default:
+        return null;
+    }
+  }, [type, targetType, oldData, newData]);
 
-    return (
-        <ActivityRecordItem
-            {...props}
-            date={date}
-            category={category}
-            editDetails={activityRecord}
-            editedBy={edittedBy}
-        />
-    );
+  return (
+    <ActivityRecordItem
+      {...props}
+      date={date}
+      category={category}
+      editDetails={activityRecord}
+      editedBy={edittedBy}
+    />
+  );
 };
 
-const CreatedContactDetailRecord = ({
-    newData,
-}: ActivityChangeRecord): JSX.Element => (
-    <div>
-        <p>
-            <b>{contactType(newData.contactType)}</b>
-        </p>
-        <p>
-            {addedLabel} <b>{newData.value}</b>
-        </p>
-    </div>
+const CreatedContactDetailRecord = ({ newData }: ActivityChangeRecord): JSX.Element => (
+  <div>
+    <p>
+      <b>{contactType(newData.contactType)}</b>
+    </p>
+    <p>
+      {addedLabel} <b>{newData.value}</b>
+    </p>
+  </div>
 );
 
 const DeletedContactDetailRecord = ({ oldData }: ActivityChangeRecord): any => {
-    return (
-        <div>
-            <p>
-                <b>{contactType(oldData.contactType)}</b>
-            </p>
-            <p>
-                {removedLabel} <b>{oldData.value}</b>
-            </p>
-        </div>
-    );
+  return (
+    <div>
+      <p>
+        <b>{contactType(oldData.contactType)}</b>
+      </p>
+      <p>
+        {removedLabel} <b>{oldData.value}</b>
+      </p>
+    </div>
+  );
 };

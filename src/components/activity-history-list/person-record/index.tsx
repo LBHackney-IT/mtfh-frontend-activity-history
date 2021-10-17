@@ -1,1 +1,1 @@
-export * from './person-record';
+export * from "./person-record";

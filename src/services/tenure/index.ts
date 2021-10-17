@@ -1,2 +1,2 @@
-export * from './tenure';
-export * from './tenure.types';
+export * from "./tenure";
+export * from "./tenure.types";

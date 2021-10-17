@@ -1,20 +1,22 @@
-import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import React from "react";
 
-import { locale } from '@services';
+import { screen, waitFor } from "@testing-library/react";
 
-import { ActivitiesTenureView } from './';
-import { routeRender } from '../../test-utils';
+import { routeRender } from "../../test-utils";
 
-test('renders the activities view', async () => {
-    const [{ container }] = routeRender(<ActivitiesTenureView />, {
-        url: '/activities/tenure/123',
-    });
-    expect(container).toMatchSnapshot();
+import { ActivitiesTenureView } from ".";
 
-    await waitFor(() =>
-        expect(screen.getAllByRole('heading')[0]).toHaveTextContent(
-            locale.activities.pageTitle
-        )
-    );
+import { locale } from "@services";
+
+test("renders the activities view", async () => {
+  const [{ container }] = routeRender(<ActivitiesTenureView />, {
+    url: "/activities/tenure/123",
+  });
+  expect(container).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.getAllByRole("heading")[0]).toHaveTextContent(
+      locale.activities.pageTitle,
+    ),
+  );
 });

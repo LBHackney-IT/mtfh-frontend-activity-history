@@ -1,1 +1,1 @@
-export * from './activities-person-view';
+export * from "./activities-person-view";
