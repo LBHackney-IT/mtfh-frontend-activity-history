@@ -1,11 +1,9 @@
 import React, { useMemo } from "react";
 
-import {
-  ContactDetailsActivityRecord,
-  PersonActivityRecord,
-  TenureActivityRecord,
-  TenurePersonActivityRecord,
-} from ".";
+import { ContactDetailsActivityRecord } from "./contact-details-record";
+import { PersonActivityRecord } from "./person-record";
+import { TenurePersonActivityRecord } from "./tenure-person-record";
+import { TenureActivityRecord } from "./tenure-record";
 
 import {
   Center,

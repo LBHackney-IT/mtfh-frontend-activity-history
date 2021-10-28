@@ -2,9 +2,10 @@ import React from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
 
 import { Button, Link } from "@mtfh/common";
+import { usePerson } from "@mtfh/common/lib/api/person/v1";
 
 import { ActivityHistoryList } from "@components";
-import { locale, usePerson } from "@services";
+import { locale } from "@services";
 
 const { pageTitle, closeButton } = locale.activities;
 

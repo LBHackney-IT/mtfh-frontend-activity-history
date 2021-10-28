@@ -78,6 +78,7 @@
     "webpack-merge": "5.7.3"
   },
   "dependencies": {
+    "@hackney/mtfh-test-utils": "^1.6.0",
     "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-common.git",
     "@types/jest": "^26.0.16",
     "@types/react": "^16.9.32",

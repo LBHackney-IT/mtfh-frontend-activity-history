@@ -1,4 +1,5 @@
-import { HouseholdMember, Person } from "..";
+import { Person } from "@mtfh/common/lib/api/person/v1";
+import { HouseholdMember } from "@mtfh/common/lib/api/tenure/v1";
 
 export type ActivityType = "create" | "update" | "delete" | "migrate";
 export type ActivityTargetType =
@@ -18,10 +19,11 @@ type Nullable<T> = { [K in keyof T]: T[K] | null };
 export type PersonActivityData = Partial<Nullable<Person>>;
 export type TenurePersonActivityData = {
   householdMembers: HouseholdMember[];
-  [key: string]: any;
 };
 
-type ActivityData = PersonActivityData | TenurePersonActivityData;
+type ActivityData = (PersonActivityData | TenurePersonActivityData) & {
+  [key: string]: any;
+};
 
 export interface Activity {
   id: string;

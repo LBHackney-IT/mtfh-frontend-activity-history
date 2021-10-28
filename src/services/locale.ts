@@ -1,8 +1,10 @@
 import { format, parseISO } from "date-fns";
 
-import { ContactType } from "./person";
+import { ActivityTargetType } from "./activities";
+import { ContactType } from "./contact-details";
 
-import { ActivityTargetType, Identification, Language, TenureType } from "@services";
+import { Identification, Language } from "@mtfh/common/lib/api/person/v1";
+import { TenureType } from "@mtfh/common/lib/api/tenure/v1";
 
 const locale = {
   activities: {

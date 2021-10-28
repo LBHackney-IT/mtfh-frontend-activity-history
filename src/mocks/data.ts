@@ -1,4 +1,4 @@
-import { Activity, Person } from "../services";
+import { Activity } from "../services";
 
 import { GetActivityHistoryByTargetIdResponse } from "services/activities/activities";
 
@@ -148,46 +148,6 @@ export const mockActivities: GetActivityHistoryByTargetIdResponse = {
   paginationDetails: {
     nextToken: "string",
   },
-};
-
-export const mockPerson: Person = {
-  id: "6f22e9ae3e8a4e0eaf46db02eb87f8e6",
-  title: "Mrs",
-  firstName: "Joan",
-  surname: "Evans",
-  middleName: "M.",
-  preferredTitle: "Mrs",
-  preferredFirstName: "",
-  preferredMiddleName: "",
-  preferredSurname: "Fisher",
-  gender: "F",
-  identifications: [
-    {
-      identificationType: "NI",
-      value: "1234A",
-      isOriginalDocumentSeen: true,
-      linkToDocument: "string",
-    },
-  ],
-  languages: [
-    {
-      language: "English",
-      isPrimary: true,
-    },
-  ],
-  // ethnicity: 'Christian',
-  // nationality: 'Canadian',
-  // placeOfBirth: 'Toronto',
-  // dateOfBirth: '04/03/1988',
-  // communicationRequirements: ['Sign Language'],
-  // personTypes: ['Housing Officer', 'Tenants'],
-  // links: [
-  //     {
-  //         href: 'https://notesapi.hackney.gov.uk/propertynotes/[propertyId]',
-  //         rel: 'notes',
-  //         endpointType: 'GET',
-  //     },
-  // ],
 };
 
 export const mockCreatedPhoneNumber: Activity = {

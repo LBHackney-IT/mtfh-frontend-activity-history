@@ -1,12 +1,8 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import {
-  ActivityRecordItem,
-  MigratedEntityRecord,
-  UpdatedEntityRecord,
-  formattedDate,
-} from "..";
 import { Activity, ActivityChangeRecord } from "../../../services/activities";
+import { ActivityRecordItem } from "../activity-record-item";
+import { MigratedEntityRecord, UpdatedEntityRecord, formattedDate } from "../utils";
 
 import { locale } from "@services";
 
@@ -31,8 +27,8 @@ export const TenureActivityRecord = ({
     authorDetails,
   } = tenureRecord;
 
-  const oldData = oldDataActivity || {};
-  const newData = newDataActivty || {};
+  const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
+  const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
 
   const date = formattedDate(createdAt);
   const category =

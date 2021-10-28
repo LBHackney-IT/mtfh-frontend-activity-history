@@ -1,9 +1,12 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import { ActivityRecordItem, MigratedEntityRecord, formattedDate } from "..";
 import { Activity, TenurePersonActivityData } from "../../../services/activities";
+import { ActivityRecordItem } from "../activity-record-item";
+import { MigratedEntityRecord, formattedDate } from "../utils";
 
-import { HouseholdMember, locale } from "@services";
+import { HouseholdMember } from "@mtfh/common/lib/api/tenure/v1";
+
+import { locale } from "@services";
 
 const {
   activities: {
@@ -67,30 +70,28 @@ export const TenurePersonActivityRecord = ({
   const edittedBy = authorDetails.fullName;
   const householdMemberChanged = getHouseholdMemberChanged(newData, oldData);
 
-  if (!householdMemberChanged) return null;
-
   const activityRecord = useMemo(() => {
-    switch (type) {
-      case "create":
-        return (
-          <PersonAddedOrRemoved
-            title={personAddedDetailsTitle}
-            householdMemberChanged={householdMemberChanged}
-          />
-        );
-      case "delete":
-        return (
-          <PersonAddedOrRemoved
-            title={personRemovedDetailsTitle}
-            householdMemberChanged={householdMemberChanged}
-          />
-        );
-      case "migrate":
-        return <MigratedEntityRecord targetType={targetType} />;
-      default:
-        return null;
-    }
-  }, [type, householdMemberChanged]);
+    if (type === "migrate") return <MigratedEntityRecord targetType={targetType} />;
+    if (!householdMemberChanged) return null;
+    if (type === "create")
+      return (
+        <PersonAddedOrRemoved
+          title={personAddedDetailsTitle}
+          householdMemberChanged={householdMemberChanged}
+        />
+      );
+    if (type === "delete")
+      return (
+        <PersonAddedOrRemoved
+          title={personRemovedDetailsTitle}
+          householdMemberChanged={householdMemberChanged}
+        />
+      );
+
+    return null;
+  }, [targetType, type, householdMemberChanged]);
+
+  if (!householdMemberChanged) return null;
 
   return (
     <ActivityRecordItem
@@ -105,7 +106,7 @@ export const TenurePersonActivityRecord = ({
 
 interface PersonAddedOrRemovedProps {
   title: string;
-  householdMemberChanged: HouseholdMember;
+  householdMemberChanged: HouseholdMember & { [key: string]: any };
 }
 
 const PersonAddedOrRemoved = ({

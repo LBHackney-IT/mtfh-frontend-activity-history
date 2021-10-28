@@ -2,9 +2,6 @@
   "extends": "@hackney/eslint-config",
   "rules": {
     "no-nested-ternary": "off",
-    "import/no-cycle": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "react-hooks/rules-of-hooks": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

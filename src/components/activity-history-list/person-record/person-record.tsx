@@ -1,12 +1,8 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import {
-  ActivityRecordItem,
-  MigratedEntityRecord,
-  UpdatedEntityRecord,
-  formattedDate,
-} from "..";
 import { Activity, ActivityChangeRecord } from "../../../services/activities";
+import { ActivityRecordItem } from "../activity-record-item";
+import { MigratedEntityRecord, UpdatedEntityRecord, formattedDate } from "../utils";
 
 import { locale } from "@services";
 
@@ -29,8 +25,8 @@ export const PersonActivityRecord = ({
     targetType,
   } = personRecord;
 
-  const oldData = oldDataActivity || {};
-  const newData = newDataActivty || {};
+  const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
+  const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
 
   const date = formattedDate(personRecord.createdAt);
   const category = entityEdited(personRecord.targetType);
@@ -86,7 +82,8 @@ const DeletedPersonRecord = ({
   oldData,
 }: ActivityChangeRecord): any => {
   const parametersOnTargetType = activities[targetType];
-
+  console.log("oldData", oldData);
+  console.log("newData", newData);
   if (targetType === "person") {
     const removedData = Object.keys(oldData).filter((paramName: string) => {
       if (oldData[paramName] === newData[paramName]) return;
