@@ -82,8 +82,7 @@ const DeletedPersonRecord = ({
   oldData,
 }: ActivityChangeRecord): any => {
   const parametersOnTargetType = activities[targetType];
-  console.log("oldData", oldData);
-  console.log("newData", newData);
+
   if (targetType === "person") {
     const removedData = Object.keys(oldData).filter((paramName: string) => {
       if (oldData[paramName] === newData[paramName]) return;
