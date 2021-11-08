@@ -10,8 +10,6 @@ Create a `.env` file in the root of the repo with the following required key-val
 
 ```env
 ACTIVITIES_API_URL=
-PERSON_API_URL=
-TENURE_API_URL=
 ```
 
 The values can be found in the development AWS account in the Parameter Store (eu-west-2).

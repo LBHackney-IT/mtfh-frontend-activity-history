@@ -4,8 +4,10 @@ import { rest } from "msw";
 import { config } from "../services";
 import { mockActivities } from "./data";
 
+import { config as commonConfig } from "@mtfh/common/lib/config";
+
 export const handlers = [
-  rest.get(`${config.personApiUrl}/persons/:id`, (request, response, context) => {
+  rest.get(`${commonConfig.personApiUrlV1}/persons/:id`, (request, response, context) => {
     return response(context.status(200), context.json(mockPersonV1));
   }),
 

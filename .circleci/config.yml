@@ -131,8 +131,6 @@ jobs:
                 command: |
                     export APP_ENV=development
                     export APP_CDN=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-app-url --query Parameter.Value --output text)
-                    export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export TENURE_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text)
                     export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
@@ -155,8 +153,6 @@ jobs:
                 command: |
                     export APP_ENV=staging
                     export APP_CDN=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-app-url --query Parameter.Value --output text)
-                    export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export TENURE_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text)
                     export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
@@ -179,8 +175,6 @@ jobs:
                 command: |
                     export APP_ENV=production
                     export APP_CDN=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-app-url --query Parameter.Value --output text)
-                    export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)
-                    export TENURE_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text)
                     export ACTIVITIES_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/activities-api-url --query Parameter.Value --output text)
                     yarn build
             - run:
