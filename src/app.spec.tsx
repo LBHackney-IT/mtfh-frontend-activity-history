@@ -1,12 +1,12 @@
-import React from 'react';
-import { waitFor, screen } from '@testing-library/react';
-import { routeRender } from './test-utils';
-import App from './app';
+import React from "react";
 
-test('it renders activities view', async () => {
-    routeRender(<App />, { url: '/activities/person/:id', path: '/' });
+import { screen } from "@testing-library/react";
 
-    await waitFor(() =>
-        expect(screen.getByTestId('person-activities')).toBeInTheDocument()
-    );
+import App from "./app";
+import { routeRender } from "./test-utils";
+
+test("it renders activities view", async () => {
+  routeRender(<App />, { url: "/activities/person/:id", path: "/" });
+
+  await screen.findByTestId("person-activities");
 });

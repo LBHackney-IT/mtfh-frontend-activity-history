@@ -1,19 +1,19 @@
-import { Switch, Route } from 'react-router-dom';
-import React from 'react';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import { ActivitiesTenureView } from './views/activities-tenure-view';
-import { ActivitiesPersonView } from './views/activities-person-view';
+import { ActivitiesPersonView } from "./views/activities-person-view";
+import { ActivitiesTenureView } from "./views/activities-tenure-view";
 
 export default function App(): JSX.Element {
-    return (
-        <Switch>
-            <Route path="/activities/person/:id" exact>
-                <ActivitiesPersonView />
-            </Route>
-            <Route path="/activities/tenure/:id" exact>
-                <ActivitiesTenureView />
-            </Route>
-            <Route path="*">// 404</Route>
-        </Switch>
-    );
+  return (
+    <Switch>
+      <Route path="/activities/person/:id" exact>
+        <ActivitiesPersonView />
+      </Route>
+      <Route path="/activities/tenure/:id" exact>
+        <ActivitiesTenureView />
+      </Route>
+      <Route path="*">404</Route>
+    </Switch>
+  );
 }

@@ -1,2 +1,2 @@
-export { useActivityHistory } from './activities';
-export * from './activities.types';
+export { useActivityHistory } from "./activities";
+export * from "./activities.types";
