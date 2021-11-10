@@ -7,7 +7,8 @@ export type ActivityTargetType =
   | "asset"
   | "tenure"
   | "contactDetails"
-  | "tenurePerson";
+  | "tenurePerson"
+  | "personEqualityInformation";
 
 interface AuthorDetails {
   id: string;

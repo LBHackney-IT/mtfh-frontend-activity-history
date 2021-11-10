@@ -27,6 +27,7 @@ const locale = {
       tenure: "Tenure",
       asset: "Asset",
       tenurePerson: "Person",
+      personEqualityInformation: "Equality information",
     },
     entityCreated: (type: ActivityTargetType): string =>
       `${locale.activities.targetType[type]} created`,

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import { ContactDetailsActivityRecord } from "./contact-details-record";
+import { PersonEqualityInformationActivityRecord } from "./person-equality-information-record";
 import { PersonActivityRecord } from "./person-record";
 import { TenurePersonActivityRecord } from "./tenure-person-record";
 import { TenureActivityRecord } from "./tenure-record";
@@ -89,6 +90,14 @@ export const ActivityHistoryList = ({
             if (targetType === "tenurePerson") {
               return (
                 <TenurePersonActivityRecord key={index} tenurePersonRecord={activity} />
+              );
+            }
+            if (targetType === "personEqualityInformation") {
+              return (
+                <PersonEqualityInformationActivityRecord
+                  key={index}
+                  personEqualityInformationRecord={activity}
+                />
               );
             }
             return null;
