@@ -14,6 +14,7 @@ import {
   mockCreatedTenure,
   mockEdittedTenureWithInValidParam,
   mockMigratedPerson,
+  mockMigratedPersonEqualityInformation,
   mockMigratedTenure,
   mockRemovedEmail,
   mockRemovedPersonFromTenure,
@@ -373,4 +374,16 @@ test("it should display a row for a removed person from tenure", async () => {
     expect(screen.getByText("01/01/01")).toBeInTheDocument();
     expect(screen.getByText("Household member")).toBeInTheDocument();
   });
+});
+
+test("it should display a row for migrated equality information", async () => {
+  get("/api/activityhistory", {
+    results: [mockMigratedPersonEqualityInformation],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" />);
+
+  await screen.findByText(/Equality information migrated/);
 });

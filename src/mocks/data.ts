@@ -506,3 +506,15 @@ export const mockRemovedPersonFromTenure: Activity = {
     email: "unai.recio@hackney.gov.uk",
   },
 };
+
+export const mockMigratedPersonEqualityInformation: Activity = {
+  id: "cd2e0e18-d675-225b-7c48-4df00fbb7971",
+  targetId: "81cbaf65-096a-fa76-cb40-6085b54b9033",
+  type: "migrate",
+  targetType: "personEqualityInformation",
+  createdAt: "2021-10-29T07:15:11",
+  timeToLiveForRecordInDays: 0,
+  oldData: null,
+  newData: null,
+  authorDetails: { id: "", fullName: "Import", email: "email@email.com" },
+};
