@@ -9,6 +9,7 @@ import {
   mockCreatedEmail,
   mockCreatedEmailWithContactTypeAsString,
   mockCreatedPerson,
+  mockCreatedPersonEqualityInformation,
   mockCreatedPhoneNumber,
   mockCreatedPhoneNumberWithContactTypeAsString,
   mockCreatedTenure,
@@ -23,6 +24,7 @@ import {
   mockUpdatedFirstName,
   mockUpdatedIdentifications,
   mockUpdatedLanguages,
+  mockUpdatedPersonEqualityInformation,
   mockUpdatedPlaceOfBirth,
   mockUpdatedTenure,
 } from "../../mocks";
@@ -30,6 +32,43 @@ import { get, routeRender } from "../../test-utils";
 import { ActivityHistoryList } from "./activity-history-list";
 
 import { locale } from "@services";
+
+beforeEach(() => {
+  const mockEqualityData = {
+    "age-bracket": [
+      { code: "eightyFiveandPlus", value: "85+" },
+      { code: "underSixteen", value: "Under 16" },
+    ],
+    answers: [
+      { code: "no", value: "No" },
+      { code: "yes", value: "Yes" },
+      { code: "preferNotToSay", value: "Prefer not to say" },
+    ],
+    "ethnic-group-a": [
+      { code: "mixedBackground", value: "Mixed background" },
+      { code: "other", value: "Other - please describe" },
+      { code: "whiteOrWhiteBritish", value: "White or White British" },
+    ],
+    gender: [
+      { code: "f", value: "Female" },
+      { code: "m", value: "Male" },
+      { code: "o", value: "Other" },
+    ],
+    "religion-belief": [
+      { code: "other", value: "Other" },
+      { code: "secularBeliefs", value: "Secular beliefs" },
+      { code: "sikh", value: "Sikh" },
+    ],
+    "sexual-orientation": [
+      { code: "bisexual", value: "Bisexual" },
+      { code: "heterosexual", value: "Heterosexual" },
+      { code: "gayMan", value: "Gay man" },
+      { code: "lesbianOrGayWoman", value: "Lesbian or Gay woman" },
+      { code: "other", value: "Other" },
+    ],
+  };
+  get("/api/v1/reference-data", mockEqualityData);
+});
 
 test("it renders no comments with no results", async () => {
   get("/api/activityhistory", {}, 404);
@@ -386,4 +425,55 @@ test("it should display a row for migrated equality information", async () => {
   routeRender(<ActivityHistoryList targetId="123" />);
 
   await screen.findByText(/Equality information migrated/);
+});
+
+test("it should display a row for created equality information", async () => {
+  get("/api/activityhistory", {
+    results: [mockCreatedPersonEqualityInformation],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" />);
+
+  await screen.findByText(/Equality information created/);
+});
+
+test("it should display a row for updated equality information", async () => {
+  get("/api/activityhistory", {
+    results: [mockUpdatedPersonEqualityInformation],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+  await screen.findByText("Age Group");
+  await screen.findByText("85+");
+  await screen.findByText("Under 16");
+
+  await screen.findByText("Gender");
+  await screen.findByText("Male (gender different to birth sex: No)");
+  await screen.findByText("Another gender (gender different to birth sex: Yes)");
+
+  await screen.findByText("Ethnicity");
+  await screen.findByText("Mixed background");
+  await screen.findByText("Another ethnic group");
+
+  await screen.findByText("Religion or Belief");
+  await screen.findByText("Secular beliefs");
+  await screen.findByText("Another belief");
+
+  await screen.findByText("Pregnancy or Maternity");
+  await screen.findByText("01/05/21");
+  await screen.findByText("[No entry]");
+
+  await screen.findByText("Sexual Orientation");
+  await screen.findByText("Heterosexual");
+  await screen.findByText("Another orientation");
+
+  await screen.findByText("Disabled");
+  await screen.findByText("Caring Responsibilities");
+
+  expect(container).toMatchSnapshot();
 });

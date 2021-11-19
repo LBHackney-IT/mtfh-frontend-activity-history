@@ -28,6 +28,7 @@ export const UpdatedEntityRecord = ({
   targetType,
   newData,
   oldData,
+  referenceData,
 }: ActivityChangeRecord): any => {
   const parametersOnTargetType = activities[targetType];
 
@@ -43,7 +44,8 @@ export const UpdatedEntityRecord = ({
         </p>
       );
     }
-    if (oldData[paramName] === newData[paramName]) return null;
+    if (JSON.stringify(oldData[paramName]) === JSON.stringify(newData[paramName]))
+      return null;
     return (
       <div key={index}>
         <p>
@@ -51,11 +53,15 @@ export const UpdatedEntityRecord = ({
         </p>
         <p>
           {previouslyLabel}{" "}
-          <b>{parametersOnTargetType[paramName].output(oldData[paramName])}</b>
+          <b>
+            {parametersOnTargetType[paramName].output(oldData[paramName], referenceData)}
+          </b>
         </p>
         <p>
           {changedToLabel}{" "}
-          <b>{parametersOnTargetType[paramName].output(newData[paramName])}</b>
+          <b>
+            {parametersOnTargetType[paramName].output(newData[paramName], referenceData)}
+          </b>
         </p>
       </div>
     );

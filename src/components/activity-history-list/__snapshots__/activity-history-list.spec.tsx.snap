@@ -250,6 +250,250 @@ exports[`it should display a row for removed phone number (contactType is number
 </div>
 `;
 
+exports[`it should display a row for updated equality information 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to equality information
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Age Group
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  85+
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Under 16
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Gender
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Male (gender different to birth sex: No)
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Another gender (gender different to birth sex: Yes)
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Ethnicity
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Mixed background
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Another ethnic group
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Religion or Belief
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Secular beliefs
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Another belief
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Pregnancy or Maternity
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  01/05/21
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  [No entry]
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Sexual Orientation
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Heterosexual
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  Another orientation
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Disabled
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Yes
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  No
+                </b>
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>
+                  Caring Responsibilities
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  Yes
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  No
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            John
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
 exports[`it should display change in Identifications 1`] = `
 <div>
   <div>
@@ -320,7 +564,7 @@ exports[`it should display change in Identifications 1`] = `
                 Previously:
                  
                 <b>
-                  Passport, GB03654488992 seen
+                  Passport, GB03654488992 not seen
                 </b>
               </p>
               <p>

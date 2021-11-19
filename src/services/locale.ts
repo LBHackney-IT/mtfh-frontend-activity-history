@@ -3,7 +3,16 @@ import { format, parseISO } from "date-fns";
 import { ActivityTargetType } from "./activities";
 import { ContactType } from "./contact-details";
 
+import {
+  CaringResponsibilities,
+  Ethnicity,
+  Gender,
+  PregnancyOrMaternity,
+  ReligionOrBelief,
+  SexualOrientation,
+} from "@mtfh/common/lib/api/equality-information/v1";
 import { Identification, Language } from "@mtfh/common/lib/api/person/v1";
+import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import { TenureType } from "@mtfh/common/lib/api/tenure/v1";
 
 const locale = {
@@ -39,6 +48,144 @@ const locale = {
     personRemovedFromTenure: "Person removed from tenure",
     personAddedDetailsTitle: "New person created with the following details:",
     personRemovedDetailsTitle: "The following person was removed:",
+    personEqualityInformation: {
+      gender: {
+        field: "Gender",
+        output: (
+          value: Gender,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          const hasAnyDetails = value.genderValue || value.genderDifferentToBirthSex;
+
+          if (!hasAnyDetails) return "[No entry]";
+
+          let label = "";
+
+          if (value.genderValue === "o") {
+            label += value.genderValueIfOther || "Other";
+          }
+
+          if (value.genderValue !== "o") {
+            label +=
+              referenceData["gender"].find((item) => item.code === value.genderValue)
+                ?.value || value.genderValue;
+          }
+
+          if (value.genderDifferentToBirthSex) {
+            label += ` (gender different to birth sex: ${
+              referenceData["answers"].find(
+                (item) => item.code === value.genderDifferentToBirthSex,
+              )?.value || value.genderDifferentToBirthSex
+            })`;
+          }
+
+          return label;
+        },
+      },
+      religionOrBelief: {
+        field: "Religion or Belief",
+        output: (
+          value: ReligionOrBelief,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value.religionOrBeliefValue) return "[No entry]";
+
+          if (value.religionOrBeliefValue === "other") {
+            return value.religionOrBeliefValueIfOther || "Other";
+          }
+
+          const label = referenceData["religion-belief"].find(
+            (item) => item.code === value.religionOrBeliefValue,
+          )?.value;
+
+          return label || value.religionOrBeliefValue;
+        },
+      },
+      ethnicity: {
+        field: "Ethnicity",
+        output: (
+          value: Ethnicity,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value.ethnicGroupValue) return "[No entry]";
+
+          if (value.ethnicGroupValue === "other") {
+            return value.ethnicGroupValueIfOther || "Other";
+          }
+
+          const label = referenceData["ethnic-group-a"].find(
+            (item) => item.code === value.ethnicGroupValue,
+          )?.value;
+
+          return label || value.ethnicGroupValue;
+        },
+      },
+      sexualOrientation: {
+        field: "Sexual Orientation",
+        output: (
+          value: SexualOrientation,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value.sexualOrientationValue) return "[No entry]";
+
+          if (value.sexualOrientationValue === "other") {
+            return value.sexualOrientationValueIfOther || "Other";
+          }
+
+          const label = referenceData["sexual-orientation"].find(
+            (item) => item.code === value.sexualOrientationValue,
+          )?.value;
+
+          return label || value.sexualOrientationValue;
+        },
+      },
+      ageGroup: {
+        field: "Age Group",
+        output: (
+          value: string,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value) return "[No entry]";
+          const label = referenceData["age-bracket"].find(
+            (item) => item.code === value,
+          )?.value;
+          return label || value;
+        },
+      },
+      pregnancyOrMaternity: {
+        field: "Pregnancy or Maternity",
+        output: (value: PregnancyOrMaternity[]): string => {
+          if (!value.length || !value[0].pregnancyDate) return "[No entry]";
+          return format(parseISO(value[0].pregnancyDate), "dd/MM/yy");
+        },
+      },
+      disabled: {
+        field: "Disabled",
+        output: (
+          value: string,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value) return "[No entry]";
+          const label = referenceData["answers"].find(
+            (item) => item.code === value,
+          )?.value;
+          return label || value;
+        },
+      },
+      caringResponsibilities: {
+        field: "Caring Responsibilities",
+        output: (
+          value: CaringResponsibilities,
+          referenceData: Record<string, ReferenceData[]>,
+        ): string => {
+          if (!value.provideUnpaidCare) return "[No entry]";
+          const label = referenceData["answers"].find(
+            (item) => item.code === value.provideUnpaidCare,
+          )?.value;
+          return label || value.provideUnpaidCare;
+        },
+      },
+    },
     tenurePerson: {
       personTenureType: {
         field: "Type",
@@ -165,6 +312,11 @@ const locale = {
         },
       },
     },
+  },
+  errors: {
+    unexpectedResponse: "There was a problem with completing the action",
+    unexpectedResponseDescription:
+      "Please try again. If the issue persists, please contact support.",
   },
 };
 
