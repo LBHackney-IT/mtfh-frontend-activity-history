@@ -48,6 +48,7 @@ const locale = {
     personRemovedFromTenure: "Person removed from tenure",
     personAddedDetailsTitle: "New person created with the following details:",
     personRemovedDetailsTitle: "The following person was removed:",
+    genderDifferentToBirthSex: "gender different to birth sex",
     personEqualityInformation: {
       gender: {
         field: "Gender",
@@ -55,9 +56,9 @@ const locale = {
           value: Gender,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          const hasAnyDetails = value.genderValue || value.genderDifferentToBirthSex;
+          const hasAnyDetails = value?.genderValue || value?.genderDifferentToBirthSex;
 
-          if (!hasAnyDetails) return "[No entry]";
+          if (!hasAnyDetails) return locale.activities.noEntryLabel;
 
           let label = "";
 
@@ -72,7 +73,7 @@ const locale = {
           }
 
           if (value.genderDifferentToBirthSex) {
-            label += ` (gender different to birth sex: ${
+            label += ` (${locale.activities.genderDifferentToBirthSex}: ${
               referenceData["answers"].find(
                 (item) => item.code === value.genderDifferentToBirthSex,
               )?.value || value.genderDifferentToBirthSex
@@ -88,7 +89,7 @@ const locale = {
           value: ReligionOrBelief,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value.religionOrBeliefValue) return "[No entry]";
+          if (!value?.religionOrBeliefValue) return locale.activities.noEntryLabel;
 
           if (value.religionOrBeliefValue === "other") {
             return value.religionOrBeliefValueIfOther || "Other";
@@ -107,7 +108,7 @@ const locale = {
           value: Ethnicity,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value.ethnicGroupValue) return "[No entry]";
+          if (!value?.ethnicGroupValue) return locale.activities.noEntryLabel;
 
           if (value.ethnicGroupValue === "other") {
             return value.ethnicGroupValueIfOther || "Other";
@@ -126,7 +127,7 @@ const locale = {
           value: SexualOrientation,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value.sexualOrientationValue) return "[No entry]";
+          if (!value?.sexualOrientationValue) return locale.activities.noEntryLabel;
 
           if (value.sexualOrientationValue === "other") {
             return value.sexualOrientationValueIfOther || "Other";
@@ -145,7 +146,7 @@ const locale = {
           value: string,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value) return "[No entry]";
+          if (!value) return locale.activities.noEntryLabel;
           const label = referenceData["age-bracket"].find(
             (item) => item.code === value,
           )?.value;
@@ -155,7 +156,8 @@ const locale = {
       pregnancyOrMaternity: {
         field: "Pregnancy or Maternity",
         output: (value: PregnancyOrMaternity[]): string => {
-          if (!value.length || !value[0].pregnancyDate) return "[No entry]";
+          if (!value?.length || !value[0].pregnancyDate)
+            return locale.activities.noEntryLabel;
           return format(parseISO(value[0].pregnancyDate), "dd/MM/yy");
         },
       },
@@ -165,7 +167,7 @@ const locale = {
           value: string,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value) return "[No entry]";
+          if (!value) return locale.activities.noEntryLabel;
           const label = referenceData["answers"].find(
             (item) => item.code === value,
           )?.value;
@@ -178,7 +180,7 @@ const locale = {
           value: CaringResponsibilities,
           referenceData: Record<string, ReferenceData[]>,
         ): string => {
-          if (!value.provideUnpaidCare) return "[No entry]";
+          if (!value?.provideUnpaidCare) return locale.activities.noEntryLabel;
           const label = referenceData["answers"].find(
             (item) => item.code === value.provideUnpaidCare,
           )?.value;
@@ -215,35 +217,35 @@ const locale = {
       },
       firstName: {
         field: "First name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       middleName: {
         field: "Middle name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       surname: {
         field: "Last name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       preferredTitle: {
         field: "Preferred title",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       preferredFirstName: {
         field: "Preferred first name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       preferredMiddleName: {
         field: "Preferred middle name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       preferredSurname: {
         field: "Preferred last name",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       placeOfBirth: {
         field: "Place of birth",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       dateOfBirth: {
         field: "Date of birth",
@@ -251,7 +253,7 @@ const locale = {
       },
       gender: {
         field: "Gender",
-        output: (value: string): string => value ?? "[No entry]",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
       },
       languages: {
         field: "Languages",
@@ -290,7 +292,7 @@ const locale = {
       tenureType: {
         field: "Tenure Type",
         output: (value: TenureType): string => {
-          return value?.description ?? "[No entry]";
+          return value?.description ?? locale.activities.noEntryLabel;
         },
       },
       isActive: {
@@ -300,14 +302,14 @@ const locale = {
       startOfTenureDate: {
         field: "Start date",
         output: (value: string): string => {
-          if (!value) return "[No entry]";
+          if (!value) return locale.activities.noEntryLabel;
           return format(parseISO(value), "dd/MM/yy");
         },
       },
       endOfTenureDate: {
         field: "End date",
         output: (value: string): string => {
-          if (!value) return "[No entry]";
+          if (!value) return locale.activities.noEntryLabel;
           return format(parseISO(value), "dd/MM/yy");
         },
       },

@@ -594,3 +594,37 @@ export const mockUpdatedPersonEqualityInformation: Activity = {
   },
   authorDetails: { id: "", fullName: "John", email: "email@email.com" },
 };
+
+export const mockEqualityData = {
+  "age-bracket": [
+    { code: "eightyFiveandPlus", value: "85+" },
+    { code: "underSixteen", value: "Under 16" },
+  ],
+  answers: [
+    { code: "no", value: "No" },
+    { code: "yes", value: "Yes" },
+    { code: "preferNotToSay", value: "Prefer not to say" },
+  ],
+  "ethnic-group-a": [
+    { code: "mixedBackground", value: "Mixed background" },
+    { code: "other", value: "Other - please describe" },
+    { code: "whiteOrWhiteBritish", value: "White or White British" },
+  ],
+  gender: [
+    { code: "f", value: "Female" },
+    { code: "m", value: "Male" },
+    { code: "o", value: "Other" },
+  ],
+  "religion-belief": [
+    { code: "other", value: "Other" },
+    { code: "secularBeliefs", value: "Secular beliefs" },
+    { code: "sikh", value: "Sikh" },
+  ],
+  "sexual-orientation": [
+    { code: "bisexual", value: "Bisexual" },
+    { code: "heterosexual", value: "Heterosexual" },
+    { code: "gayMan", value: "Gay man" },
+    { code: "lesbianOrGayWoman", value: "Lesbian or Gay woman" },
+    { code: "other", value: "Other" },
+  ],
+};
