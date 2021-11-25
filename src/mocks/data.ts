@@ -95,7 +95,7 @@ export const mockUpdatedIdentifications: Activity = {
       {
         identificationType: "Passport",
         value: "GB03654488992",
-        isOriginalDocumentSeen: true,
+        isOriginalDocumentSeen: false,
         linkToDocument: "string",
       },
     ],
@@ -517,4 +517,114 @@ export const mockMigratedPersonEqualityInformation: Activity = {
   oldData: null,
   newData: null,
   authorDetails: { id: "", fullName: "Import", email: "email@email.com" },
+};
+
+export const mockCreatedPersonEqualityInformation: Activity = {
+  id: "cd2e0e18-d675-225b-7c48-4df00fbb7971",
+  targetId: "81cbaf65-096a-fa76-cb40-6085b54b9033",
+  type: "create",
+  targetType: "personEqualityInformation",
+  createdAt: "2021-10-29T07:15:11",
+  timeToLiveForRecordInDays: 0,
+  oldData: null,
+  newData: {},
+  authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
+};
+
+export const mockUpdatedPersonEqualityInformation: Activity = {
+  id: "cd2e0e18-d675-225b-7c48-4df00fbb7971",
+  targetId: "81cbaf65-096a-fa76-cb40-6085b54b9033",
+  type: "update",
+  targetType: "personEqualityInformation",
+  createdAt: "2021-10-29T07:15:11",
+  timeToLiveForRecordInDays: 0,
+  oldData: {
+    gender: {
+      genderValueIfOther: null,
+      genderValue: "m",
+      genderDifferentToBirthSex: "no",
+    },
+    ethnicity: {
+      ethnicGroupValue: "mixedBackground",
+      ethnicGroupValueIfOther: null,
+    },
+    ageGroup: "eightyFiveandPlus",
+    caringResponsibilities: {
+      provideUnpaidCare: "yes",
+      hoursSpentProvidingUnpaidCare: null,
+    },
+    pregnancyOrMaternity: [{ pregnancyDate: "2021-05-01", pregnancyValidUntil: null }],
+    sexualOrientation: {
+      sexualOrientationValue: "heterosexual",
+      sexualOrientationValueIfOther: null,
+    },
+    religionOrBelief: {
+      religionOrBeliefValueIfOther: null,
+      religionOrBeliefValue: "secularBeliefs",
+    },
+    disabled: "yes",
+    id: "43860760-ab54-178d-f076-5a2b4d54ec11",
+  },
+  newData: {
+    gender: {
+      genderValueIfOther: "Another gender",
+      genderValue: "o",
+      genderDifferentToBirthSex: "yes",
+    },
+    ethnicity: {
+      ethnicGroupValue: "other",
+      ethnicGroupValueIfOther: "Another ethnic group",
+    },
+    ageGroup: "underSixteen",
+    caringResponsibilities: {
+      provideUnpaidCare: "no",
+      hoursSpentProvidingUnpaidCare: null,
+    },
+    pregnancyOrMaternity: [{ pregnancyDate: null, pregnancyValidUntil: null }],
+    sexualOrientation: {
+      sexualOrientationValue: "other",
+      sexualOrientationValueIfOther: "Another orientation",
+    },
+    religionOrBelief: {
+      religionOrBeliefValueIfOther: "Another belief",
+      religionOrBeliefValue: "other",
+    },
+    disabled: "no",
+    id: "43860760-ab54-178d-f076-5a2b4d54ec11",
+  },
+  authorDetails: { id: "", fullName: "John", email: "email@email.com" },
+};
+
+export const mockEqualityData = {
+  "age-bracket": [
+    { code: "eightyFiveandPlus", value: "85+" },
+    { code: "underSixteen", value: "Under 16" },
+  ],
+  answers: [
+    { code: "no", value: "No" },
+    { code: "yes", value: "Yes" },
+    { code: "preferNotToSay", value: "Prefer not to say" },
+  ],
+  "ethnic-group-a": [
+    { code: "mixedBackground", value: "Mixed background" },
+    { code: "other", value: "Other - please describe" },
+    { code: "whiteOrWhiteBritish", value: "White or White British" },
+  ],
+  gender: [
+    { code: "f", value: "Female" },
+    { code: "m", value: "Male" },
+    { code: "o", value: "Other" },
+  ],
+  "religion-belief": [
+    { code: "other", value: "Other" },
+    { code: "secularBeliefs", value: "Secular beliefs" },
+    { code: "sikh", value: "Sikh" },
+  ],
+  "sexual-orientation": [
+    { code: "bisexual", value: "Bisexual" },
+    { code: "heterosexual", value: "Heterosexual" },
+    { code: "gayMan", value: "Gay man" },
+    { code: "lesbianOrGayWoman", value: "Lesbian or Gay woman" },
+    { code: "other", value: "Other" },
+  ],
 };

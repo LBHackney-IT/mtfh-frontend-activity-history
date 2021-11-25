@@ -9,10 +9,12 @@ import {
   mockCreatedEmail,
   mockCreatedEmailWithContactTypeAsString,
   mockCreatedPerson,
+  mockCreatedPersonEqualityInformation,
   mockCreatedPhoneNumber,
   mockCreatedPhoneNumberWithContactTypeAsString,
   mockCreatedTenure,
   mockEdittedTenureWithInValidParam,
+  mockEqualityData,
   mockMigratedPerson,
   mockMigratedPersonEqualityInformation,
   mockMigratedTenure,
@@ -23,6 +25,7 @@ import {
   mockUpdatedFirstName,
   mockUpdatedIdentifications,
   mockUpdatedLanguages,
+  mockUpdatedPersonEqualityInformation,
   mockUpdatedPlaceOfBirth,
   mockUpdatedTenure,
 } from "../../mocks";
@@ -31,17 +34,21 @@ import { ActivityHistoryList } from "./activity-history-list";
 
 import { locale } from "@services";
 
+beforeEach(() => {
+  get("/api/v1/reference-data", mockEqualityData);
+});
+
 test("it renders no comments with no results", async () => {
   get("/api/activityhistory", {}, 404);
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/No activity history/);
+  await expect(screen.findByText(/No activity history/)).resolves.toBeInTheDocument();
 });
 
 test.skip("it pages the results upon clicking next and previous", async () => {
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Next/);
+  await expect(screen.findByText(/Next/)).resolves.toBeInTheDocument();
 
   get("/api/activityhistory", {
     results: [mockMigratedPerson],
@@ -51,11 +58,11 @@ test.skip("it pages the results upon clicking next and previous", async () => {
   });
   userEvent.click(screen.getByText(/Next/));
 
-  await screen.findByText(/Person migrated/);
+  await expect(screen.findByText(/Person migrated/)).resolves.toBeInTheDocument();
 
   userEvent.click(screen.getByText(/Previous/));
 
-  await screen.findByText(/First name/);
+  await expect(screen.findByText(/First name/)).resolves.toBeInTheDocument();
 });
 
 test("it renders correctly", () => {
@@ -72,7 +79,7 @@ test("it displays a Person created on the activity history list for a new person
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Person created/);
+  await expect(screen.findByText(/Person created/)).resolves.toBeInTheDocument();
 });
 
 test("it displays a Person editted on the activity history list for a new person record", async () => {
@@ -84,7 +91,7 @@ test("it displays a Person editted on the activity history list for a new person
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Edit to person/);
+  await expect(screen.findByText(/Edit to person/)).resolves.toBeInTheDocument();
 });
 
 test("it pages the results", async () => {
@@ -96,12 +103,12 @@ test("it pages the results", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/date/);
-  await screen.findByText(/category/);
-  await screen.findByText(/edit details/);
-  await screen.findByText(/edited by/);
+  await expect(screen.findByText(/date/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/category/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/edit details/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/edited by/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/Person created/);
+  await expect(screen.findByText(/Person created/)).resolves.toBeInTheDocument();
 });
 
 test("it pages the results for migrated person information", async () => {
@@ -113,7 +120,7 @@ test("it pages the results for migrated person information", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Person migrated/);
+  await expect(screen.findByText(/Person migrated/)).resolves.toBeInTheDocument();
 });
 
 test("it does not render pagination unnecessarily", async () => {
@@ -137,7 +144,7 @@ test("it should display change in Languages", async () => {
   });
   const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Languages/);
+  await expect(screen.findByText(/Languages/)).resolves.toBeInTheDocument();
   await waitFor(() => expect(container).toMatchSnapshot());
 });
 
@@ -150,7 +157,7 @@ test("it should display change in Identifications", async () => {
   });
   const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Identitifications/);
+  await expect(screen.findByText(/Identitifications/)).resolves.toBeInTheDocument();
   await waitFor(() => expect(container).toMatchSnapshot());
 });
 
@@ -164,8 +171,8 @@ test("it should display a row for created phone number (contactType is number)",
   const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
   await waitFor(() => expect(container).toMatchSnapshot());
-  await screen.findByText(/Added/);
-  await screen.findByText(/07123123123/);
+  await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/07123123123/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for created email (contactType is number)", async () => {
@@ -178,8 +185,8 @@ test("it should display a row for created email (contactType is number)", async 
   const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
 
   await waitFor(() => expect(container).toMatchSnapshot());
-  await screen.findByText(/Added/);
-  await screen.findByText(/email@address.com/);
+  await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/email@address.com/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for removed phone number (contactType is number)", async () => {
@@ -193,8 +200,8 @@ test("it should display a row for removed phone number (contactType is number)",
 
   await waitFor(() => expect(container).toMatchSnapshot());
 
-  await screen.findByText(/Removed/);
-  await screen.findByText(/07123123123/);
+  await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/07123123123/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for removed email (contactType is number)", async () => {
@@ -208,8 +215,8 @@ test("it should display a row for removed email (contactType is number)", async 
 
   await waitFor(() => expect(container).toMatchSnapshot());
 
-  await screen.findByText(/Removed/);
-  await screen.findByText(/email@address.com/);
+  await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/email@address.com/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for change in date of birth", async () => {
@@ -223,8 +230,8 @@ test("it should display a row for change in date of birth", async () => {
 
   await waitFor(() => expect(container).toMatchSnapshot());
 
-  await screen.findByText(/Date of birth/);
-  await screen.findByText("23/04/62");
+  await expect(screen.findByText(/Date of birth/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText("23/04/62")).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for change in place of birth", async () => {
@@ -236,8 +243,8 @@ test("it should display a row for change in place of birth", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Place of birth/);
-  await screen.findByText(/London/);
+  await expect(screen.findByText(/Place of birth/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/London/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for created phone number (contactType is string)", async () => {
@@ -249,11 +256,11 @@ test("it should display a row for created phone number (contactType is string)",
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Added/);
+  await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/Phone/);
+  await expect(screen.findByText(/Phone/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/07123123123/);
+  await expect(screen.findByText(/07123123123/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for created email (contactType is string)", async () => {
@@ -265,10 +272,10 @@ test("it should display a row for created email (contactType is string)", async 
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Added/);
+  await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/Email/);
-  await screen.findByText(/email@address.com/);
+  await expect(screen.findByText(/Email/)).resolves.toBeInTheDocument();
+  await expect(screen.findByText(/email@address.com/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for created address (contactType is string)", async () => {
@@ -280,10 +287,12 @@ test("it should display a row for created address (contactType is string)", asyn
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Added/);
+  await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/Address/);
-  await screen.findByText(/An address with postcode/);
+  await expect(screen.findByText(/Address/)).resolves.toBeInTheDocument();
+  await expect(
+    screen.findByText(/An address with postcode/),
+  ).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for migrated tenure", async () => {
@@ -295,7 +304,7 @@ test("it should display a row for migrated tenure", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Tenure migrated/);
+  await expect(screen.findByText(/Tenure migrated/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row with parameter name if the param is not part of the updatable entity", async () => {
@@ -307,7 +316,7 @@ test("it should display a row with parameter name if the param is not part of th
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/invalidParam/);
+  await expect(screen.findByText(/invalidParam/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for created tenure", async () => {
@@ -331,9 +340,9 @@ test("it should display a row for updated tenure status (Activity) details", asy
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Active/);
+  await expect(screen.findByText(/Active/)).resolves.toBeInTheDocument();
 
-  await screen.findByText(/Inactive/);
+  await expect(screen.findByText(/Inactive/)).resolves.toBeInTheDocument();
 });
 
 test("it should display a row for an added person to tenure", async () => {
@@ -385,5 +394,64 @@ test("it should display a row for migrated equality information", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" />);
 
-  await screen.findByText(/Equality information migrated/);
+  await expect(
+    screen.findByText(/Equality information migrated/),
+  ).resolves.toBeInTheDocument();
+});
+
+test("it should display a row for created equality information", async () => {
+  get("/api/activityhistory", {
+    results: [mockCreatedPersonEqualityInformation],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" />);
+
+  await expect(
+    screen.findByText(/Equality information created/),
+  ).resolves.toBeInTheDocument();
+});
+
+test("it should display a row for updated equality information", async () => {
+  get("/api/activityhistory", {
+    results: [mockUpdatedPersonEqualityInformation],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  const [{ container }] = routeRender(<ActivityHistoryList targetId="123" />);
+
+  await expect(screen.findByText("Age Group")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("85+")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Under 16")).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Gender")).resolves.toBeInTheDocument();
+  await expect(
+    screen.findByText("Male (gender different to birth sex: No)"),
+  ).resolves.toBeInTheDocument();
+  await expect(
+    screen.findByText("Another gender (gender different to birth sex: Yes)"),
+  ).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Ethnicity")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Mixed background")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Another ethnic group")).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Religion or Belief")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Secular beliefs")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Another belief")).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Pregnancy or Maternity")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("01/05/21")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("[No entry]")).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Sexual Orientation")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Heterosexual")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Another orientation")).resolves.toBeInTheDocument();
+
+  await expect(screen.findByText("Disabled")).resolves.toBeInTheDocument();
+  await expect(screen.findByText("Caring Responsibilities")).resolves.toBeInTheDocument();
+
+  expect(container).toMatchSnapshot();
 });

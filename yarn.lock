@@ -1049,9 +1049,9 @@
   integrity sha512-oDoYexKF8URW3WT1UzRWRPG2iN9UCC16lpANasa/rxatpasj8PU0NX+USdg9rMeilmlFXZhUlWmsE5vroMPg9w==
 
 "@hackney/mtfh-test-utils@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@hackney/mtfh-test-utils/-/mtfh-test-utils-1.6.0.tgz#b6751ac4941647039ef12a17c1a6fdcac1e7df3c"
-  integrity sha512-t+wV9+0lbQasxDJ5St8XUAdIFwaTDVyfqPMlNGhASrrhi9qrwUfCRIQ7OSwiM03pPtJJzPoFxIpEuTpWJvVL6Q==
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/@hackney/mtfh-test-utils/-/mtfh-test-utils-1.8.4.tgz#e3a9a7f3409ba0be50178d4864b33f5934e11564"
+  integrity sha512-C3hBlkFi3UtkgdpbIS+hq3cYYJyX5WMgUfC/DwFBBhwipfdPgBhJWxuFBYjJxxr+qOHNu0KawpnG9I1CLnagdg==
   dependencies:
     "@hackney/mtfh-system" "^1.0.2"
     date-fns "^2.24.0"
@@ -1321,9 +1321,9 @@
     headers-utils "^3.0.2"
     strict-event-emitter "^0.2.0"
 
-"@mtfh/common@https://github.com/LBHackney-IT/mtfh-common.git":
+"@mtfh/common@https://github.com/LBHackney-IT/mtfh-frontend-common.git":
   version "0.0.1"
-  resolved "https://github.com/LBHackney-IT/mtfh-common.git#21fe242d66ec8eff413d87470be4b10b4627a538"
+  resolved "https://github.com/LBHackney-IT/mtfh-frontend-common.git#ef3aa4597f9a246cb1a21e886a4a22432cd07b17"
   dependencies:
     "@babel/preset-react" "^7.13.13"
     "@radix-ui/react-polymorphic" "^0.0.12"

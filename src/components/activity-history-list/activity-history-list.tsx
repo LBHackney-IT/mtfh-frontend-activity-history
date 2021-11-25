@@ -6,8 +6,10 @@ import { PersonActivityRecord } from "./person-record";
 import { TenurePersonActivityRecord } from "./tenure-person-record";
 import { TenureActivityRecord } from "./tenure-record";
 
+import { useReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import {
   Center,
+  ErrorSummary,
   SimplePagination,
   SimplePaginationButton,
   Spinner,
@@ -42,11 +44,32 @@ export const ActivityHistoryList = ({
     return data[size - 1];
   }, [data, size]);
 
+  const { data: referenceData, error: errorReferenceData } = useReferenceData<
+    | "answers"
+    | "religion-belief"
+    | "age-bracket"
+    | "ethnic-group-a"
+    | "gender"
+    | "sexual-orientation"
+  >({
+    category: "equality-information",
+  });
+
+  if (errorReferenceData) {
+    return (
+      <ErrorSummary
+        id="equality-information-error"
+        title={locale.errors.unexpectedResponse}
+        description={locale.errors.unexpectedResponseDescription}
+      />
+    );
+  }
+
   if (error?.response?.status === 404) {
     return <NoActivityHistory />;
   }
 
-  if (!response) {
+  if (!response || !referenceData) {
     return (
       <Center>
         <Spinner />
@@ -95,6 +118,7 @@ export const ActivityHistoryList = ({
             if (targetType === "personEqualityInformation") {
               return (
                 <PersonEqualityInformationActivityRecord
+                  referenceData={referenceData}
                   key={index}
                   personEqualityInformationRecord={activity}
                 />
