@@ -254,7 +254,6 @@ workflows:
             - lint-and-test:
                   requires:
                       - install-dependencies
-                  context: sonarcloud
             # - security-scan:
             #       context: mtfh-security-scan
             #       requires:
