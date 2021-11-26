@@ -5,6 +5,7 @@ orbs:
     aws-cli: circleci/aws-cli@2.0.0
     aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
     snyk: snyk/snyk@1.0.2
+    sonarcloud: sonarsource/sonarcloud@1.0.2
 
 parameters:
     run_development_workflow:
@@ -116,6 +117,8 @@ jobs:
             - run:
                   name: Run unit lint-and-test
                   command: yarn test
+            - sonarcloud/scan
+
     build-deploy-development:
         executor: node-executor
         environment:
@@ -251,6 +254,7 @@ workflows:
             - lint-and-test:
                   requires:
                       - install-dependencies
+                  context: sonarcloud
             # - security-scan:
             #       context: mtfh-security-scan
             #       requires:
