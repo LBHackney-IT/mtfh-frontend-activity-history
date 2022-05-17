@@ -1,6 +1,6 @@
 import { format, parseISO } from "date-fns";
 
-import { ActivityTargetType } from "./activities";
+import { ActivityProcessName, ActivityTargetType } from "./activities";
 import { ContactType } from "./contact-details";
 
 import {
@@ -18,7 +18,9 @@ import { TenureType } from "@mtfh/common/lib/api/tenure/v1";
 const locale = {
   activities: {
     pageTitle: "Activity history",
+    tableBy: "By",
     tableDate: "date",
+    tableCaseDetails: "Case details",
     tableCategory: "category",
     tableEditDetails: "edit details",
     tableEdittedBy: "edited by",
@@ -31,12 +33,31 @@ const locale = {
     noActivityHistory: "No activity history",
     closeButton: "Close activity history",
     targetType: {
+      process: "Process",
       person: "Person",
       contactDetails: "Contact detail",
       tenure: "Tenure",
       asset: "Asset",
       tenurePerson: "Person",
       personEqualityInformation: "Equality information",
+    },
+    process: {
+      name: {
+        soletojoint: "sole to joint",
+      },
+      title: {
+        soletojoint: "Sole tenant requests a joint tenure",
+      },
+      category: {
+        started: (type: ActivityTargetType): string =>
+          `${locale.activities.targetType[type]} started`,
+      },
+      details: {
+        started: (processName: ActivityProcessName): string => {
+          console.log(processName);
+          return `New ${locale.activities.process.name[processName]} started`;
+        },
+      },
     },
     entityCreated: (type: ActivityTargetType): string =>
       `${locale.activities.targetType[type]} created`,

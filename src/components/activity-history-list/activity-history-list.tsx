@@ -1,8 +1,10 @@
 import React, { useMemo } from "react";
 
+import { ActivityHistoryHeaders } from "./activity-history-headers";
 import { ContactDetailsActivityRecord } from "./contact-details-record";
 import { PersonEqualityInformationActivityRecord } from "./person-equality-information-record";
 import { PersonActivityRecord } from "./person-record";
+import { ProcessActivityRecord } from "./process-record";
 import { TenurePersonActivityRecord } from "./tenure-person-record";
 import { TenureActivityRecord } from "./tenure-record";
 
@@ -15,27 +17,25 @@ import {
   Spinner,
   Table,
   Tbody,
-  Th,
-  Thead,
-  Tr,
 } from "@mtfh/common/lib/components";
 
-import { locale, useActivityHistory } from "@services";
+import { ActivityName, locale, useActivityHistory } from "@services";
 
 import "./activity-history-list.styles.scss";
 
-const { tableDate, tableCategory, tableEditDetails, tableEdittedBy, noActivityHistory } =
-  locale.activities;
+const { noActivityHistory } = locale.activities;
 
 function NoActivityHistory() {
   return <p className="lbh-label">{noActivityHistory}</p>;
 }
 export interface ActivityHistoryListProps {
   targetId: string;
+  activityName: ActivityName;
 }
 
 export const ActivityHistoryList = ({
   targetId,
+  activityName,
 }: ActivityHistoryListProps): JSX.Element => {
   const { data, size, setSize, error } = useActivityHistory(targetId);
 
@@ -85,14 +85,7 @@ export const ActivityHistoryList = ({
   return (
     <div>
       <Table>
-        <Thead>
-          <Tr>
-            <Th>{tableDate}</Th>
-            <Th>{tableCategory}</Th>
-            <Th>{tableEditDetails}</Th>
-            <Th>{tableEdittedBy}</Th>
-          </Tr>
-        </Thead>
+        <ActivityHistoryHeaders activityName={activityName} />
         <Tbody>
           {activityHistory.map((activity, index) => {
             const { targetType } = activity;
@@ -123,6 +116,9 @@ export const ActivityHistoryList = ({
                   personEqualityInformationRecord={activity}
                 />
               );
+            }
+            if (targetType === "process") {
+              return <ProcessActivityRecord key={index} processRecord={activity} />;
             }
             return null;
           })}

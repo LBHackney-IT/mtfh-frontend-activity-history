@@ -4,13 +4,13 @@ import { screen, waitFor } from "@testing-library/react";
 
 import { routeRender } from "../../test-utils";
 
-import { ActivitiesPersonView } from ".";
+import { ActivitiesProcessView } from ".";
 
 import { locale } from "@services";
 
 test("renders the activities view", async () => {
-  const [{ container }] = routeRender(<ActivitiesPersonView activityName="person" />, {
-    url: "/activities/person/123",
+  const [{ container }] = routeRender(<ActivitiesProcessView activityName="tenure" />, {
+    url: "/activities/process/soletojoint/123",
   });
   expect(container).toMatchSnapshot();
 
@@ -19,6 +19,4 @@ test("renders the activities view", async () => {
       locale.activities.pageTitle,
     ),
   );
-
-  //     expect(screen.queryByText(/Joan Evans/)).toBeInTheDocument()
 });
