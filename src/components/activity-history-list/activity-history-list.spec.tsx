@@ -1,9 +1,10 @@
 import React from "react";
 
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import {
+  generateMockActivity,
   mockAddedPersonToTenure,
   mockCreatedAddressWithContactTypeAsString,
   mockCreatedEmail,
@@ -21,6 +22,7 @@ import {
   mockRemovedEmail,
   mockRemovedPersonFromTenure,
   mockRemovedPhoneNumber,
+  mockStartedProcess,
   mockUpdatedDateOfBirth,
   mockUpdatedFirstName,
   mockUpdatedIdentifications,
@@ -176,9 +178,9 @@ test("it should display a row for created phone number (contactType is number)",
     <ActivityHistoryList targetId="123" activityName="person" />,
   );
 
-  await waitFor(() => expect(container).toMatchSnapshot());
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/07123123123/)).resolves.toBeInTheDocument();
+  expect(container).toMatchSnapshot();
 });
 
 test("it should display a row for created email (contactType is number)", async () => {
@@ -192,9 +194,9 @@ test("it should display a row for created email (contactType is number)", async 
     <ActivityHistoryList targetId="123" activityName="person" />,
   );
 
-  await waitFor(() => expect(container).toMatchSnapshot());
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/email@address.com/)).resolves.toBeInTheDocument();
+  expect(container).toMatchSnapshot();
 });
 
 test("it should display a row for removed phone number (contactType is number)", async () => {
@@ -208,10 +210,9 @@ test("it should display a row for removed phone number (contactType is number)",
     <ActivityHistoryList targetId="123" activityName="person" />,
   );
 
-  await waitFor(() => expect(container).toMatchSnapshot());
-
   await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/07123123123/)).resolves.toBeInTheDocument();
+  expect(container).toMatchSnapshot();
 });
 
 test("it should display a row for removed email (contactType is number)", async () => {
@@ -225,10 +226,9 @@ test("it should display a row for removed email (contactType is number)", async 
     <ActivityHistoryList targetId="123" activityName="person" />,
   );
 
-  await waitFor(() => expect(container).toMatchSnapshot());
-
   await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/email@address.com/)).resolves.toBeInTheDocument();
+  expect(container).toMatchSnapshot();
 });
 
 test("it should display a row for change in date of birth", async () => {
@@ -242,10 +242,9 @@ test("it should display a row for change in date of birth", async () => {
     <ActivityHistoryList targetId="123" activityName="person" />,
   );
 
-  await waitFor(() => expect(container).toMatchSnapshot());
-
   await expect(screen.findByText(/Date of birth/)).resolves.toBeInTheDocument();
   await expect(screen.findByText("23/04/62")).resolves.toBeInTheDocument();
+  expect(container).toMatchSnapshot();
 });
 
 test("it should display a row for change in place of birth", async () => {
@@ -469,5 +468,39 @@ test("it should display a row for updated equality information", async () => {
   await expect(screen.findByText("Disabled")).resolves.toBeInTheDocument();
   await expect(screen.findByText("Caring Responsibilities")).resolves.toBeInTheDocument();
 
+  expect(container).toMatchSnapshot();
+});
+
+test("activity target type is null", async () => {
+  get("/api/activityhistory", {
+    results: [generateMockActivity({ targetType: undefined })],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+
+  const [{ container }] = routeRender(
+    <ActivityHistoryList targetId="123" activityName="process" />,
+  );
+
+  await waitForElementToBeRemoved(screen.getByText("Loading..."));
+  expect(container).toMatchSnapshot();
+});
+
+test("it should display a row for started sole to joint process", async () => {
+  get("/api/activityhistory", {
+    results: [mockStartedProcess],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  const [{ container }] = routeRender(
+    <ActivityHistoryList targetId="123" activityName="process" />,
+  );
+
+  await waitFor(() => {
+    expect(screen.queryAllByText(/Process started/).length).toBe(1);
+    expect(screen.getByText(/New [\w*\s]* started/)).toBeInTheDocument();
+  });
   expect(container).toMatchSnapshot();
 });

@@ -9,8 +9,9 @@ import { ActivitiesProcessView } from ".";
 import { locale } from "@services";
 
 test("renders the activities view", async () => {
-  const [{ container }] = routeRender(<ActivitiesProcessView activityName="tenure" />, {
-    url: "/activities/process/soletojoint/123",
+  const processName = "soletojoint";
+  const [{ container }] = routeRender(<ActivitiesProcessView activityName="process" />, {
+    url: `/activities/process/${processName}/123`,
   });
   expect(container).toMatchSnapshot();
 

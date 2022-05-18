@@ -3,7 +3,7 @@
 exports[`renders the activities view 1`] = `
 <div>
   <div
-    data-testid="tenure-activities"
+    data-testid="process-activities"
   >
     <h1
       class="lbh-heading-h1"

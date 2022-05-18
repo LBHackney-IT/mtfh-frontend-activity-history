@@ -34,7 +34,7 @@ export const ActivitiesProcessView = ({
     useParams<{ id: string; processName: ActivityProcessName }>();
 
   return (
-    <div data-testid="tenure-activities">
+    <div data-testid="process-activities">
       <ProcessInformation id={id} processName={processName} />
       <ActivityHistoryList targetId={id} activityName={activityName} />
       <Button as={RouterLink} to={`/processes/${processName}/${id}`} variant="secondary">
