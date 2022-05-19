@@ -9,15 +9,15 @@ import { ActivitiesProcessView } from ".";
 import { locale } from "@services";
 
 test("renders the activities view", async () => {
-  const processName = "soletojoint";
   const [{ container }] = routeRender(<ActivitiesProcessView activityName="process" />, {
-    url: `/activities/process/${processName}/123`,
+    url: "/activities/process/soletojoint/123",
+    path: "/activities/process/:processName/:id",
   });
-  expect(container).toMatchSnapshot();
 
   await waitFor(() =>
     expect(screen.getAllByRole("heading")[0]).toHaveTextContent(
       locale.activities.pageTitle,
     ),
   );
+  expect(container).toMatchSnapshot();
 });

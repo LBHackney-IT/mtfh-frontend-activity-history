@@ -12,17 +12,18 @@ exports[`renders the activities view 1`] = `
     </h1>
     <h2
       class="lbh-heading-h2"
+    >
+      Sole tenant requests a joint tenure
+    </h2>
+    <h2
+      class="lbh-heading-h2"
+    >
+      Tenure payment ref
+       
+    </h2>
+    <h2
+      class="lbh-heading-h2"
     />
-    <h2
-      class="lbh-heading-h2"
-    >
-      Tenure payment ref 00123456789
-    </h2>
-    <h2
-      class="lbh-heading-h2"
-    >
-      45 Oriel Road Hackney London N16 5TT
-    </h2>
     <h2
       class="lbh-heading-h2"
     >
@@ -75,7 +76,7 @@ exports[`renders the activities view 1`] = `
     </div>
     <a
       class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
-      href="/processes/undefined/undefined"
+      href="/processes/soletojoint/123"
     >
       Close activity history
     </a>

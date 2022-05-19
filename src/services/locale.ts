@@ -335,10 +335,14 @@ const locale = {
         },
       },
     },
+    tenurePaymentRef: "Tenure payment ref",
   },
   errors: {
     unexpectedResponse: "There was a problem with completing the action",
     unexpectedResponseDescription:
+      "Please try again. If the issue persists, please contact support.",
+    unableToFetchRecord: "There was a problem retrieving the record",
+    unableToFetchRecordDescription:
       "Please try again. If the issue persists, please contact support.",
   },
 };

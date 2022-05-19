@@ -14,4 +14,11 @@ export const handlers = [
   rest.get(`${config.activitiesApiUrl}/activityhistory`, (request, response, context) => {
     return response(context.status(200), context.json(mockActivities));
   }),
+
+  rest.get(
+    `${commonConfig.processApiUrlV1}/process/:processName/:id`,
+    (request, response, context) => {
+      return response(context.status(200), context.json({}));
+    },
+  ),
 ];
