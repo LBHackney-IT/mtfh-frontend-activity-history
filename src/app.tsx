@@ -9,13 +9,13 @@ export default function App(): JSX.Element {
   return (
     <Switch>
       <Route path="/activities/person/:id" exact>
-        <ActivitiesPersonView activityName="person" />
+        <ActivitiesPersonView entityType="person" />
       </Route>
       <Route path="/activities/tenure/:id" exact>
-        <ActivitiesTenureView activityName="tenure" />
+        <ActivitiesTenureView entityType="tenure" />
       </Route>
       <Route path="/activities/process/:processName/:id" exact>
-        <ActivitiesProcessView activityName="process" />
+        <ActivitiesProcessView entityType="process" />
       </Route>
       <Route path="*">404</Route>
     </Switch>

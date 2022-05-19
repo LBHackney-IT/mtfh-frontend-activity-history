@@ -19,7 +19,7 @@ import {
   Tbody,
 } from "@mtfh/common/lib/components";
 
-import { ActivityName, locale, useActivityHistory } from "@services";
+import { EntityType, locale, useActivityHistory } from "@services";
 
 import "./activity-history-list.styles.scss";
 
@@ -30,12 +30,12 @@ function NoActivityHistory() {
 }
 export interface ActivityHistoryListProps {
   targetId: string;
-  activityName: ActivityName;
+  entityType: EntityType;
 }
 
 export const ActivityHistoryList = ({
   targetId,
-  activityName,
+  entityType,
 }: ActivityHistoryListProps): JSX.Element => {
   const { data, size, setSize, error } = useActivityHistory(targetId);
 
@@ -85,7 +85,7 @@ export const ActivityHistoryList = ({
   return (
     <div>
       <Table>
-        <ActivityHistoryHeaders activityName={activityName} />
+        <ActivityHistoryHeaders entityType={entityType} />
         <Tbody>
           {activityHistory.map((activity, index) => {
             const { targetType } = activity;

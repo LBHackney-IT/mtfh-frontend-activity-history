@@ -9,7 +9,7 @@ import { ActivitiesProcessView } from ".";
 import { locale } from "@services";
 
 test("renders the activities view", async () => {
-  const [{ container }] = routeRender(<ActivitiesProcessView activityName="process" />, {
+  const [{ container }] = routeRender(<ActivitiesProcessView entityType="process" />, {
     url: "/activities/process/soletojoint/123",
     path: "/activities/process/:processName/:id",
   });

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Th, Thead, Tr } from "@mtfh/common/lib/components";
 
-import { ActivityName, locale } from "@services";
+import { EntityType, locale } from "@services";
 
 const {
   tableBy,
@@ -14,9 +14,9 @@ const {
 } = locale.activities;
 
 export const ActivityHistoryHeaders = ({
-  activityName,
+  entityType,
 }: {
-  activityName: ActivityName;
+  entityType: EntityType;
 }): JSX.Element => {
   let headers = (
     <Tr>
@@ -26,7 +26,7 @@ export const ActivityHistoryHeaders = ({
       <Th>{tableEdittedBy}</Th>
     </Tr>
   );
-  if (activityName === "process") {
+  if (entityType === "process") {
     headers = (
       <Tr>
         <Th>{tableDate.charAt(0).toUpperCase() + tableDate.slice(1)}</Th>

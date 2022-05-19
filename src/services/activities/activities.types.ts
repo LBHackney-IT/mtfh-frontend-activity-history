@@ -13,7 +13,7 @@ export type ActivityTargetType =
   | "tenurePerson"
   | "personEqualityInformation";
 
-export type ActivityName = "person" | "tenure" | "process";
+export type EntityType = "person" | "tenure" | "process";
 export type ActivityProcessName = "soletojoint";
 
 interface AuthorDetails {

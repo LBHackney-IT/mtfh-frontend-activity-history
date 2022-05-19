@@ -42,13 +42,13 @@ beforeEach(() => {
 
 test("it renders no comments with no results", async () => {
   get("/api/activityhistory", {}, 404);
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/No activity history/)).resolves.toBeInTheDocument();
 });
 
 test.skip("it pages the results upon clicking next and previous", async () => {
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Next/)).resolves.toBeInTheDocument();
 
@@ -68,7 +68,7 @@ test.skip("it pages the results upon clicking next and previous", async () => {
 });
 
 test("it renders correctly", () => {
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
   expect(screen.getByText(/Loading/)).toBeInTheDocument();
 });
 
@@ -79,7 +79,7 @@ test("it displays a Person created on the activity history list for a new person
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Person created/)).resolves.toBeInTheDocument();
 });
@@ -91,7 +91,7 @@ test("it displays a Person editted on the activity history list for a new person
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Edit to person/)).resolves.toBeInTheDocument();
 });
@@ -103,7 +103,7 @@ test("it pages the results", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/date/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/category/)).resolves.toBeInTheDocument();
@@ -120,7 +120,7 @@ test("it pages the results for migrated person information", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Person migrated/)).resolves.toBeInTheDocument();
 });
@@ -132,7 +132,7 @@ test("it does not render pagination unnecessarily", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await waitFor(() => expect(screen.queryByText(/Next/)).toBe(null));
 });
@@ -145,7 +145,7 @@ test("it should display change in Languages", async () => {
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Languages/)).resolves.toBeInTheDocument();
@@ -160,7 +160,7 @@ test("it should display change in Identifications", async () => {
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Identitifications/)).resolves.toBeInTheDocument();
@@ -175,7 +175,7 @@ test("it should display a row for created phone number (contactType is number)",
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
@@ -191,7 +191,7 @@ test("it should display a row for created email (contactType is number)", async 
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
@@ -207,7 +207,7 @@ test("it should display a row for removed phone number (contactType is number)",
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
@@ -223,7 +223,7 @@ test("it should display a row for removed email (contactType is number)", async 
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Removed/)).resolves.toBeInTheDocument();
@@ -239,7 +239,7 @@ test("it should display a row for change in date of birth", async () => {
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText(/Date of birth/)).resolves.toBeInTheDocument();
@@ -254,7 +254,7 @@ test("it should display a row for change in place of birth", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Place of birth/)).resolves.toBeInTheDocument();
   await expect(screen.findByText(/London/)).resolves.toBeInTheDocument();
@@ -267,7 +267,7 @@ test("it should display a row for created phone number (contactType is string)",
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
@@ -283,7 +283,7 @@ test("it should display a row for created email (contactType is string)", async 
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
@@ -298,7 +298,7 @@ test("it should display a row for created address (contactType is string)", asyn
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Added/)).resolves.toBeInTheDocument();
 
@@ -315,7 +315,7 @@ test("it should display a row for migrated tenure", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await expect(screen.findByText(/Tenure migrated/)).resolves.toBeInTheDocument();
 });
@@ -327,7 +327,7 @@ test("it should display a row with parameter name if the param is not part of th
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await expect(screen.findByText(/invalidParam/)).resolves.toBeInTheDocument();
 });
@@ -339,7 +339,7 @@ test("it should display a row for created tenure", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await waitFor(() => expect(screen.queryAllByText(/Tenure created/).length).toBe(2));
 });
@@ -351,7 +351,7 @@ test("it should display a row for updated tenure status (Activity) details", asy
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await expect(screen.findByText(/Active/)).resolves.toBeInTheDocument();
 
@@ -365,7 +365,7 @@ test("it should display a row for an added person to tenure", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await waitFor(() => {
     expect(screen.getByText(locale.activities.personAddedToTenure)).toBeInTheDocument();
@@ -384,7 +384,7 @@ test("it should display a row for a removed person from tenure", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="tenure" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="tenure" />);
 
   await waitFor(() => {
     expect(
@@ -405,7 +405,7 @@ test("it should display a row for migrated equality information", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(
     screen.findByText(/Equality information migrated/),
@@ -419,7 +419,7 @@ test("it should display a row for created equality information", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" activityName="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(
     screen.findByText(/Equality information created/),
@@ -434,7 +434,7 @@ test("it should display a row for updated equality information", async () => {
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="person" />,
+    <ActivityHistoryList targetId="123" entityType="person" />,
   );
 
   await expect(screen.findByText("Age Group")).resolves.toBeInTheDocument();
@@ -480,7 +480,7 @@ test("activity target type is null", async () => {
   });
 
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="process" />,
+    <ActivityHistoryList targetId="123" entityType="process" />,
   );
 
   await waitForElementToBeRemoved(screen.getByText("Loading..."));
@@ -495,7 +495,7 @@ test("it should display a row for started sole to joint process", async () => {
     },
   });
   const [{ container }] = routeRender(
-    <ActivityHistoryList targetId="123" activityName="process" />,
+    <ActivityHistoryList targetId="123" entityType="process" />,
   );
 
   await waitFor(() => {

@@ -6,7 +6,7 @@ import { useProcess } from "@mtfh/common/lib/api/process/v1";
 import { useTenure } from "@mtfh/common/lib/api/tenure/v1";
 
 import { ActivityHistoryList } from "@components";
-import { ActivityName, ActivityProcessName, locale } from "@services";
+import { ActivityProcessName, EntityType, locale } from "@services";
 
 const { process, pageTitle, closeButton } = locale.activities;
 
@@ -31,9 +31,9 @@ const ProcessInformation = ({ targetId, processName }: EntityRequestId) => {
 };
 
 export const ActivitiesProcessView = ({
-  activityName,
+  entityType,
 }: {
-  activityName: ActivityName;
+  entityType: EntityType;
 }): JSX.Element => {
   const { id, processName } = useParams<{
     id: string;
@@ -58,7 +58,7 @@ export const ActivitiesProcessView = ({
   return (
     <div data-testid="process-activities">
       <ProcessInformation targetId={process.targetId} processName={processName} />
-      <ActivityHistoryList targetId={id} activityName={activityName} />
+      <ActivityHistoryList targetId={id} entityType={entityType} />
       <Button as={RouterLink} to={`/processes/${processName}/${id}`} variant="secondary">
         {closeButton}
       </Button>
