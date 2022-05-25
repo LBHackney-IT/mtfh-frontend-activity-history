@@ -41,24 +41,6 @@ const locale = {
       tenurePerson: "Person",
       personEqualityInformation: "Equality information",
     },
-    process: {
-      name: {
-        soletojoint: "sole to joint",
-      },
-      title: {
-        soletojoint: "Sole tenant requests a joint tenure",
-      },
-      category: {
-        started: (type: ActivityTargetType): string =>
-          `${locale.activities.targetType[type]} started`,
-      },
-      details: {
-        started: (processName: ActivityProcessName): string => {
-          console.log(processName);
-          return `New ${locale.activities.process.name[processName]} started`;
-        },
-      },
-    },
     entityCreated: (type: ActivityTargetType): string =>
       `${locale.activities.targetType[type]} created`,
     entityMigrated: (type: ActivityTargetType): string =>
@@ -337,6 +319,202 @@ const locale = {
     },
     tenurePaymentRef: "Tenure payment ref",
   },
+  process: {
+    name: {
+      soletojoint: "sole to joint",
+    },
+    title: {
+      soletojoint: "Sole tenant requests a joint tenure",
+    },
+    category: {
+      started: (type: ActivityTargetType): string =>
+        `${locale.activities.targetType[type]} started`,
+      automaticEligibilityChecks: "Automated eligibility checks",
+      manualEligibilityChecks: "Manual eligibility checks",
+      breachOfTenancyChecks: "Breach of Tenancy checks",
+      supportingDocuments: "Supporting Documents",
+      tenureInvestigation: "Tenure Investigation",
+      housingOfficerReview: "Housing Officer Review",
+      applicationOutcome: "Application outcome",
+      signingOfNewTenancy: "Signing of new Tenancy",
+      processCompleted: "Process completed",
+      processCancelled: "Process cancelled",
+      caseReassigned: "Case Reassigned",
+      commentAdded: "Comment Added",
+    },
+    details: {
+      started: (processName: ActivityProcessName): string => {
+        return `New ${locale.process.name[processName]} started`;
+      },
+      automaticEligibilityChecks: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Automatic Eligibility Checks passed`;
+        }
+        return `${processName}: closed: Automatic Eligibility Checks failed`;
+      },
+      manualEligibilityChecks: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Manual Eligibility Checks passed`;
+        }
+        return `${processName}: closed: Manual Eligibility Checks failed`;
+      },
+      breachOfTenancyChecks: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Breach of Tenancy Checks passed`;
+        }
+        return `${processName}: closed: Breach of Tenancy Checks failed`;
+      },
+      supportingDocuments: (processName: string, state: string): string => {
+        if (state === "DocumentsRequestedDES") {
+          return `${processName}: Supporting Documents requested through the Document Evidence Store`;
+        }
+        if (state === "DocumentsRequestedAppointment") {
+          return `${processName}: Supporting Documents requested via an office appointment on [Date and time]`;
+        }
+        if (state === "") {
+          return `${processName}: Supporting Documents office appointment changed to [New date and time]`;
+        }
+        if (state === "DocumentsAppointmentRescheduled") {
+          return `${processName}: Supporting Documents office appointment missed and rescheduled to [New date and time]`;
+        }
+        if (state === "") {
+          return `${processName}: Supporting Documents Approved on the Document Evidence Store [Link to DES]`;
+        }
+        if (state === "") {
+          return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store [Link to DES]`;
+        }
+        return `${processName}: closed: Supporting Document Checks failed`;
+      },
+      tenureInvestigation: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Submitted for Tenure Investigation`;
+        }
+        return `${processName}: Tenure Investigation Completed`;
+      },
+      housingOfficerReview: (processName: string, state: string): string => {
+        if (state === "InterviewScheduled") {
+          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
+        }
+        if (state === "InterviewRescheduled") {
+          return `${processName}: Follow-up interview date changed to [New date and time]`;
+        }
+        if (state === "") {
+          return `${processName}: closed: Follow-up interview missed.`;
+        }
+        if (state === "") {
+          return `${processName}: Follow-up Interview missed and rescheduled to [New date and time]`;
+        }
+        if (state === "") {
+          return `${processName}: closed: Rescheduled follow-up interview missed.`;
+        }
+
+        if (state === "TenureAppointmentScheduled") {
+          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
+        }
+        if (state === "HOApprovalPassed") {
+          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
+        }
+        return `${processName}: Follow-up interview date changed to [New date and time]`;
+      },
+      applicationOutcome: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Application approved Comment (if applicable)`;
+        }
+        return `${processName}: closed: Application declined Comment (if applicable)`;
+      },
+      signingOfNewTenancy: (processName: string, state: string): string => {
+        if (state.endsWith("Passed")) {
+          return `${processName}: Tenancy signing appointment scheduled for [Date and time]`;
+        }
+        return `${processName}: Tenancy signing appointment changed to [new date and time]`;
+        return `${processName}: Tenancy signing appointment missed and rescheduled to [new date and time]`;
+        return `${processName}: closed: Tenancy signing appointment missed more than once.`;
+      },
+      processCompleted: (processName: string): string => {
+        return `${processName}: completed: New tenure created`;
+      },
+      processCancelled: (processName: string): string => {
+        return `${processName}: closed: Comment`;
+      },
+      caseReassigned: (processName: string): string => {
+        return `${processName}: Case reassigned from [officer] to [officer]`;
+      },
+    },
+    mapDetails: (
+      processName: ActivityProcessName,
+      targetType: ActivityTargetType,
+      type: string,
+      state: string,
+    ): { category: string; details: string } => {
+      const mappedProcessName = locale.capitalize(locale.process.name[processName]);
+      let category = type;
+      let details = state;
+      if (type === "create") {
+        category = locale.process.category.started(targetType);
+        details = locale.process.details.started(processName);
+      }
+      if (["AutomatedChecksPassed", "AutomatedChecksFailed"].includes(state)) {
+        category = locale.process.category.automaticEligibilityChecks;
+        details = locale.process.details.automaticEligibilityChecks(
+          mappedProcessName,
+          state,
+        );
+      }
+      if (["ManualChecksPassed", "ManualChecksFailed"].includes(state)) {
+        category = locale.process.category.manualEligibilityChecks;
+        details = locale.process.details.manualEligibilityChecks(
+          mappedProcessName,
+          state,
+        );
+      }
+      if (["BreachChecksPassed", "BreachChecksFailed"].includes(state)) {
+        category = locale.process.category.breachOfTenancyChecks;
+        details = locale.process.details.breachOfTenancyChecks(mappedProcessName, state);
+      }
+      if (
+        [
+          "DocumentsRequestedDES",
+          "DocumentsRequestedAppointment",
+          "DocumentsAppointmentRescheduled",
+        ].includes(state)
+      ) {
+        category = locale.process.category.manualEligibilityChecks;
+        details = locale.process.details.manualEligibilityChecks(
+          mappedProcessName,
+          state,
+        );
+      }
+      if (
+        [
+          "TenureInvestigationFailed",
+          "TenureInvestigationPassed",
+          "TenureInvestigationPassedWithInt",
+        ].includes(state)
+      ) {
+        category = locale.process.category.tenureInvestigation;
+        details = locale.process.details.tenureInvestigation(mappedProcessName, state);
+      }
+      if (["InterviewScheduled", "InterviewRescheduled"].includes(state)) {
+        category = locale.process.category.housingOfficerReview;
+        details = locale.process.details.housingOfficerReview(mappedProcessName, state);
+      }
+      if (["HOApprovalPassed", "HOApprovalFailed"].includes(state)) {
+        category = locale.process.category.applicationOutcome;
+        details = locale.process.details.applicationOutcome(mappedProcessName, state);
+      }
+      if (
+        ["TenureAppointmentScheduled", "TenureAppointmentRescheduled"].includes(state)
+      ) {
+        category = locale.process.category.signingOfNewTenancy;
+        details = locale.process.details.signingOfNewTenancy(mappedProcessName, state);
+      }
+      if (["ProcessCancelled", "ProcessClosed"].includes(state)) {
+        category = locale.process.category.processCancelled;
+        details = locale.process.details.processCancelled(mappedProcessName);
+      }
+      return { category, details };
+    },
+  },
   errors: {
     unexpectedResponse: "There was a problem with completing the action",
     unexpectedResponseDescription:
@@ -344,6 +522,9 @@ const locale = {
     unableToFetchRecord: "There was a problem retrieving the record",
     unableToFetchRecordDescription:
       "Please try again. If the issue persists, please contact support.",
+  },
+  capitalize: (text: string): string => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
   },
 };
 

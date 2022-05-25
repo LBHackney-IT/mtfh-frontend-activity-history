@@ -564,7 +564,7 @@ exports[`it should display a row for started sole to joint process 1`] = `
           >
             <p>
               <b>
-                New undefined started
+                New sole to joint started
               </b>
             </p>
           </td>

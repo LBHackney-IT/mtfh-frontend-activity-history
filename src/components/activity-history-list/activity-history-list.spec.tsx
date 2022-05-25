@@ -496,6 +496,10 @@ test("it should display a row for started sole to joint process", async () => {
   });
   const [{ container }] = routeRender(
     <ActivityHistoryList targetId="123" entityType="process" />,
+    {
+      url: "/activities/process/soletojoint/123",
+      path: "/activities/process/:processName/:id",
+    },
   );
 
   await waitFor(() => {

@@ -8,7 +8,7 @@ import { useTenure } from "@mtfh/common/lib/api/tenure/v1";
 import { ActivityHistoryList } from "@components";
 import { ActivityProcessName, EntityType, locale } from "@services";
 
-const { process, pageTitle, closeButton } = locale.activities;
+const { pageTitle, closeButton } = locale.activities;
 
 export interface EntityRequestId {
   targetId: string;
@@ -20,7 +20,7 @@ const ProcessInformation = ({ targetId, processName }: EntityRequestId) => {
   return (
     <>
       <h1 className="lbh-heading-h1">{pageTitle}</h1>
-      <h2 className="lbh-heading-h2">{process.title[processName]}</h2>
+      <h2 className="lbh-heading-h2">{locale.process.title[processName]}</h2>
       <h2 className="lbh-heading-h2">
         {locale.activities.tenurePaymentRef} {tenure?.paymentReference}
       </h2>
