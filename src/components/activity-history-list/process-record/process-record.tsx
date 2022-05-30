@@ -19,7 +19,7 @@ export const ProcessActivityRecord = ({
 }: ProcessActivityRecordProps): JSX.Element | null => {
   const { processName } = useParams<{ processName: ActivityProcessName }>();
   const {
-    // oldData: oldDataActivity,
+    oldData: oldDataActivity,
     newData: newDataActivty,
     type,
     targetType,
@@ -27,7 +27,7 @@ export const ProcessActivityRecord = ({
     authorDetails,
   } = processRecord;
 
-  // const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
+  const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
   const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
 
   const date = formattedDate(createdAt);
@@ -35,7 +35,8 @@ export const ProcessActivityRecord = ({
     processName,
     targetType,
     type,
-    newData.state,
+    newData,
+    oldData,
   );
   const editedBy = authorDetails.fullName;
 

@@ -29,7 +29,7 @@ export type TenurePersonActivityData = {
   householdMembers: HouseholdMember[];
 };
 
-type ActivityData = (
+export type ActivityData = (
   | PersonEqualityDataActivityData
   | PersonActivityData
   | TenurePersonActivityData

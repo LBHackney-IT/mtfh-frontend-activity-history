@@ -1,6 +1,6 @@
 import { format, parseISO } from "date-fns";
 
-import { ActivityProcessName, ActivityTargetType } from "./activities";
+import { ActivityData, ActivityProcessName, ActivityTargetType } from "./activities";
 import { ContactType } from "./contact-details";
 
 import {
@@ -347,88 +347,108 @@ const locale = {
         return `New ${locale.process.name[processName]} started`;
       },
       automaticEligibilityChecks: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
+        if (state === "AutomatedChecksPassed") {
           return `${processName}: Automatic Eligibility Checks passed`;
         }
         return `${processName}: closed: Automatic Eligibility Checks failed`;
       },
       manualEligibilityChecks: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
+        if (state === "ManualChecksPassed") {
           return `${processName}: Manual Eligibility Checks passed`;
         }
         return `${processName}: closed: Manual Eligibility Checks failed`;
       },
       breachOfTenancyChecks: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
+        if (state === "BreachChecksPassed") {
           return `${processName}: Breach of Tenancy Checks passed`;
         }
         return `${processName}: closed: Breach of Tenancy Checks failed`;
       },
-      supportingDocuments: (processName: string, state: string): string => {
-        if (state === "DocumentsRequestedDES") {
+      supportingDocuments: (
+        processName: string,
+        newData: ActivityData,
+        oldData: ActivityData,
+      ): string => {
+        if (newData.state === "DocumentsRequestedDes") {
           return `${processName}: Supporting Documents requested through the Document Evidence Store`;
         }
-        if (state === "DocumentsRequestedAppointment") {
-          return `${processName}: Supporting Documents requested via an office appointment on [Date and time]`;
+        if (newData.state === "DocumentsRequestedAppointment") {
+          const { date, time } = formatDate(newData.stateData.appointmentDateTime);
+          if (oldData.state === "DocumentsRequestedAppointment") {
+            return `${processName}: Supporting Documents office appointment changed to ${date} at ${time}`;
+          }
+          return `${processName}: Supporting Documents requested via an office appointment on ${date} at ${time}`;
         }
-        if (state === "") {
-          return `${processName}: Supporting Documents office appointment changed to [New date and time]`;
+        if (newData.state === "DocumentsAppointmentRescheduled") {
+          const { date, time } = formatDate(newData.stateData.appointmentDateTime);
+          return `${processName}: Supporting Documents office appointment missed and rescheduled to ${date} at ${time}`;
         }
-        if (state === "DocumentsAppointmentRescheduled") {
-          return `${processName}: Supporting Documents office appointment missed and rescheduled to [New date and time]`;
-        }
-        if (state === "") {
+        if (newData.state === "") {
+          // TODO
           return `${processName}: Supporting Documents Approved on the Document Evidence Store [Link to DES]`;
         }
-        if (state === "") {
+        if (newData.state === "") {
+          // TODO
           return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store [Link to DES]`;
         }
+        // TODO
         return `${processName}: closed: Supporting Document Checks failed`;
       },
       tenureInvestigation: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
-          return `${processName}: Submitted for Tenure Investigation`;
+        if (state === "TenureInvestigationPassed") {
+          return `${processName}: Tenure Investigation Completed`;
         }
-        return `${processName}: Tenure Investigation Completed`;
+        return `${processName}: Submitted for Tenure Investigation`;
       },
-      housingOfficerReview: (processName: string, state: string): string => {
-        if (state === "InterviewScheduled") {
-          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
+      housingOfficerReview: (
+        processName: string,
+        newData: ActivityData,
+        oldData: ActivityData,
+      ): string => {
+        if (newData.state === "InterviewScheduled") {
+          const { date, time } = formatDate(newData.stateData.appointmentDateTime);
+          return `${processName}: Follow-up Interview date scheduled for ${date} at ${time}`;
         }
-        if (state === "InterviewRescheduled") {
-          return `${processName}: Follow-up interview date changed to [New date and time]`;
+        if (newData.state === "InterviewRescheduled") {
+          const { date, time } = formatDate(newData.stateData.appointmentDateTime);
+          if (oldData.state === "InterviewRescheduled") {
+            return `${processName}: Follow-up interview date changed to ${date} at ${time}`;
+          }
+          if (oldData.state === "InterviewScheduled") {
+            return `${processName}: Follow-up Interview missed and rescheduled to ${date} at ${time}`;
+          }
         }
-        if (state === "") {
+        if (newData.state === "") {
           return `${processName}: closed: Follow-up interview missed.`;
         }
-        if (state === "") {
-          return `${processName}: Follow-up Interview missed and rescheduled to [New date and time]`;
-        }
-        if (state === "") {
-          return `${processName}: closed: Rescheduled follow-up interview missed.`;
-        }
-
-        if (state === "TenureAppointmentScheduled") {
-          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
-        }
-        if (state === "HOApprovalPassed") {
-          return `${processName}: Follow-up Interview date scheduled for [Date and time]`;
-        }
-        return `${processName}: Follow-up interview date changed to [New date and time]`;
+        return `${processName}: closed: Rescheduled follow-up interview missed.`;
       },
       applicationOutcome: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
+        if (state === "HOApprovalPassed") {
           return `${processName}: Application approved Comment (if applicable)`;
         }
         return `${processName}: closed: Application declined Comment (if applicable)`;
       },
-      signingOfNewTenancy: (processName: string, state: string): string => {
-        if (state.endsWith("Passed")) {
-          return `${processName}: Tenancy signing appointment scheduled for [Date and time]`;
+      signingOfNewTenancy: (
+        processName: string,
+        newData: ActivityData,
+        oldData: ActivityData,
+      ): string => {
+        const { date, time } = formatDate(newData.stateData.appointmentDateTime);
+        if (
+          newData.state === "TenureAppointmentScheduled" &&
+          oldData.state !== "TenureAppointmentRescheduled"
+        ) {
+          if (oldData.state === "TenureAppointmentScheduled") {
+            return `${processName}: Tenancy signing appointment changed to ${date} at ${time}`;
+          }
+          return `${processName}: Tenancy signing appointment scheduled for ${date} at ${time}`;
         }
-        return `${processName}: Tenancy signing appointment changed to [new date and time]`;
-        return `${processName}: Tenancy signing appointment missed and rescheduled to [new date and time]`;
-        return `${processName}: closed: Tenancy signing appointment missed more than once.`;
+
+        if (oldData.state === "TenureAppointmentRescheduled") {
+          return `${processName}: closed: Tenancy signing appointment missed more than once.`;
+        }
+        return `${processName}: Tenancy signing appointment missed and rescheduled to ${date} at ${time}`;
       },
       processCompleted: (processName: string): string => {
         return `${processName}: completed: New tenure created`;
@@ -444,71 +464,86 @@ const locale = {
       processName: ActivityProcessName,
       targetType: ActivityTargetType,
       type: string,
-      state: string,
+      newData: ActivityData,
+      oldData: ActivityData,
     ): { category: string; details: string } => {
       const mappedProcessName = locale.capitalize(locale.process.name[processName]);
       let category = type;
-      let details = state;
+      let details = newData.state;
       if (type === "create") {
         category = locale.process.category.started(targetType);
         details = locale.process.details.started(processName);
       }
-      if (["AutomatedChecksPassed", "AutomatedChecksFailed"].includes(state)) {
+      if (["AutomatedChecksPassed", "AutomatedChecksFailed"].includes(newData.state)) {
         category = locale.process.category.automaticEligibilityChecks;
         details = locale.process.details.automaticEligibilityChecks(
           mappedProcessName,
-          state,
+          newData.state,
         );
       }
-      if (["ManualChecksPassed", "ManualChecksFailed"].includes(state)) {
+      if (["ManualChecksPassed", "ManualChecksFailed"].includes(newData.state)) {
         category = locale.process.category.manualEligibilityChecks;
         details = locale.process.details.manualEligibilityChecks(
           mappedProcessName,
-          state,
+          newData.state,
         );
       }
-      if (["BreachChecksPassed", "BreachChecksFailed"].includes(state)) {
+      if (["BreachChecksPassed", "BreachChecksFailed"].includes(newData.state)) {
         category = locale.process.category.breachOfTenancyChecks;
-        details = locale.process.details.breachOfTenancyChecks(mappedProcessName, state);
+        details = locale.process.details.breachOfTenancyChecks(
+          mappedProcessName,
+          newData.state,
+        );
       }
       if (
         [
-          "DocumentsRequestedDES",
+          "DocumentsRequestedDes",
           "DocumentsRequestedAppointment",
           "DocumentsAppointmentRescheduled",
-        ].includes(state)
+        ].includes(newData.state)
       ) {
-        category = locale.process.category.manualEligibilityChecks;
-        details = locale.process.details.manualEligibilityChecks(
+        category = locale.process.category.supportingDocuments;
+        details = locale.process.details.supportingDocuments(
           mappedProcessName,
-          state,
+          newData,
+          oldData,
+        );
+      }
+      if (["TenureInvestigationPassed", "ApplicationSubmitted"].includes(newData.state)) {
+        category = locale.process.category.tenureInvestigation;
+        details = locale.process.details.tenureInvestigation(
+          mappedProcessName,
+          newData.state,
+        );
+      }
+      if (["InterviewScheduled", "InterviewRescheduled"].includes(newData.state)) {
+        category = locale.process.category.housingOfficerReview;
+        details = locale.process.details.housingOfficerReview(
+          mappedProcessName,
+          newData,
+          oldData,
+        );
+      }
+      if (["HOApprovalPassed", "HOApprovalFailed"].includes(newData.state)) {
+        category = locale.process.category.applicationOutcome;
+        details = locale.process.details.applicationOutcome(
+          mappedProcessName,
+          newData.state,
         );
       }
       if (
-        [
-          "TenureInvestigationFailed",
-          "TenureInvestigationPassed",
-          "TenureInvestigationPassedWithInt",
-        ].includes(state)
-      ) {
-        category = locale.process.category.tenureInvestigation;
-        details = locale.process.details.tenureInvestigation(mappedProcessName, state);
-      }
-      if (["InterviewScheduled", "InterviewRescheduled"].includes(state)) {
-        category = locale.process.category.housingOfficerReview;
-        details = locale.process.details.housingOfficerReview(mappedProcessName, state);
-      }
-      if (["HOApprovalPassed", "HOApprovalFailed"].includes(state)) {
-        category = locale.process.category.applicationOutcome;
-        details = locale.process.details.applicationOutcome(mappedProcessName, state);
-      }
-      if (
-        ["TenureAppointmentScheduled", "TenureAppointmentRescheduled"].includes(state)
+        ["TenureAppointmentScheduled", "TenureAppointmentRescheduled"].includes(
+          newData.state,
+        )
       ) {
         category = locale.process.category.signingOfNewTenancy;
-        details = locale.process.details.signingOfNewTenancy(mappedProcessName, state);
+        details = locale.process.details.signingOfNewTenancy(
+          mappedProcessName,
+          newData,
+          oldData,
+        );
       }
-      if (["ProcessCancelled", "ProcessClosed"].includes(state)) {
+      if (["ProcessCancelled", "ProcessClosed"].includes(newData.state)) {
         category = locale.process.category.processCancelled;
         details = locale.process.details.processCancelled(mappedProcessName);
       }
@@ -526,6 +561,13 @@ const locale = {
   capitalize: (text: string): string => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   },
+};
+
+const formatDate = (dateString: string): { date: string; time: string } => {
+  const date = new Date(dateString);
+  const dateFormatted = format(date, "dd/MM/yyyy");
+  const timeFormatted = format(date, "hh:mm");
+  return { date: dateFormatted, time: timeFormatted };
 };
 
 export default locale;

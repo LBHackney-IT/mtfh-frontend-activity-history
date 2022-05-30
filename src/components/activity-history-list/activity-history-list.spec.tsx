@@ -508,3 +508,187 @@ test("it should display a row for started sole to joint process", async () => {
   });
   expect(container).toMatchSnapshot();
 });
+
+test("it should display a row for manual checks sole to joint process", async () => {
+  get("/api/activityhistory", {
+    results: [
+      [
+        { state: "SelectTenants", stateData: {} },
+        { state: "AutomatedChecksPassed", stateData: {} },
+      ],
+      [
+        { state: "SelectTenants", stateData: {} },
+        { state: "AutomatedChecksFailed", stateData: {} },
+      ],
+      [
+        { state: "AutomatedChecksPassed", stateData: {} },
+        { state: "ManualChecksPassed", stateData: {} },
+      ],
+      [
+        { state: "AutomatedChecksPassed", stateData: {} },
+        { state: "ManualChecksFailed", stateData: {} },
+      ],
+      [
+        { state: "ManualChecksPassed", stateData: {} },
+        { state: "BreachChecksPassed", stateData: {} },
+      ],
+      [
+        { state: "ManualChecksPassed", stateData: {} },
+        { state: "BreachChecksFailed", stateData: {} },
+      ],
+      [
+        { state: "BreachChecksPassed", stateData: {} },
+        { state: "DocumentsRequestedDes", stateData: {} },
+      ],
+      [
+        { state: "DocumentsRequestedDes", stateData: {} },
+        {
+          state: "DocumentsRequestedAppointment",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "DocumentsRequestedAppointment", stateData: {} },
+        {
+          state: "DocumentsRequestedAppointment",
+          stateData: { appointmentDateTime: "2022-05-29T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "DocumentsAppointmentRescheduled", stateData: {} },
+        {
+          state: "DocumentsAppointmentRescheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "DocumentsRequestedAppointment", stateData: {} },
+        {
+          state: "ApplicationSubmitted",
+          stateData: {},
+        },
+      ],
+      [
+        { state: "ApplicationSubmitted", stateData: {} },
+        {
+          state: "TenureInvestigationPassed",
+          stateData: {},
+        },
+      ],
+      [
+        { state: "TenureInvestigationPassed", stateData: {} },
+        {
+          state: "InterviewScheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "InterviewScheduled", stateData: {} },
+        {
+          state: "InterviewScheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "InterviewScheduled", stateData: {} },
+        {
+          state: "InterviewRescheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "InterviewRescheduled", stateData: {} },
+        {
+          state: "InterviewRescheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "InterviewScheduled", stateData: {} },
+        {
+          state: "HOApprovalFailed",
+          stateData: {},
+        },
+      ],
+      [
+        { state: "InterviewScheduled", stateData: {} },
+        {
+          state: "HOApprovalPassed",
+          stateData: {},
+        },
+      ],
+      [
+        { state: "HOApprovalPassed", stateData: {} },
+        {
+          state: "TenureAppointmentScheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "TenureAppointmentScheduled", stateData: {} },
+        {
+          state: "TenureAppointmentScheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "TenureAppointmentScheduled", stateData: {} },
+        {
+          state: "TenureAppointmentRescheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "TenureAppointmentRescheduled", stateData: {} },
+        {
+          state: "TenureAppointmentRescheduled",
+          stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
+        },
+      ],
+      [
+        { state: "TenureUpdated", stateData: {} },
+        {
+          state: "ProcessCancelled",
+          stateData: {},
+        },
+      ],
+      [
+        { state: "TenureUpdated", stateData: {} },
+        {
+          state: "ProcessClosed",
+          stateData: {},
+        },
+      ],
+    ].map((states) => {
+      return generateMockActivity({
+        oldData: {
+          state: states[0].state,
+          stateData: states[0].stateData,
+        },
+        newData: {
+          state: states[1].state,
+          stateData: states[1].stateData,
+        },
+        type: "update",
+      });
+    }),
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  const [{ container }] = routeRender(
+    <ActivityHistoryList targetId="123" entityType="process" />,
+    {
+      url: "/activities/process/soletojoint/123",
+      path: "/activities/process/:processName/:id",
+    },
+  );
+
+  await waitFor(() => {
+    expect(screen.queryAllByText(/Manual eligibility checks/).length).toBe(2);
+    expect(
+      screen.getByText(/Sole to joint: Manual Eligibility Checks passed/),
+    ).toBeInTheDocument();
+  });
+  expect(container).toMatchSnapshot();
+});
