@@ -322,892 +322,6 @@ exports[`it should display a row for created phone number (contactType is number
 </div>
 `;
 
-exports[`it should display a row for manual checks sole to joint process 1`] = `
-<div>
-  <div>
-    <table
-      class="govuk-table lbh-table"
-    >
-      <thead
-        class="govuk-table__head"
-      >
-        <tr
-          class="govuk-table__row"
-        >
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Date
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Category
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Case details
-          </th>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            By
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class="govuk-table__body"
-      >
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Automated eligibility checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Automatic Eligibility Checks passed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Automated eligibility checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Automatic Eligibility Checks failed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Manual eligibility checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Manual Eligibility Checks passed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Manual eligibility checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Manual Eligibility Checks failed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Breach of Tenancy checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Breach of Tenancy Checks passed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Breach of Tenancy checks
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Breach of Tenancy Checks failed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Supporting Documents
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Supporting Documents requested through the Document Evidence Store
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Supporting Documents
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Supporting Documents requested via an office appointment on 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Supporting Documents
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Supporting Documents office appointment changed to 29/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Supporting Documents
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Supporting Documents office appointment missed and rescheduled to 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Tenure Investigation
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Submitted for Tenure Investigation
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Tenure Investigation
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Tenure Investigation Completed
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Housing Officer Review
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Housing Officer Review
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Housing Officer Review
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Follow-up Interview missed and rescheduled to 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Housing Officer Review
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Follow-up interview date changed to 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Application outcome
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Application declined Comment (if applicable)
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Application outcome
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Application approved Comment (if applicable)
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Signing of new Tenancy
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Tenancy signing appointment scheduled for 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Signing of new Tenancy
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Tenancy signing appointment changed to 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Signing of new Tenancy
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: Tenancy signing appointment missed and rescheduled to 24/05/2022 at 08:26
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Signing of new Tenancy
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Tenancy signing appointment missed more than once.
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Process cancelled
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Comment
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-        <tr
-          class="govuk-table__row govuk-table__row mtfh-activity-history"
-        >
-          <td
-            class="govuk-table__cell"
-          >
-            <div>
-              <p>
-                29/10/21
-              </p>
-              <p>
-                7:15
-              </p>
-            </div>
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            Process cancelled
-          </td>
-          <td
-            class="govuk-table__cell"
-          >
-            <p>
-              <b>
-                Sole to joint: closed: Comment
-              </b>
-            </p>
-          </td>
-          <th
-            class="govuk-table__cell govuk-table__header"
-          >
-            Import
-          </th>
-        </tr>
-      </tbody>
-    </table>
-    <nav
-      class="lbh-simple-pagination"
-    />
-  </div>
-</div>
-`;
-
 exports[`it should display a row for removed email (contactType is number) 1`] = `
 <div>
   <div>
@@ -1702,6 +816,892 @@ exports[`it should display a row for updated equality information 1`] = `
             class="govuk-table__cell govuk-table__header"
           >
             John
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display activity history for sole to joint process 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Case details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            By
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Automated eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Automatic Eligibility Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Automated eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Automatic Eligibility Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Manual eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Manual Eligibility Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Manual eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Manual Eligibility Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Breach of Tenancy checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Breach of Tenancy Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Breach of Tenancy checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Breach of Tenancy Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents requested through the Document Evidence Store
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents requested via an office appointment on 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents office appointment changed to 29/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents office appointment missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Tenure Investigation
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Submitted for Tenure Investigation
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Tenure Investigation
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenure Investigation Completed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up interview date changed to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Application outcome
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Application declined Comment (if applicable)
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Application outcome
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Application approved Comment (if applicable)
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment changed to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Tenancy signing appointment missed more than once.
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process cancelled
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Comment
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process cancelled
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Comment
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
           </th>
         </tr>
       </tbody>

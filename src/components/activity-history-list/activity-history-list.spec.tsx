@@ -509,7 +509,7 @@ test("it should display a row for started sole to joint process", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test("it should display a row for manual checks sole to joint process", async () => {
+test("it should display activity history for sole to joint process", async () => {
   get("/api/activityhistory", {
     results: [
       [{ state: "SelectTenants" }, { state: "AutomatedChecksPassed" }],
