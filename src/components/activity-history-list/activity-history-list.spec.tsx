@@ -34,7 +34,7 @@ import {
 import { get, routeRender } from "../../test-utils";
 
 import { ActivityHistoryList } from "@components";
-import { locale } from "@services";
+import { ActivityData, locale } from "@services";
 
 beforeEach(() => {
   get("/api/v1/reference-data", mockEqualityData);
@@ -512,154 +512,128 @@ test("it should display a row for started sole to joint process", async () => {
 test("it should display a row for manual checks sole to joint process", async () => {
   get("/api/activityhistory", {
     results: [
+      [{ state: "SelectTenants" }, { state: "AutomatedChecksPassed" }],
+      [{ state: "SelectTenants" }, { state: "AutomatedChecksFailed" }],
+      [{ state: "AutomatedChecksPassed" }, { state: "ManualChecksPassed" }],
+      [{ state: "AutomatedChecksPassed" }, { state: "ManualChecksFailed" }],
+      [{ state: "ManualChecksPassed" }, { state: "BreachChecksPassed" }],
+      [{ state: "ManualChecksPassed" }, { state: "BreachChecksFailed" }],
+      [{ state: "BreachChecksPassed" }, { state: "DocumentsRequestedDes" }],
       [
-        { state: "SelectTenants", stateData: {} },
-        { state: "AutomatedChecksPassed", stateData: {} },
-      ],
-      [
-        { state: "SelectTenants", stateData: {} },
-        { state: "AutomatedChecksFailed", stateData: {} },
-      ],
-      [
-        { state: "AutomatedChecksPassed", stateData: {} },
-        { state: "ManualChecksPassed", stateData: {} },
-      ],
-      [
-        { state: "AutomatedChecksPassed", stateData: {} },
-        { state: "ManualChecksFailed", stateData: {} },
-      ],
-      [
-        { state: "ManualChecksPassed", stateData: {} },
-        { state: "BreachChecksPassed", stateData: {} },
-      ],
-      [
-        { state: "ManualChecksPassed", stateData: {} },
-        { state: "BreachChecksFailed", stateData: {} },
-      ],
-      [
-        { state: "BreachChecksPassed", stateData: {} },
-        { state: "DocumentsRequestedDes", stateData: {} },
-      ],
-      [
-        { state: "DocumentsRequestedDes", stateData: {} },
+        { state: "DocumentsRequestedDes" },
         {
           state: "DocumentsRequestedAppointment",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "DocumentsRequestedAppointment", stateData: {} },
+        { state: "DocumentsRequestedAppointment" },
         {
-          state: "DocumentsRequestedAppointment",
-          stateData: { appointmentDateTime: "2022-05-29T06:26:32.6430601Z" },
+          processData: {
+            formData: { appointmentDateTime: "2022-05-29T06:26:32.6430601Z" },
+          },
         },
       ],
       [
-        { state: "DocumentsAppointmentRescheduled", stateData: {} },
+        { state: "DocumentsAppointmentRescheduled" },
         {
           state: "DocumentsAppointmentRescheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "DocumentsRequestedAppointment", stateData: {} },
+        { state: "DocumentsRequestedAppointment" },
         {
           state: "ApplicationSubmitted",
-          stateData: {},
         },
       ],
       [
-        { state: "ApplicationSubmitted", stateData: {} },
+        { state: "ApplicationSubmitted" },
         {
           state: "TenureInvestigationPassed",
-          stateData: {},
         },
       ],
       [
-        { state: "TenureInvestigationPassed", stateData: {} },
+        { state: "TenureInvestigationPassed" },
         {
           state: "InterviewScheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "InterviewScheduled", stateData: {} },
+        { state: "InterviewScheduled" },
         {
           state: "InterviewScheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "InterviewScheduled", stateData: {} },
+        { state: "InterviewScheduled" },
         {
           state: "InterviewRescheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "InterviewRescheduled", stateData: {} },
+        { state: "InterviewRescheduled" },
         {
           state: "InterviewRescheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "InterviewScheduled", stateData: {} },
+        { state: "InterviewScheduled" },
         {
           state: "HOApprovalFailed",
-          stateData: {},
         },
       ],
       [
-        { state: "InterviewScheduled", stateData: {} },
+        { state: "InterviewScheduled" },
         {
           state: "HOApprovalPassed",
-          stateData: {},
         },
       ],
       [
-        { state: "HOApprovalPassed", stateData: {} },
+        { state: "HOApprovalPassed" },
         {
           state: "TenureAppointmentScheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "TenureAppointmentScheduled", stateData: {} },
+        { state: "TenureAppointmentScheduled" },
         {
           state: "TenureAppointmentScheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "TenureAppointmentScheduled", stateData: {} },
+        { state: "TenureAppointmentScheduled" },
         {
           state: "TenureAppointmentRescheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "TenureAppointmentRescheduled", stateData: {} },
+        { state: "TenureAppointmentRescheduled" },
         {
           state: "TenureAppointmentRescheduled",
           stateData: { appointmentDateTime: "2022-05-24T06:26:32.6430601Z" },
         },
       ],
       [
-        { state: "TenureUpdated", stateData: {} },
+        { state: "TenureUpdated" },
         {
           state: "ProcessCancelled",
-          stateData: {},
         },
       ],
       [
-        { state: "TenureUpdated", stateData: {} },
+        { state: "TenureUpdated" },
         {
           state: "ProcessClosed",
-          stateData: {},
         },
       ],
-    ].map((states) => {
+    ].map((states: ActivityData) => {
       return generateMockActivity({
         oldData: {
           state: states[0].state,
@@ -668,6 +642,7 @@ test("it should display a row for manual checks sole to joint process", async ()
         newData: {
           state: states[1].state,
           stateData: states[1].stateData,
+          processData: states[1].processData || {},
         },
         type: "update",
       });

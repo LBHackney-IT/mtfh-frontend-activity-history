@@ -364,19 +364,12 @@ const locale = {
         }
         return `${processName}: closed: Breach of Tenancy Checks failed`;
       },
-      supportingDocuments: (
-        processName: string,
-        newData: ActivityData,
-        oldData: ActivityData,
-      ): string => {
+      supportingDocuments: (processName: string, newData: ActivityData): string => {
         if (newData.state === "DocumentsRequestedDes") {
           return `${processName}: Supporting Documents requested through the Document Evidence Store`;
         }
         if (newData.state === "DocumentsRequestedAppointment") {
           const { date, time } = formatDate(newData.stateData.appointmentDateTime);
-          if (oldData.state === "DocumentsRequestedAppointment") {
-            return `${processName}: Supporting Documents office appointment changed to ${date} at ${time}`;
-          }
           return `${processName}: Supporting Documents requested via an office appointment on ${date} at ${time}`;
         }
         if (newData.state === "DocumentsAppointmentRescheduled") {
@@ -393,6 +386,13 @@ const locale = {
         }
         // TODO
         return `${processName}: closed: Supporting Document Checks failed`;
+      },
+      supportingDocumentsUpdate: (
+        processName: string,
+        appointmentDateTime: string,
+      ): string => {
+        const { date, time } = formatDate(appointmentDateTime);
+        return `${processName}: Supporting Documents office appointment changed to ${date} at ${time}`;
       },
       tenureInvestigation: (processName: string, state: string): string => {
         if (state === "TenureInvestigationPassed") {
@@ -474,6 +474,15 @@ const locale = {
         category = locale.process.category.started(targetType);
         details = locale.process.details.started(processName);
       }
+      if (type === "update" && !newData.state) {
+        if (newData.processData?.formData.appointmentDateTime) {
+          category = locale.process.category.supportingDocuments;
+          details = locale.process.details.supportingDocumentsUpdate(
+            mappedProcessName,
+            newData.processData.formData.appointmentDateTime,
+          );
+        }
+      }
       if (["AutomatedChecksPassed", "AutomatedChecksFailed"].includes(newData.state)) {
         category = locale.process.category.automaticEligibilityChecks;
         details = locale.process.details.automaticEligibilityChecks(
@@ -503,11 +512,7 @@ const locale = {
         ].includes(newData.state)
       ) {
         category = locale.process.category.supportingDocuments;
-        details = locale.process.details.supportingDocuments(
-          mappedProcessName,
-          newData,
-          oldData,
-        );
+        details = locale.process.details.supportingDocuments(mappedProcessName, newData);
       }
       if (["TenureInvestigationPassed", "ApplicationSubmitted"].includes(newData.state)) {
         category = locale.process.category.tenureInvestigation;

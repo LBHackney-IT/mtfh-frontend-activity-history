@@ -28,11 +28,15 @@ export type PersonActivityData = Partial<Nullable<Person>>;
 export type TenurePersonActivityData = {
   householdMembers: HouseholdMember[];
 };
+export type ProcessActivityData = {
+  processData: any;
+};
 
 export type ActivityData = (
   | PersonEqualityDataActivityData
   | PersonActivityData
   | TenurePersonActivityData
+  | ProcessActivityData
 ) & {
   [key: string]: any;
 };
