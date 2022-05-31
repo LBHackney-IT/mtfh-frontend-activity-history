@@ -8,9 +8,9 @@
     "lint": "eslint src --ext js,ts,tsx",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
-    "test": "cross-env BABEL_ENV=test jest",
-    "watch-tests": "cross-env BABEL_ENV=test jest --watch",
-    "coverage": "cross-env BABEL_ENV=test jest --coverage"
+    "test": "cross-env BABEL_ENV=test TZ=UTC jest",
+    "watch-tests": "cross-env BABEL_ENV=test TZ=UTC jest --watch",
+    "coverage": "cross-env BABEL_ENV=test TZ=UTC jest --coverage"
   },
   "husky": {
     "hooks": {
@@ -81,7 +81,7 @@
     "@hackney/mtfh-test-utils": "^1.6.0",
     "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
     "@types/jest": "^26.0.16",
-    "@types/react": "^16.9.32",
+    "@types/react": "17.0.20",
     "@types/react-dom": "^16.9.6",
     "@types/systemjs": "^6.1.0",
     "@types/webpack-env": "^1.16.0",

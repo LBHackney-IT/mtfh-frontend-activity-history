@@ -5,7 +5,7 @@ import { Button, Link } from "@mtfh/common";
 import { usePerson } from "@mtfh/common/lib/api/person/v1";
 
 import { ActivityHistoryList } from "@components";
-import { locale } from "@services";
+import { EntityType, locale } from "@services";
 
 const { pageTitle, closeButton } = locale.activities;
 
@@ -28,13 +28,17 @@ const PersonInformation = ({ id }: EntityRequestId) => {
   );
 };
 
-export const ActivitiesPersonView = (): JSX.Element => {
+export const ActivitiesPersonView = ({
+  entityType,
+}: {
+  entityType: EntityType;
+}): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
   return (
     <div data-testid="person-activities">
       <PersonInformation id={id} />
-      <ActivityHistoryList targetId={id} />
+      <ActivityHistoryList targetId={id} entityType={entityType} />
       <Button as={RouterLink} to={`/person/${id}`} variant="secondary">
         {closeButton}
       </Button>

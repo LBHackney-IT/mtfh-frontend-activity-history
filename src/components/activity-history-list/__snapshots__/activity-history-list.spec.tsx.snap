@@ -1,251 +1,584 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`activity target type is null 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Case details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            By
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      />
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
 exports[`it should display a row for change in date of birth 1`] = `
 <div>
-  <div
-    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
-  >
-    <svg
-      class="mtfh-icon"
-      focusable="false"
-      height="50"
-      stroke="#00703c"
-      viewBox="0 0 42 42"
-      width="50"
+  <div>
+    <table
+      class="govuk-table lbh-table"
     >
-      <title>
-        Loading...
-      </title>
-      <g
-        fill="none"
-        fill-rule="evenodd"
+      <thead
+        class="govuk-table__head"
       >
-        <g
-          stroke-width="5"
-          transform="translate(3 3)"
+        <tr
+          class="govuk-table__row"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="18"
-            stroke-opacity=".5"
-          />
-          <path
-            d="M36 18c0-9.94-8.06-18-18-18"
-            transform="rotate(112.708 18 18)"
+          <th
+            class="govuk-table__cell govuk-table__header"
           >
-            <animatetransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            />
-          </path>
-        </g>
-      </g>
-    </svg>
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to person
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Date of birth
+                </b>
+              </p>
+              <p>
+                Previously:
+                 
+                <b>
+                  22/04/62
+                </b>
+              </p>
+              <p>
+                Changed to:
+                 
+                <b>
+                  23/04/62
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
   </div>
 </div>
 `;
 
 exports[`it should display a row for created email (contactType is number) 1`] = `
 <div>
-  <div
-    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
-  >
-    <svg
-      class="mtfh-icon"
-      focusable="false"
-      height="50"
-      stroke="#00703c"
-      viewBox="0 0 42 42"
-      width="50"
+  <div>
+    <table
+      class="govuk-table lbh-table"
     >
-      <title>
-        Loading...
-      </title>
-      <g
-        fill="none"
-        fill-rule="evenodd"
+      <thead
+        class="govuk-table__head"
       >
-        <g
-          stroke-width="5"
-          transform="translate(3 3)"
+        <tr
+          class="govuk-table__row"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="18"
-            stroke-opacity=".5"
-          />
-          <path
-            d="M36 18c0-9.94-8.06-18-18-18"
-            transform="rotate(112.708 18 18)"
+          <th
+            class="govuk-table__cell govuk-table__header"
           >
-            <animatetransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            />
-          </path>
-        </g>
-      </g>
-    </svg>
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to contact detail
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Email
+                </b>
+              </p>
+              <p>
+                Added
+                 
+                <b>
+                  email@address.com
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
   </div>
 </div>
 `;
 
 exports[`it should display a row for created phone number (contactType is number) 1`] = `
 <div>
-  <div
-    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
-  >
-    <svg
-      class="mtfh-icon"
-      focusable="false"
-      height="50"
-      stroke="#00703c"
-      viewBox="0 0 42 42"
-      width="50"
+  <div>
+    <table
+      class="govuk-table lbh-table"
     >
-      <title>
-        Loading...
-      </title>
-      <g
-        fill="none"
-        fill-rule="evenodd"
+      <thead
+        class="govuk-table__head"
       >
-        <g
-          stroke-width="5"
-          transform="translate(3 3)"
+        <tr
+          class="govuk-table__row"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="18"
-            stroke-opacity=".5"
-          />
-          <path
-            d="M36 18c0-9.94-8.06-18-18-18"
-            transform="rotate(112.708 18 18)"
+          <th
+            class="govuk-table__cell govuk-table__header"
           >
-            <animatetransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            />
-          </path>
-        </g>
-      </g>
-    </svg>
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to contact detail
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Phone
+                </b>
+              </p>
+              <p>
+                Added
+                 
+                <b>
+                  07123123123
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
   </div>
 </div>
 `;
 
 exports[`it should display a row for removed email (contactType is number) 1`] = `
 <div>
-  <div
-    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
-  >
-    <svg
-      class="mtfh-icon"
-      focusable="false"
-      height="50"
-      stroke="#00703c"
-      viewBox="0 0 42 42"
-      width="50"
+  <div>
+    <table
+      class="govuk-table lbh-table"
     >
-      <title>
-        Loading...
-      </title>
-      <g
-        fill="none"
-        fill-rule="evenodd"
+      <thead
+        class="govuk-table__head"
       >
-        <g
-          stroke-width="5"
-          transform="translate(3 3)"
+        <tr
+          class="govuk-table__row"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="18"
-            stroke-opacity=".5"
-          />
-          <path
-            d="M36 18c0-9.94-8.06-18-18-18"
-            transform="rotate(112.708 18 18)"
+          <th
+            class="govuk-table__cell govuk-table__header"
           >
-            <animatetransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            />
-          </path>
-        </g>
-      </g>
-    </svg>
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to contact detail
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Email
+                </b>
+              </p>
+              <p>
+                Removed
+                 
+                <b>
+                  email@address.com
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
   </div>
 </div>
 `;
 
 exports[`it should display a row for removed phone number (contactType is number) 1`] = `
 <div>
-  <div
-    class="mtfh-center mtfh-center--horizontal mtfh-center--vertical"
-  >
-    <svg
-      class="mtfh-icon"
-      focusable="false"
-      height="50"
-      stroke="#00703c"
-      viewBox="0 0 42 42"
-      width="50"
+  <div>
+    <table
+      class="govuk-table lbh-table"
     >
-      <title>
-        Loading...
-      </title>
-      <g
-        fill="none"
-        fill-rule="evenodd"
+      <thead
+        class="govuk-table__head"
       >
-        <g
-          stroke-width="5"
-          transform="translate(3 3)"
+        <tr
+          class="govuk-table__row"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="18"
-            stroke-opacity=".5"
-          />
-          <path
-            d="M36 18c0-9.94-8.06-18-18-18"
-            transform="rotate(112.708 18 18)"
+          <th
+            class="govuk-table__cell govuk-table__header"
           >
-            <animatetransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            />
-          </path>
-        </g>
-      </g>
-    </svg>
+            date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edit details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            edited by
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                19/09/19
+              </p>
+              <p>
+                15:12
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Edit to contact detail
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                <b>
+                  Phone
+                </b>
+              </p>
+              <p>
+                Removed
+                 
+                <b>
+                  07123123123
+                </b>
+              </p>
+            </div>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display a row for started sole to joint process 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Case details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            By
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process started
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                New sole to joint started
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
   </div>
 </div>
 `;
@@ -483,6 +816,892 @@ exports[`it should display a row for updated equality information 1`] = `
             class="govuk-table__cell govuk-table__header"
           >
             John
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display activity history for sole to joint process 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Case details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            By
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Automated eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Automatic Eligibility Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Automated eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Automatic Eligibility Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Manual eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Manual Eligibility Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Manual eligibility checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Manual Eligibility Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Breach of Tenancy checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Breach of Tenancy Checks passed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Breach of Tenancy checks
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Breach of Tenancy Checks failed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents requested through the Document Evidence Store
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents requested via an office appointment on 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents office appointment changed to 29/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Supporting Documents
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Supporting Documents office appointment missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Tenure Investigation
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Submitted for Tenure Investigation
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Tenure Investigation
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenure Investigation Completed
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up Interview missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Housing Officer Review
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Follow-up interview date changed to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Application outcome
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Application declined Comment (if applicable)
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Application outcome
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Application approved Comment (if applicable)
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment scheduled for 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment changed to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: Tenancy signing appointment missed and rescheduled to 24/05/2022 at 06:26
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Signing of new Tenancy
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Tenancy signing appointment missed more than once.
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process cancelled
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Comment
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process cancelled
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to joint: closed: Comment
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
           </th>
         </tr>
       </tbody>

@@ -5,7 +5,7 @@ import { Button, Link } from "@mtfh/common";
 import { useTenure } from "@mtfh/common/lib/api/tenure/v1";
 
 import { ActivityHistoryList } from "@components";
-import { locale } from "@services";
+import { EntityType, locale } from "@services";
 
 const { pageTitle, closeButton } = locale.activities;
 
@@ -30,13 +30,17 @@ const TenureInformation = ({ id }: EntityRequestId) => {
   );
 };
 
-export const ActivitiesTenureView = (): JSX.Element => {
+export const ActivitiesTenureView = ({
+  entityType,
+}: {
+  entityType: EntityType;
+}): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
   return (
     <div data-testid="tenure-activities">
       <TenureInformation id={id} />
-      <ActivityHistoryList targetId={id} />
+      <ActivityHistoryList targetId={id} entityType={entityType} />
       <Button as={RouterLink} to={`/tenure/${id}`} variant="secondary">
         {closeButton}
       </Button>

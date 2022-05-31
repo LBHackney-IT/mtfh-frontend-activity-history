@@ -5,12 +5,16 @@ import { HouseholdMember } from "@mtfh/common/lib/api/tenure/v1";
 
 export type ActivityType = "create" | "update" | "delete" | "migrate";
 export type ActivityTargetType =
+  | "process"
   | "person"
   | "asset"
   | "tenure"
   | "contactDetails"
   | "tenurePerson"
   | "personEqualityInformation";
+
+export type EntityType = "person" | "tenure" | "process";
+export type ActivityProcessName = "soletojoint";
 
 interface AuthorDetails {
   id: string;
@@ -24,11 +28,15 @@ export type PersonActivityData = Partial<Nullable<Person>>;
 export type TenurePersonActivityData = {
   householdMembers: HouseholdMember[];
 };
+export type ProcessActivityData = {
+  processData: any;
+};
 
-type ActivityData = (
+export type ActivityData = (
   | PersonEqualityDataActivityData
   | PersonActivityData
   | TenurePersonActivityData
+  | ProcessActivityData
 ) & {
   [key: string]: any;
 };

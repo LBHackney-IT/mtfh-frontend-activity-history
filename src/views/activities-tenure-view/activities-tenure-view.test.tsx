@@ -9,7 +9,7 @@ import { ActivitiesTenureView } from ".";
 import { locale } from "@services";
 
 test("renders the activities view", async () => {
-  const [{ container }] = routeRender(<ActivitiesTenureView />, {
+  const [{ container }] = routeRender(<ActivitiesTenureView entityType="tenure" />, {
     url: "/activities/tenure/123",
   });
   expect(container).toMatchSnapshot();
