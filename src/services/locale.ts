@@ -364,7 +364,11 @@ const locale = {
         }
         return `${processName}: closed: Breach of Tenancy Checks failed`;
       },
-      supportingDocuments: (processName: string, newData: ActivityData): string => {
+      supportingDocuments: (
+        processName: string,
+        newData: ActivityData,
+        oldData: ActivityData,
+      ): string => {
         if (newData.state === "DocumentsRequestedDes") {
           return `${processName}: Supporting Documents requested through the Document Evidence Store`;
         }
@@ -376,15 +380,16 @@ const locale = {
           const { date, time } = formatDate(newData.stateData.appointmentDateTime);
           return `${processName}: Supporting Documents office appointment missed and rescheduled to ${date} at ${time}`;
         }
-        if (newData.state === "") {
-          // TODO
+        if (newData.state === "DocumentChecksPasssed") {
+          if (
+            ["DocumentsRequestedAppointment", "DocumentsAppointmentRescheduled"].includes(
+              oldData.state,
+            )
+          ) {
+            return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store [Link to DES]`;
+          }
           return `${processName}: Supporting Documents Approved on the Document Evidence Store [Link to DES]`;
         }
-        if (newData.state === "") {
-          // TODO
-          return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store [Link to DES]`;
-        }
-        // TODO
         return `${processName}: closed: Supporting Document Checks failed`;
       },
       supportingDocumentsUpdate: (
@@ -512,7 +517,11 @@ const locale = {
         ].includes(newData.state)
       ) {
         category = locale.process.category.supportingDocuments;
-        details = locale.process.details.supportingDocuments(mappedProcessName, newData);
+        details = locale.process.details.supportingDocuments(
+          mappedProcessName,
+          newData,
+          oldData,
+        );
       }
       if (["TenureInvestigationPassed", "ApplicationSubmitted"].includes(newData.state)) {
         category = locale.process.category.tenureInvestigation;
