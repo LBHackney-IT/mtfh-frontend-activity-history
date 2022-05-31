@@ -26,7 +26,7 @@ const ProcessInformation = ({
   if (error) {
     return (
       <ErrorSummary
-        id="select-tenants-view"
+        id="person-information-view"
         title={locale.errors.unableToFetchRecord}
         description={locale.errors.unableToFetchRecordDescription}
       />
@@ -85,7 +85,7 @@ export const ActivitiesProcessView = ({
   if (error) {
     return (
       <ErrorSummary
-        id="sole-to-joint-view"
+        id="process-activity-history-view"
         title={locale.errors.unableToFetchRecord}
         description={locale.errors.unableToFetchRecordDescription}
       />
