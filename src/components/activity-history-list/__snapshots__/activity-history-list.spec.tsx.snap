@@ -564,7 +564,7 @@ exports[`it should display a row for started sole to joint process 1`] = `
           >
             <p>
               <b>
-                New sole to joint started
+                New Sole to Joint request started
               </b>
             </p>
           </td>
@@ -889,7 +889,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Automatic Eligibility Checks passed
+                Sole to Joint: Automatic Eligibility Checks passed
               </b>
             </p>
           </td>
@@ -924,7 +924,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Automatic Eligibility Checks failed
+                Sole to Joint: closed: Automatic Eligibility Checks failed
               </b>
             </p>
           </td>
@@ -959,7 +959,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Manual Eligibility Checks passed
+                Sole to Joint: Manual Eligibility Checks passed
               </b>
             </p>
           </td>
@@ -994,7 +994,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Manual Eligibility Checks failed
+                Sole to Joint: closed: Manual Eligibility Checks failed
               </b>
             </p>
           </td>
@@ -1029,7 +1029,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Breach of Tenancy Checks passed
+                Sole to Joint: Breach of Tenancy Checks passed
               </b>
             </p>
           </td>
@@ -1064,7 +1064,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Breach of Tenancy Checks failed
+                Sole to Joint: closed: Breach of Tenancy Checks failed
               </b>
             </p>
           </td>
@@ -1099,7 +1099,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Supporting Documents requested through the Document Evidence Store
+                Sole to Joint: Supporting Documents requested through the Document Evidence Store
               </b>
             </p>
           </td>
@@ -1134,7 +1134,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Supporting Documents requested via an office appointment on 24/05/2022 at 06:26
+                Sole to Joint: Supporting Documents requested via an office appointment on 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1169,7 +1169,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Supporting Documents office appointment changed to 29/05/2022 at 06:26
+                Sole to Joint: Supporting Documents office appointment changed to 29/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1204,7 +1204,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Supporting Documents office appointment missed and rescheduled to 24/05/2022 at 06:26
+                Sole to Joint: Supporting Documents office appointment missed and rescheduled to 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1239,7 +1239,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Submitted for Tenure Investigation
+                Sole to Joint: Submitted for Tenure Investigation
               </b>
             </p>
           </td>
@@ -1274,7 +1274,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Tenure Investigation Completed
+                Sole to Joint: Tenure Investigation Completed
               </b>
             </p>
           </td>
@@ -1309,7 +1309,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+                Sole to Joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1344,7 +1344,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
+                Sole to Joint: Follow-up Interview date scheduled for 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1379,7 +1379,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Follow-up Interview missed and rescheduled to 24/05/2022 at 06:26
+                Sole to Joint: Follow-up Interview missed and rescheduled to 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1414,7 +1414,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Follow-up interview date changed to 24/05/2022 at 06:26
+                Sole to Joint: Follow-up interview date changed to 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1449,7 +1449,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Application declined Comment (if applicable)
+                Sole to Joint: closed: Application declined Comment (if applicable)
               </b>
             </p>
           </td>
@@ -1484,7 +1484,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Application approved Comment (if applicable)
+                Sole to Joint: Application approved Comment (if applicable)
               </b>
             </p>
           </td>
@@ -1519,7 +1519,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Tenancy signing appointment scheduled for 24/05/2022 at 06:26
+                Sole to Joint: Tenancy signing appointment scheduled for 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1554,7 +1554,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Tenancy signing appointment changed to 24/05/2022 at 06:26
+                Sole to Joint: Tenancy signing appointment changed to 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1589,7 +1589,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: Tenancy signing appointment missed and rescheduled to 24/05/2022 at 06:26
+                Sole to Joint: Tenancy signing appointment missed and rescheduled to 24/05/2022 at 06:26
               </b>
             </p>
           </td>
@@ -1624,7 +1624,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Tenancy signing appointment missed more than once.
+                Sole to Joint: closed: Tenancy signing appointment missed more than once.
               </b>
             </p>
           </td>
@@ -1659,7 +1659,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Comment
+                Sole to Joint: closed: Comment
               </b>
             </p>
           </td>
@@ -1694,7 +1694,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to joint: closed: Comment
+                Sole to Joint: closed: Comment
               </b>
             </p>
           </td>

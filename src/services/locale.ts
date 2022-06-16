@@ -343,8 +343,8 @@ const locale = {
       commentAdded: "Comment Added",
     },
     details: {
-      started: (processName: ActivityProcessName): string => {
-        return `New ${locale.process.name[processName]} started`;
+      started: (processName: string): string => {
+        return `New ${processName} request started`;
       },
       automaticEligibilityChecks: (processName: string, state: string): string => {
         if (state === "AutomatedChecksPassed") {
@@ -380,15 +380,15 @@ const locale = {
           const { date, time } = formatDate(newData.stateData.appointmentDateTime);
           return `${processName}: Supporting Documents office appointment missed and rescheduled to ${date} at ${time}`;
         }
-        if (newData.state === "DocumentChecksPasssed") {
+        if (newData.state === "DocumentChecksPassed") {
           if (
             ["DocumentsRequestedAppointment", "DocumentsAppointmentRescheduled"].includes(
               oldData.state,
             )
           ) {
-            return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store [Link to DES]`;
+            return `${processName}: Supporting Documents Approved and uploaded to the Document Evidence Store`;
           }
-          return `${processName}: Supporting Documents Approved on the Document Evidence Store [Link to DES]`;
+          return `${processName}: Supporting Documents Approved on the Document Evidence Store`;
         }
         return `${processName}: closed: Supporting Document Checks failed`;
       },
@@ -472,12 +472,14 @@ const locale = {
       newData: ActivityData,
       oldData: ActivityData,
     ): { category: string; details: string } => {
-      const mappedProcessName = locale.capitalize(locale.process.name[processName]);
+      const mappedProcessName = {
+        soletojoint: "Sole to Joint",
+      }[processName];
       let category = type;
       let details = newData.state;
       if (type === "create") {
         category = locale.process.category.started(targetType);
-        details = locale.process.details.started(processName);
+        details = locale.process.details.started(mappedProcessName);
       }
       if (type === "update" && !newData.state) {
         if (newData.processData?.formData.appointmentDateTime) {
@@ -514,6 +516,7 @@ const locale = {
           "DocumentsRequestedDes",
           "DocumentsRequestedAppointment",
           "DocumentsAppointmentRescheduled",
+          "DocumentChecksPassed",
         ].includes(newData.state)
       ) {
         category = locale.process.category.supportingDocuments;
@@ -571,9 +574,6 @@ const locale = {
     unableToFetchRecord: "There was a problem retrieving the record",
     unableToFetchRecordDescription:
       "Please try again. If the issue persists, please contact support.",
-  },
-  capitalize: (text: string): string => {
-    return text.charAt(0).toUpperCase() + text.slice(1);
   },
 };
 

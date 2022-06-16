@@ -98,7 +98,7 @@ exports[`renders the activities view 1`] = `
             >
               <p>
                 <b>
-                  New sole to joint started
+                  New Sole to Joint request started
                 </b>
               </p>
             </td>
