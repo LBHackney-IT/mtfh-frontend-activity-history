@@ -662,7 +662,7 @@ test("it should display activity history for sole to joint process", async () =>
   await waitFor(() => {
     expect(screen.queryAllByText(/Manual eligibility checks/).length).toBe(2);
     expect(
-      screen.getByText(/Sole to joint: Manual Eligibility Checks passed/),
+      screen.getByText(/Sole to Joint: Manual Eligibility Checks passed/),
     ).toBeInTheDocument();
   });
   expect(container).toMatchSnapshot();
