@@ -1,7 +1,7 @@
 import React from "react";
 
 import { generateMockTenureV1, mockProcessV1 } from "@hackney/mtfh-test-utils";
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 
 import { mockEqualityData, mockStartedProcess } from "../../mocks";
 import { get, routeRender } from "../../test-utils";
@@ -40,7 +40,7 @@ test("renders the activities view", async () => {
     url: "/activities/process/soletojoint/123",
     path: "/activities/process/:processName/:id",
   });
-
+  await waitForElementToBeRemoved(screen.queryAllByText(/Loading/));
   await waitFor(() =>
     expect(screen.getAllByRole("heading")[0]).toHaveTextContent(
       locale.activities.pageTitle,
