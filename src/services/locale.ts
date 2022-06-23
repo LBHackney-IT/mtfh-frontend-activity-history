@@ -400,7 +400,13 @@ const locale = {
         return `${processName}: Supporting Documents office appointment changed to ${date} at ${time}`;
       },
       tenureInvestigation: (processName: string, state: string): string => {
-        if (state === "TenureInvestigationPassed") {
+        if (
+          [
+            "TenureInvestigationPassed",
+            "TenureInvestigationFailed",
+            "TenureInvestigationPassedWithInt",
+          ].includes(state)
+        ) {
           return `${processName}: Tenure Investigation Completed`;
         }
         return `${processName}: Submitted for Tenure Investigation`;
@@ -430,9 +436,9 @@ const locale = {
       },
       applicationOutcome: (processName: string, state: string): string => {
         if (state === "HOApprovalPassed") {
-          return `${processName}: Application approved Comment (if applicable)`;
+          return `${processName}: Application approved`;
         }
-        return `${processName}: closed: Application declined Comment (if applicable)`;
+        return `${processName}: closed: Application declined`;
       },
       signingOfNewTenancy: (
         processName: string,
@@ -458,8 +464,13 @@ const locale = {
       processCompleted: (processName: string): string => {
         return `${processName}: completed: New tenure created`;
       },
-      processCancelled: (processName: string): string => {
-        return `${processName}: closed: Comment`;
+      processCancelled: (processName: string, newData: ActivityData): string => {
+        const comment = newData.stateData.comment;
+        return `${processName} closed${comment ? `:\n${comment}` : ""}`;
+      },
+      processClosed: (processName: string, newData: ActivityData): string => {
+        const reason = newData.stateData.Reason;
+        return `${processName} closed${reason ? `:\n${reason}` : ""}`;
       },
       caseReassigned: (processName: string): string => {
         return `${processName}: Case reassigned from [officer] to [officer]`;
@@ -526,7 +537,14 @@ const locale = {
           oldData,
         );
       }
-      if (["TenureInvestigationPassed", "ApplicationSubmitted"].includes(newData.state)) {
+      if (
+        [
+          "TenureInvestigationPassed",
+          "TenureInvestigationFailed",
+          "TenureInvestigationPassedWithInt",
+          "ApplicationSubmitted",
+        ].includes(newData.state)
+      ) {
         category = locale.process.category.tenureInvestigation;
         details = locale.process.details.tenureInvestigation(
           mappedProcessName,
@@ -560,9 +578,13 @@ const locale = {
           oldData,
         );
       }
-      if (["ProcessCancelled", "ProcessClosed"].includes(newData.state)) {
+      if (newData.state === "ProcessClosed") {
         category = locale.process.category.processCancelled;
-        details = locale.process.details.processCancelled(mappedProcessName);
+        details = locale.process.details.processClosed(mappedProcessName, newData);
+      }
+      if (newData.state === "ProcessCancelled") {
+        category = locale.process.category.processCancelled;
+        details = locale.process.details.processCancelled(mappedProcessName, newData);
       }
       return { category, details };
     },
