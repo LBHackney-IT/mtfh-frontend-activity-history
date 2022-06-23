@@ -625,12 +625,14 @@ test("it should display activity history for sole to joint process", async () =>
         { state: "TenureUpdated" },
         {
           state: "ProcessCancelled",
+          stateData: { comment: "test" },
         },
       ],
       [
         { state: "TenureUpdated" },
         {
           state: "ProcessClosed",
+          stateData: { Reason: "test" },
         },
       ],
     ].map((states: ActivityData) => {

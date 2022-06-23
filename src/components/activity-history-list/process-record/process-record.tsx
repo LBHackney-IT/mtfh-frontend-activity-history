@@ -55,7 +55,11 @@ export const ProcessActivityRecord = ({
 };
 
 const ProcessRecord = ({ details }: { details: string }): JSX.Element => (
-  <p>
-    <b>{details}</b>
-  </p>
+  <>
+    {details.split("\n").map((text, index) => (
+      <p key={index}>
+        <b>{text}</b>
+      </p>
+    ))}
+  </>
 );

@@ -1449,7 +1449,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to Joint: closed: Application declined Comment (if applicable)
+                Sole to Joint: closed: Application declined
               </b>
             </p>
           </td>
@@ -1484,7 +1484,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to Joint: Application approved Comment (if applicable)
+                Sole to Joint: Application approved
               </b>
             </p>
           </td>
@@ -1659,7 +1659,12 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to Joint: closed: Comment
+                Sole to Joint closed:
+              </b>
+            </p>
+            <p>
+              <b>
+                test
               </b>
             </p>
           </td>
@@ -1694,7 +1699,12 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to Joint: closed: Comment
+                Sole to Joint closed:
+              </b>
+            </p>
+            <p>
+              <b>
+                test
               </b>
             </p>
           </td>
