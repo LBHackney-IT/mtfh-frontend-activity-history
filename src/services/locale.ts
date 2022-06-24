@@ -465,11 +465,11 @@ const locale = {
         return `${processName}: completed: New tenure created`;
       },
       processCancelled: (processName: string, newData: ActivityData): string => {
-        const comment = newData.stateData.comment;
+        const comment = newData.stateData?.comment;
         return `${processName} closed${comment ? `:\n${comment}` : ""}`;
       },
       processClosed: (processName: string, newData: ActivityData): string => {
-        const reason = newData.stateData.Reason;
+        const reason = newData.stateData?.Reason;
         return `${processName} closed${reason ? `:\n${reason}` : ""}`;
       },
       caseReassigned: (processName: string): string => {
