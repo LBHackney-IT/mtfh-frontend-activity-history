@@ -46,6 +46,7 @@ export interface Activity {
   type: ActivityType;
   targetType: ActivityTargetType;
   targetId: string;
+  sourceDomain?: string;
   createdAt: any;
   timeToLiveForRecordInDays: number;
   oldData: ActivityData | null;
