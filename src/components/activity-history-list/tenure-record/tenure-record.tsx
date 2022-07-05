@@ -1,8 +1,11 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 import { Activity, ActivityChangeRecord } from "../../../services/activities";
 import { ActivityRecordItem } from "../activity-record-item";
 import { MigratedEntityRecord, UpdatedEntityRecord, formattedDate } from "../utils";
+
+import { Link } from "@mtfh/common";
 
 import { locale } from "@services";
 
@@ -25,6 +28,7 @@ export const TenureActivityRecord = ({
     targetType,
     createdAt,
     authorDetails,
+    sourceDomain,
   } = tenureRecord;
 
   const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
@@ -32,12 +36,17 @@ export const TenureActivityRecord = ({
 
   const date = formattedDate(createdAt);
   const category =
-    type === "create" ? entityCreated(targetType) : entityEdited(targetType);
+    type === "create"
+      ? entityCreated(targetType, sourceDomain)
+      : entityEdited(targetType);
   const edittedBy = authorDetails.fullName;
 
   const activityRecord = useMemo(() => {
     switch (type) {
       case "create":
+        if (sourceDomain === "Processes") {
+          return <StartedProcessRecord newData={newData} />;
+        }
         return <CreatedTenureRecord targetType={targetType} />;
       case "delete":
         return (
@@ -60,7 +69,7 @@ export const TenureActivityRecord = ({
       default:
         return null;
     }
-  }, [type, targetType, oldData, newData]);
+  }, [type, targetType, oldData, newData, sourceDomain]);
 
   return (
     <ActivityRecordItem
@@ -76,6 +85,20 @@ export const TenureActivityRecord = ({
 const CreatedTenureRecord = ({ targetType }: any): JSX.Element => (
   <p>
     <b>{entityCreated(targetType)}</b>
+  </p>
+);
+
+const StartedProcessRecord = ({ newData }: any): JSX.Element => (
+  <p>
+    <b>
+      <Link
+        as={RouterLink}
+        to={`/processes/${newData.processName}/${newData.id}`}
+        isExternal
+      >
+        New Sole to Joint application started
+      </Link>
+    </b>
   </p>
 );
 

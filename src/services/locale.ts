@@ -41,8 +41,11 @@ const locale = {
       tenurePerson: "Person",
       personEqualityInformation: "Equality information",
     },
-    entityCreated: (type: ActivityTargetType): string =>
-      `${locale.activities.targetType[type]} created`,
+    entityCreated: (type: ActivityTargetType, sourceDomain: string): string => {
+      return sourceDomain === "Processes"
+        ? sourceDomain
+        : `${locale.activities.targetType[type]} created`;
+    },
     entityMigrated: (type: ActivityTargetType): string =>
       `${locale.activities.targetType[type]} migrated`,
     entityEdited: (type: ActivityTargetType): string =>
