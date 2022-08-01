@@ -328,6 +328,7 @@ const locale = {
     },
     title: {
       soletojoint: "Sole tenant requests a joint tenure",
+      changeofname: "Change of name",
     },
     category: {
       started: (type: ActivityTargetType): string =>
@@ -488,6 +489,7 @@ const locale = {
     ): { category: string; details: string } => {
       const mappedProcessName = {
         soletojoint: "Sole to Joint",
+        changeofname: "Change of Name",
       }[processName];
       let category = type;
       let details = newData.state;
