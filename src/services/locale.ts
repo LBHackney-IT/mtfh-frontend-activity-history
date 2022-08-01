@@ -343,6 +343,7 @@ const locale = {
       signingOfNewTenancy: "Signing of new Tenancy",
       processCompleted: "Process completed",
       processCancelled: "Process cancelled",
+      processClosed: "Process closed",
       caseReassigned: "Case Reassigned",
       commentAdded: "Comment Added",
     },
@@ -470,7 +471,7 @@ const locale = {
       },
       processCancelled: (processName: string, newData: ActivityData): string => {
         const comment = newData.stateData?.comment;
-        return `${processName} closed${comment ? `:\n${comment}` : ""}`;
+        return `${processName} cancelled${comment ? `:\n${comment}` : ""}`;
       },
       processClosed: (processName: string, newData: ActivityData): string => {
         const reason = newData.stateData?.Reason;
@@ -584,7 +585,7 @@ const locale = {
         );
       }
       if (newData.state === "ProcessClosed") {
-        category = locale.process.category.processCancelled;
+        category = locale.process.category.processClosed;
         details = locale.process.details.processClosed(mappedProcessName, newData);
       }
       if (newData.state === "ProcessCancelled") {
