@@ -1,6 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the activities view 1`] = `
+exports[`renders the activities view processName=changeofname 1`] = `
+<div>
+  <div
+    data-testid="process-activities"
+  >
+    <h1
+      class="lbh-heading-h1"
+    >
+      Activity history
+    </h1>
+    <h2
+      class="lbh-heading-h2"
+    >
+      Change of name
+    </h2>
+    <h2
+      class="lbh-heading-h2"
+    >
+      <a
+        class="govuk-link lbh-link lbh-link--no-visited-state"
+        href="/person/e67862f3-ccbf-4c51-b8ed-ed1d0420ea19"
+      >
+        Other
+         
+        Haylee
+         
+         
+        Macejkovic
+      </a>
+       
+      changing to 
+      Mr
+       
+      First Name
+      Middle Name
+       
+      Surname
+    </h2>
+    <div>
+      <table
+        class="govuk-table lbh-table"
+      >
+        <thead
+          class="govuk-table__head"
+        >
+          <tr
+            class="govuk-table__row"
+          >
+            <th
+              class="govuk-table__cell govuk-table__header"
+            >
+              Date
+            </th>
+            <th
+              class="govuk-table__cell govuk-table__header"
+            >
+              Category
+            </th>
+            <th
+              class="govuk-table__cell govuk-table__header"
+            >
+              Case details
+            </th>
+            <th
+              class="govuk-table__cell govuk-table__header"
+            >
+              By
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="govuk-table__body"
+        >
+          <tr
+            class="govuk-table__row govuk-table__row mtfh-activity-history"
+          >
+            <td
+              class="govuk-table__cell"
+            >
+              <div>
+                <p>
+                  29/10/21
+                </p>
+                <p>
+                  7:15
+                </p>
+              </div>
+            </td>
+            <td
+              class="govuk-table__cell"
+            >
+              Process started
+            </td>
+            <td
+              class="govuk-table__cell"
+            >
+              <p>
+                <b>
+                  New Change of Name request started
+                </b>
+              </p>
+            </td>
+            <th
+              class="govuk-table__cell govuk-table__header"
+            >
+              Import
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <nav
+        class="lbh-simple-pagination"
+      />
+    </div>
+    <a
+      class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
+      href="/processes/changeofname/123"
+    >
+      Close activity history
+    </a>
+  </div>
+</div>
+`;
+
+exports[`renders the activities view processName=soletotjoint 1`] = `
 <div>
   <div
     data-testid="process-activities"
