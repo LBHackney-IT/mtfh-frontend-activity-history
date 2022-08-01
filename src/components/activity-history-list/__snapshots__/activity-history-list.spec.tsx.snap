@@ -1659,7 +1659,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           >
             <p>
               <b>
-                Sole to Joint closed:
+                Sole to Joint cancelled:
               </b>
             </p>
             <p>
@@ -1692,7 +1692,7 @@ exports[`it should display activity history for sole to joint process 1`] = `
           <td
             class="govuk-table__cell"
           >
-            Process cancelled
+            Process closed
           </td>
           <td
             class="govuk-table__cell"
