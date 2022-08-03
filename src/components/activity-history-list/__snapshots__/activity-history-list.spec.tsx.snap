@@ -1714,6 +1714,41 @@ exports[`it should display activity history for sole to joint process 1`] = `
             Import
           </th>
         </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process completed
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Sole to Joint completed: New tenure created
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
       </tbody>
     </table>
     <nav
@@ -1906,6 +1941,122 @@ exports[`it should display change in Languages 1`] = `
             class="govuk-table__cell govuk-table__header"
           >
             Paul Fox
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <nav
+      class="lbh-simple-pagination"
+    />
+  </div>
+</div>
+`;
+
+exports[`it should display change of name specific activity history 1`] = `
+<div>
+  <div>
+    <table
+      class="govuk-table lbh-table"
+    >
+      <thead
+        class="govuk-table__head"
+      >
+        <tr
+          class="govuk-table__row"
+        >
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Date
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Category
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Case details
+          </th>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            By
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="govuk-table__body"
+      >
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Name submitted
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Change of Name: Request submitted
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
+          </th>
+        </tr>
+        <tr
+          class="govuk-table__row govuk-table__row mtfh-activity-history"
+        >
+          <td
+            class="govuk-table__cell"
+          >
+            <div>
+              <p>
+                29/10/21
+              </p>
+              <p>
+                7:15
+              </p>
+            </div>
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            Process completed
+          </td>
+          <td
+            class="govuk-table__cell"
+          >
+            <p>
+              <b>
+                Change of Name completed: Tenant's name updated
+              </b>
+            </p>
+          </td>
+          <th
+            class="govuk-table__cell govuk-table__header"
+          >
+            Import
           </th>
         </tr>
       </tbody>

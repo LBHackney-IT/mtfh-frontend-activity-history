@@ -635,6 +635,12 @@ test("it should display activity history for sole to joint process", async () =>
           stateData: { Reason: "test" },
         },
       ],
+      [
+        { state: "TenureAppointmentRescheduled" },
+        {
+          state: "TenureUpdated",
+        },
+      ],
     ].map((states: ActivityData) => {
       return generateMockActivity({
         oldData: {
@@ -666,6 +672,54 @@ test("it should display activity history for sole to joint process", async () =>
     expect(
       screen.getByText(/Sole to Joint: Manual Eligibility Checks passed/),
     ).toBeInTheDocument();
+  });
+  expect(container).toMatchSnapshot();
+});
+
+test("it should display change of name specific activity history", async () => {
+  get("/api/activityhistory", {
+    results: [
+      [
+        { state: "EnterNewName" },
+        {
+          state: "NameSubmitted",
+        },
+      ],
+      [
+        { state: "NameSubmitted" },
+        {
+          state: "NameUpdated",
+        },
+      ],
+    ].map((states: ActivityData) => {
+      return generateMockActivity({
+        oldData: {
+          state: states[0].state,
+          stateData: states[0].stateData,
+        },
+        newData: {
+          state: states[1].state,
+          stateData: states[1].stateData,
+          processData: states[1].processData || {},
+        },
+        type: "update",
+      });
+    }),
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  const [{ container }] = routeRender(
+    <ActivityHistoryList targetId="123" entityType="process" />,
+    {
+      url: "/activities/process/changeofname/123",
+      path: "/activities/process/:processName/:id",
+    },
+  );
+
+  await waitFor(() => {
+    expect(screen.queryAllByText(/Process completed/).length).toBe(1);
+    expect(screen.getByText(/Change of Name: Request submitted/)).toBeInTheDocument();
   });
   expect(container).toMatchSnapshot();
 });

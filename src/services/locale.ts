@@ -346,6 +346,7 @@ const locale = {
       processClosed: "Process closed",
       caseReassigned: "Case Reassigned",
       commentAdded: "Comment Added",
+      nameSubmitted: "Name submitted",
     },
     details: {
       started: (processName: string): string => {
@@ -466,8 +467,11 @@ const locale = {
         }
         return `${processName}: Tenancy signing appointment missed and rescheduled to ${date} at ${time}`;
       },
-      processCompleted: (processName: string): string => {
-        return `${processName}: completed: New tenure created`;
+      processCompleted: (processName: string, newData: ActivityData): string => {
+        if (newData.state === "TenureUpdated") {
+          return `${processName} completed: New tenure created`;
+        }
+        return `${processName} completed: Tenant's name updated`;
       },
       processCancelled: (processName: string, newData: ActivityData): string => {
         const comment = newData.stateData?.comment;
@@ -479,6 +483,9 @@ const locale = {
       },
       caseReassigned: (processName: string): string => {
         return `${processName}: Case reassigned from [officer] to [officer]`;
+      },
+      nameSubmitted: (processName: string): string => {
+        return `${processName}: Request submitted`;
       },
     },
     mapDetails: (
@@ -591,6 +598,14 @@ const locale = {
       if (newData.state === "ProcessCancelled") {
         category = locale.process.category.processCancelled;
         details = locale.process.details.processCancelled(mappedProcessName, newData);
+      }
+      if (["TenureUpdated", "NameUpdated"].includes(newData.state)) {
+        category = locale.process.category.processCompleted;
+        details = locale.process.details.processCompleted(mappedProcessName, newData);
+      }
+      if (newData.state === "NameSubmitted") {
+        category = locale.process.category.nameSubmitted;
+        details = locale.process.details.nameSubmitted(mappedProcessName);
       }
       return { category, details };
     },
