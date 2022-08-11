@@ -478,7 +478,7 @@ const locale = {
         return `${processName} cancelled${comment ? `:\n${comment}` : ""}`;
       },
       processClosed: (processName: string, newData: ActivityData): string => {
-        const reason = newData.stateData?.Reason;
+        const reason = newData.stateData?.reason;
         return `${processName} closed${reason ? `:\n${reason}` : ""}`;
       },
       caseReassigned: (processName: string): string => {
