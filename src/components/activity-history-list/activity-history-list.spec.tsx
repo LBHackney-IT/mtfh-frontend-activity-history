@@ -632,7 +632,7 @@ test("it should display activity history for sole to joint process", async () =>
         { state: "TenureUpdated" },
         {
           state: "ProcessClosed",
-          stateData: { Reason: "test" },
+          stateData: { reason: "test" },
         },
       ],
       [
