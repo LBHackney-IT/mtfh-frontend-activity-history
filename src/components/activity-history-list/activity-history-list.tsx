@@ -7,6 +7,7 @@ import { PersonActivityRecord } from "./person-record";
 import { ProcessActivityRecord } from "./process-record";
 import { TenurePersonActivityRecord } from "./tenure-person-record";
 import { TenureActivityRecord } from "./tenure-record";
+import {CautionaryAlertActivityRecord } from "./cautionary-alert-record";
 
 import { useReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import {
@@ -119,6 +120,9 @@ export const ActivityHistoryList = ({
             }
             if (targetType === "process") {
               return <ProcessActivityRecord key={index} processRecord={activity} />;
+            }
+            if (targetType === "cautionaryAlert") {
+              return <CautionaryAlertActivityRecord key={index} processRecord={activity} />;
             }
             return null;
           })}
