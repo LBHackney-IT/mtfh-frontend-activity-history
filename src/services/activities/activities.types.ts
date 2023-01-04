@@ -11,7 +11,8 @@ export type ActivityTargetType =
   | "tenure"
   | "contactDetails"
   | "tenurePerson"
-  | "personEqualityInformation";
+  | "personEqualityInformation"
+  | "cautionaryAlert";
 
 export type EntityType = "person" | "tenure" | "process";
 export type ActivityProcessName = "soletojoint";
