@@ -8,7 +8,7 @@ import { locale } from "@services";
 
 const { activities } = locale;
 const { addedLabel, cautionaryAlert, entityEdited, removedLabel } = activities;
-const { contactType } = cautionaryAlert;
+const { entityCreated } = cautionaryAlert;
 
 interface CautionaryAlertActivityRecordProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
@@ -62,7 +62,7 @@ export const CautionaryAlertActivityRecord = ({
 const CreatedCautionaryAlertRecord = ({ newData }: ActivityChangeRecord): JSX.Element => (
   <div>
     <p>
-      <b>{contactType(newData.contactType)}</b>
+      <b>{entityCreated(newData.entityCreated)}</b>
     </p>
     <p>
       {addedLabel} <b>{newData.value}</b>
