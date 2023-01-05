@@ -735,6 +735,6 @@ test("it should display a row for created cautionary alert", async () => {
   routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(
-    screen.findByText(/Cautionary alert created/),
+    screen.findByText(/Cautionary Alert created/),
   ).resolves.toBeInTheDocument();
 });
