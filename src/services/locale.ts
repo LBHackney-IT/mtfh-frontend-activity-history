@@ -40,7 +40,7 @@ const locale = {
       asset: "Asset",
       tenurePerson: "Person",
       personEqualityInformation: "Equality information",
-      cautionaryAlert: "Cautionary Alert"
+      cautionaryAlert: "Cautionary Alert",
     },
     entityCreated: (type: ActivityTargetType, sourceDomain: string): string => {
       return sourceDomain === "Processes"
