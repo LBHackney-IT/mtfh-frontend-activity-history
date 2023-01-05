@@ -681,21 +681,6 @@ export const mockCreatedCautionaryAlert: Activity = {
   createdAt: "2021-10-29T07:15:11",
   timeToLiveForRecordInDays: 0,
   oldData: null,
-  newData: {
-    uprn: "100021024857",
-    reason: "test",
-    address: "16 Bakers Hill, E5 9HL",
-    code: "50",
-    cautionOnSystem: "No female visits",
-    assureReference: "123456",
-    dateOfIncident: "08/19/2022",
-    personName: "FAKE_Elizabeth FAKE_Franklin",
-    mmhid: "82f94d0c-2040-c736-346b-3da34dd2e518",
-    doorNumber: null,
-    propertyReference: "00000713",
-    neighbourhood: null,
-    id: 164
-  },
+  newData: {},
   authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
 };
-

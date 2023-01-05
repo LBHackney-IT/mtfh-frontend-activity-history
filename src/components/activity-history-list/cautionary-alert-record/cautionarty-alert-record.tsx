@@ -7,16 +7,15 @@ import { MigratedEntityRecord, UpdatedEntityRecord, formattedDate } from "../uti
 import { locale } from "@services";
 
 const { activities } = locale;
-const { addedLabel, cautionaryAlert, entityEdited, removedLabel } = activities;
-const { entityCreated } = cautionaryAlert;
+const { addedLabel, entityEdited, removedLabel } = activities;
 
 interface CautionaryAlertActivityRecordProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
-  cautionartAlertRecord: Activity;
+  cautionaryAlertRecord: Activity;
 }
 
 export const CautionaryAlertActivityRecord = ({
-  cautionartAlertRecord,
+  cautionaryAlertRecord,
   ...props
 }: CautionaryAlertActivityRecordProps): JSX.Element | null => {
   const {
@@ -24,14 +23,14 @@ export const CautionaryAlertActivityRecord = ({
     newData: newDataActivty,
     type,
     targetType,
-  } = cautionartAlertRecord;
+  } = cautionaryAlertRecord;
 
   const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
   const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
 
-  const date = formattedDate(cautionartAlertRecord.createdAt);
-  const category = entityEdited(cautionartAlertRecord.targetType);
-  const edittedBy = cautionartAlertRecord.authorDetails.fullName;
+  const date = formattedDate(cautionaryAlertRecord.createdAt);
+  const category = entityEdited(cautionaryAlertRecord.targetType);
+  const edittedBy = cautionaryAlertRecord.authorDetails.fullName;
 
   const activityRecord = useMemo(() => {
     switch (type) {
@@ -62,7 +61,7 @@ export const CautionaryAlertActivityRecord = ({
 const CreatedCautionaryAlertRecord = ({ newData }: ActivityChangeRecord): JSX.Element => (
   <div>
     <p>
-      <b>{entityCreated(newData.entityCreated)}</b>
+      <b>{newData.entityCreated}</b>
     </p>
     <p>
       {addedLabel} <b>{newData.value}</b>
