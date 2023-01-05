@@ -672,3 +672,15 @@ export const mockStartedProcess: Activity = generateMockActivity({
     versionNumber: null,
   },
 });
+
+export const mockCreatedCautionaryAlert: Activity = {
+  id: "cd2e0e18-d675-225b-7c48-4df00fbb7971",
+  targetId: "81cbaf65-096a-fa76-cb40-6085b54b9033",
+  type: "create",
+  targetType: "cautionaryAlert",
+  createdAt: "2021-10-29T07:15:11",
+  timeToLiveForRecordInDays: 0,
+  oldData: null,
+  newData: {},
+  authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
+};

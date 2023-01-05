@@ -7,6 +7,7 @@ import {
   generateMockActivity,
   mockAddedPersonToTenure,
   mockCreatedAddressWithContactTypeAsString,
+  mockCreatedCautionaryAlert,
   mockCreatedEmail,
   mockCreatedEmailWithContactTypeAsString,
   mockCreatedPerson,
@@ -722,4 +723,18 @@ test("it should display change of name specific activity history", async () => {
     expect(screen.getByText(/Change of Name: Request submitted/)).toBeInTheDocument();
   });
   expect(container).toMatchSnapshot();
+});
+
+test("it should display a row for created cautionary alert", async () => {
+  get("/api/activityhistory", {
+    results: [mockCreatedCautionaryAlert],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
+
+  await expect(
+    screen.findByText(/Cautionary Alert created/),
+  ).resolves.toBeInTheDocument();
 });

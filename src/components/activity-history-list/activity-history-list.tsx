@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import { ActivityHistoryHeaders } from "./activity-history-headers";
+import { CautionaryAlertActivityRecord } from "./cautionary-alert-record";
 import { ContactDetailsActivityRecord } from "./contact-details-record";
 import { PersonEqualityInformationActivityRecord } from "./person-equality-information-record";
 import { PersonActivityRecord } from "./person-record";
@@ -119,6 +120,14 @@ export const ActivityHistoryList = ({
             }
             if (targetType === "process") {
               return <ProcessActivityRecord key={index} processRecord={activity} />;
+            }
+            if (targetType === "cautionaryAlert") {
+              return (
+                <CautionaryAlertActivityRecord
+                  key={index}
+                  cautionaryAlertRecord={activity}
+                />
+              );
             }
             return null;
           })}

@@ -5,3 +5,4 @@ export * from "./contact-details-record";
 export * from "./tenure-record";
 export * from "./tenure-person-record";
 export * from "./utils";
+export * from "./cautionary-alert-record";
