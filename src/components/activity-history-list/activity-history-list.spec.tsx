@@ -725,7 +725,7 @@ test("it should display change of name specific activity history", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test.skip("it should display a row for created cautionary alert", async () => {
+test("it should display a row for created cautionary alert", async () => {
   get("/api/activityhistory", {
     results: [mockCreatedCautionaryAlert],
     paginationDetails: {
