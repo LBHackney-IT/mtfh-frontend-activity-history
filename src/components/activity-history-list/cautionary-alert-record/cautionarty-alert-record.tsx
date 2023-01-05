@@ -2,12 +2,12 @@ import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
 import { Activity, ActivityChangeRecord } from "../../../services/activities";
 import { ActivityRecordItem } from "../activity-record-item";
-import { MigratedEntityRecord, UpdatedEntityRecord, formattedDate } from "../utils";
+import { formattedDate } from "../utils";
 
 import { locale } from "@services";
 
 const { activities } = locale;
-const { addedLabel, entityEdited, removedLabel } = activities;
+const { addedLabel, entityEdited } = activities;
 
 interface CautionaryAlertActivityRecordProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {

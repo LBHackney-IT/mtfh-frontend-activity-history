@@ -7,6 +7,7 @@ import {
   generateMockActivity,
   mockAddedPersonToTenure,
   mockCreatedAddressWithContactTypeAsString,
+  mockCreatedCautionaryAlert,
   mockCreatedEmail,
   mockCreatedEmailWithContactTypeAsString,
   mockCreatedPerson,
@@ -30,7 +31,6 @@ import {
   mockUpdatedPersonEqualityInformation,
   mockUpdatedPlaceOfBirth,
   mockUpdatedTenure,
-  mockCreatedCautionaryAlert,
 } from "../../mocks";
 import { get, routeRender } from "../../test-utils";
 
