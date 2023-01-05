@@ -60,6 +60,6 @@ export const CautionaryAlertActivityRecord = ({
 
 const CreatedCautionaryAlertRecord = ({ targetType }: any): JSX.Element => (
   <p>
-    <b>{entityCreated(targetType)}</b>
+    <b>{entityCreated(targetType, "CautionaryAlert")}</b>
   </p>
 );
