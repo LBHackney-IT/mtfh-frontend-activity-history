@@ -1,13 +1,13 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import { Activity, ActivityChangeRecord } from "../../../services/activities";
+import { Activity } from "../../../services/activities";
 import { ActivityRecordItem } from "../activity-record-item";
 import { formattedDate } from "../utils";
 
 import { locale } from "@services";
 
 const { activities } = locale;
-const { addedLabel, entityCreated, entityEdited } = activities;
+const { entityCreated, entityEdited } = activities;
 
 interface CautionaryAlertActivityRecordProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
@@ -59,7 +59,7 @@ export const CautionaryAlertActivityRecord = ({
 };
 
 const CreatedCautionaryAlertRecord = ({ targetType }: any): JSX.Element => (
-    <p>
-      <b>{entityCreated(targetType)}</b>
-    </p>
+  <p>
+    <b>{entityCreated(targetType)}</b>
+  </p>
 );
