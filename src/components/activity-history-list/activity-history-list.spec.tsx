@@ -16,6 +16,7 @@ import {
   mockCreatedPhoneNumberWithContactTypeAsString,
   mockCreatedTenure,
   mockEdittedTenureWithInValidParam,
+  mockEndedCautionaryAlert,
   mockEqualityData,
   mockMigratedPerson,
   mockMigratedPersonEqualityInformation,
@@ -737,4 +738,16 @@ test("it should display a row for created cautionary alert", async () => {
   await expect(
     screen.findByText(/Cautionary Alert created/),
   ).resolves.toBeInTheDocument();
+});
+
+test("it should display a row for ended cautionary alert", async () => {
+  get("/api/activityhistory", {
+    results: [mockEndedCautionaryAlert],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
+
+  await expect(screen.findByText(/Cautionary Alert ended/)).resolves.toBeInTheDocument();
 });

@@ -3,7 +3,7 @@ import { Person } from "@mtfh/common/lib/api/person/v1";
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import { HouseholdMember } from "@mtfh/common/lib/api/tenure/v1";
 
-export type ActivityType = "create" | "update" | "delete" | "migrate";
+export type ActivityType = "create" | "update" | "delete" | "migrate" | "end";
 export type ActivityTargetType =
   | "process"
   | "person"
