@@ -51,6 +51,8 @@ const locale = {
       `${locale.activities.targetType[type]} migrated`,
     entityEdited: (type: ActivityTargetType): string =>
       `Edit to ${locale.activities.targetType[type].toLowerCase()}`,
+    entityEnded: (type: ActivityTargetType): string =>
+      `${locale.activities.targetType[type]} ended`,
     personAddedToTenure: "Person added to tenure",
     personRemovedFromTenure: "Person removed from tenure",
     personAddedDetailsTitle: "New person created with the following details:",
