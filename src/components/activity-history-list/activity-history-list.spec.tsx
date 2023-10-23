@@ -760,7 +760,7 @@ test("it should display a row for updated patches and areas", async () => {
       nextToken: null,
     },
   });
-  routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
+  routeRender(<ActivityHistoryList targetId="123" entityType="property" />);
 
   await expect(
     screen.findByText(/Edit to patches and areas/),

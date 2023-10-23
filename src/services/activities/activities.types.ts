@@ -15,7 +15,7 @@ export type ActivityTargetType =
   | "cautionaryAlert"
   | "patchesAndAreas";
 
-export type EntityType = "person" | "tenure" | "process";
+export type EntityType = "person" | "tenure" | "process" | "property";
 export type ActivityProcessName = "soletojoint";
 
 interface AuthorDetails {

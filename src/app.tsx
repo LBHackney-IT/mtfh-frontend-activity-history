@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { ActivitiesPersonView } from "./views/activities-person-view";
 import { ActivitiesProcessView } from "./views/activities-process-view";
+import { ActivitiesPropertyView } from "./views/activities-property-view";
 import { ActivitiesTenureView } from "./views/activities-tenure-view";
 
 export default function App(): JSX.Element {
@@ -16,6 +17,9 @@ export default function App(): JSX.Element {
       </Route>
       <Route path="/activities/process/:processName/:id" exact>
         <ActivitiesProcessView entityType="process" />
+      </Route>
+      <Route path="/activities/property/:id" exact>
+        <ActivitiesPropertyView entityType="property" />
       </Route>
       <Route path="*">404</Route>
     </Switch>
