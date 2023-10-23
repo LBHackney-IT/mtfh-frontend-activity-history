@@ -23,6 +23,7 @@ import {
 import { EntityType, locale, useActivityHistory } from "@services";
 
 import "./activity-history-list.styles.scss";
+import { PatchesAndAreasActivityRecord } from "./patches-and-areas-record";
 
 const { noActivityHistory } = locale.activities;
 
@@ -126,6 +127,14 @@ export const ActivityHistoryList = ({
                 <CautionaryAlertActivityRecord
                   key={index}
                   cautionaryAlertRecord={activity}
+                />
+              );
+            }
+            if (targetType === "patchesAndAreas") {
+              return (
+                <PatchesAndAreasActivityRecord
+                  key={index}
+                  patchesAndAreasRecord={activity}
                 />
               );
             }

@@ -6,3 +6,4 @@ export * from "./tenure-record";
 export * from "./tenure-person-record";
 export * from "./utils";
 export * from "./cautionary-alert-record";
+export * from "./patches-and-areas-record";
