@@ -7,7 +7,7 @@ import { formattedDate } from "../utils";
 import { locale } from "@services";
 
 const { activities } = locale;
-const { entityCreated, entityEdited } = activities;
+const { entityEdited } = activities;
 
 interface PatchesAndAreasActivityRecordProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
