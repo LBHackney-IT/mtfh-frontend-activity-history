@@ -3,6 +3,7 @@ import { Link as RouterLink, useParams } from "react-router-dom";
 
 import { Button, Link } from "@mtfh/common";
 import { useAsset } from "@mtfh/common/lib/api/asset/v1";
+import { getPatchOrAreaById } from "@mtfh/common/lib/api/patch/v1"
 
 import { ActivityHistoryList } from "@components";
 import { EntityType, locale } from "@services";
@@ -11,10 +12,12 @@ const { pageTitle, closeButton } = locale.activities;
 
 export interface EntityRequestId {
   id: string;
+  patchId: string;
 }
 
-const PropertyInformation = ({ id }: EntityRequestId) => {
+const PropertyInformation = ({ id, patchId }: EntityRequestId) => {
   const { data: property } = useAsset(id);
+  const {} = getPatchOrAreaById(patchId)
   return (
     <>
       <Link as={RouterLink} to={`/property/${id}`} variant="back-link">
@@ -34,11 +37,12 @@ export const ActivitiesPropertyView = ({
   entityType: EntityType;
 }): JSX.Element => {
   const { id } = useParams<{ id: string }>();
+  const {patchId} = useParams<{patchId: string}>();
 
   return (
     <div data-testid="property-activities">
-      <PropertyInformation id={id} />
-      <ActivityHistoryList targetId={id} entityType={entityType} />
+      <PropertyInformation id={id} patchId={patchId}/>
+      <ActivityHistoryList targetId={patchId} entityType={entityType} />
       <Button as={RouterLink} to={`/property/${id}`} variant="secondary">
         {closeButton}
       </Button>
