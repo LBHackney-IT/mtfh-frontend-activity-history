@@ -2,30 +2,25 @@ import React from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
 
 import { Button, Link } from "@mtfh/common";
-import { useAsset } from "@mtfh/common/lib/api/asset/v1";
-import { getPatchOrAreaById } from "@mtfh/common/lib/api/patch/v1"
-
+import { Asset, useAsset } from "@mtfh/common/lib/api/asset/v1";
 import { ActivityHistoryList } from "@components";
 import { EntityType, locale } from "@services";
 
 const { pageTitle, closeButton } = locale.activities;
 
 export interface EntityRequestId {
-  id: string;
-  patchId: string;
+  asset: Asset;
 }
 
-const PropertyInformation = ({ id, patchId }: EntityRequestId) => {
-  const { data: property } = useAsset(id);
-  const {} = getPatchOrAreaById(patchId)
+const PropertyInformation = ({ asset }: EntityRequestId) => {
   return (
     <>
-      <Link as={RouterLink} to={`/property/${id}`} variant="back-link">
-        {property?.assetAddress.addressLine1} {property?.assetAddress.postCode}
+      <Link as={RouterLink} to={`/property/${asset.id}`} variant="back-link">
+        {asset?.assetAddress.addressLine1} {asset?.assetAddress.postCode}
       </Link>
       <h1 className="lbh-heading-h1">{pageTitle}</h1>
       <h2 className="lbh-heading-h2">
-        {property?.assetAddress.addressLine1} {property?.assetAddress.postCode}
+        {asset?.assetAddress.addressLine1} {asset?.assetAddress.postCode}
       </h2>
     </>
   );
@@ -36,14 +31,21 @@ export const ActivitiesPropertyView = ({
 }: {
   entityType: EntityType;
 }): JSX.Element => {
-  const { id } = useParams<{ id: string }>();
-  const {patchId} = useParams<{patchId: string}>();
+  const { id: assetPK } = useParams<{ id: string }>();
+  const { data: asset } = useAsset(assetPK);
+  var patches = asset?.patches;
+  if(!asset || !patches || patches?.length == 0 )
+  {
+    console.log(`property patches empty ${patches}`)
+    return <h1>No activity history</h1>
+  }
+  const patchId = patches[0].id
 
   return (
     <div data-testid="property-activities">
-      <PropertyInformation id={id} patchId={patchId}/>
+      <PropertyInformation asset={asset} />
       <ActivityHistoryList targetId={patchId} entityType={entityType} />
-      <Button as={RouterLink} to={`/property/${id}`} variant="secondary">
+      <Button as={RouterLink} to={`/property/${assetPK}`} variant="secondary">
         {closeButton}
       </Button>
     </div>

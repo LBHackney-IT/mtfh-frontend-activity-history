@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "@hackney/mtfh-test-utils": "^1.6.0",
-    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git#9460ed44db8dff88f686cd8a776b09f1aae02adf",
+    "@mtfh/common": "https://github.com/LBHackney-IT/mtfh-frontend-common.git",
     "@types/jest": "^26.0.16",
     "@types/react": "17.0.20",
     "@types/react-dom": "^16.9.6",
