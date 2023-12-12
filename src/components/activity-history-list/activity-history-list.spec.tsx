@@ -762,7 +762,18 @@ test("it should display a row for updated patches and areas", async () => {
   });
   routeRender(<ActivityHistoryList targetId="123" entityType="property" />);
 
-  await expect(
-    screen.findByText(/Edit to patches and areas/),
-  ).resolves.toBeInTheDocument();
+  await waitFor(() => {
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.oldData?.name),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.oldData?.contactDetails?.emailAddress),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.newData?.name),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.newData?.contactDetails?.emailAddress),
+    ).resolves.toBeInTheDocument();
+  });
 });

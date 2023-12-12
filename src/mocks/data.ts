@@ -704,7 +704,21 @@ export const mockUpdatedPatchesAndAreas: Activity = {
   targetType: "patchesAndAreas",
   createdAt: "2023-10-23T07:15:11",
   timeToLiveForRecordInDays: 0,
-  oldData: null,
-  newData: {},
+  oldData: {
+    name: "FAKE_TESTER FAKE_TESTING",
+    responsibleType: "HousingOfficer",
+    id: "9efa7ed3-6e09-4fbe-b99b-f77b8535e909",
+    contactDetails: {
+      emailAddress: "tester.testing@hackney.gov.uk",
+    },
+  },
+  newData: {
+    name: "FAKE_JANE FAKE_DOE",
+    responsibleType: "HousingOfficer",
+    id: "9efa7ed3-6e09-4fbe-b99b-f77b8535e909",
+    contactDetails: {
+      emailAddress: "tester.testing@hackney.gov.uk",
+    },
+  },
   authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
 };

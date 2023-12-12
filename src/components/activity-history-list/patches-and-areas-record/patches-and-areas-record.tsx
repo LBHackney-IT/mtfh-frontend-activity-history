@@ -1,6 +1,9 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import { Activity } from "../../../services/activities";
+import {
+  Activity,
+  PatchResponsibilityEntityActivityData,
+} from "../../../services/activities";
 import { ActivityRecordItem } from "../activity-record-item";
 import { formattedDate } from "../utils";
 
@@ -14,16 +17,39 @@ interface PatchesAndAreasActivityRecordProps
   patchesAndAreasRecord: Activity;
 }
 
+// const filterProperties = (data?: PatchResponsibilityEntityActivityData | null) => {
+//   if (!data) return {};
+//   const {
+//     name,
+//     responsibleType,
+//     contactDetails,
+//   } = data;
+//   return {
+//     name,
+//     responsibleType,
+//     contactDetails,
+//   };
+// };
+
 export const PatchesAndAreasActivityRecord = ({
   patchesAndAreasRecord,
   ...props
 }: PatchesAndAreasActivityRecordProps): JSX.Element | null => {
   const {
-    oldData: oldDataActivity,
-    newData: newDataActivty,
     type,
     targetType,
+    oldData: oldDataActivity,
+    newData: newDataActivty,
   } = patchesAndAreasRecord;
+
+  // const oldData = useMemo(
+  //   () => filterProperties(oldDataActivity as PatchResponsibilityEntityActivityData),
+  //   [oldDataActivity],
+  // );
+  // const newData = useMemo(
+  //   () => filterProperties(newDataActivty as PatchResponsibilityEntityActivityData),
+  //   [newDataActivty],
+  // );
 
   const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
   const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
@@ -35,9 +61,10 @@ export const PatchesAndAreasActivityRecord = ({
   const activityRecord = useMemo(() => {
     switch (type) {
       case "update":
+        console.log("targetType: " + targetType);
         return (
           <UpdatedPatchesAndAreasRecord
-            targetType={targetType}
+            targetType="patchesAndAreas"
             oldData={oldData}
             newData={newData}
           />
@@ -58,8 +85,21 @@ export const PatchesAndAreasActivityRecord = ({
   );
 };
 
-const UpdatedPatchesAndAreasRecord = ({ targetType }: any): JSX.Element => (
-  <p>
+interface UpdatedPatchesAndAreasRecordProps {
+  targetType: string;
+  oldData: PatchResponsibilityEntityActivityData;
+  newData: PatchResponsibilityEntityActivityData;
+}
+const UpdatedPatchesAndAreasRecord = ({
+  targetType,
+  oldData,
+  newData,
+}: any): JSX.Element => (
+  <>
     <b>{entityEdited(targetType)}</b>
-  </p>
+    <p>Old Name: {oldData?.name}</p>
+    <p>Old Email: {oldData?.contactDetails?.emailAddress}</p>
+    <p>New Name: {newData?.name}</p>
+    <p>New Email: {newData?.contactDetails?.emailAddress}</p>
+  </>
 );

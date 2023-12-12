@@ -14,6 +14,7 @@ import {
 import { Identification, Language } from "@mtfh/common/lib/api/person/v1";
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import { TenureType } from "@mtfh/common/lib/api/tenure/v1";
+import { ResponsibleEntity } from "@mtfh/common/lib/api/patch/v1";
 
 const locale = {
   activities: {

@@ -1354,9 +1354,9 @@
     headers-utils "^3.0.2"
     strict-event-emitter "^0.2.0"
 
-"@mtfh/common@https://github.com/LBHackney-IT/mtfh-frontend-common.git#9460ed44db8dff88f686cd8a776b09f1aae02adf":
+"@mtfh/common@https://github.com/LBHackney-IT/mtfh-frontend-common.git":
   version "0.0.1"
-  resolved "https://github.com/LBHackney-IT/mtfh-frontend-common.git#9460ed44db8dff88f686cd8a776b09f1aae02adf"
+  resolved "https://github.com/LBHackney-IT/mtfh-frontend-common.git#5551e2eca7b27a2dfb6438eb45b3319d56ecf52e"
   dependencies:
     "@babel/preset-react" "^7.13.13"
     "@radix-ui/react-polymorphic" "^0.0.12"
