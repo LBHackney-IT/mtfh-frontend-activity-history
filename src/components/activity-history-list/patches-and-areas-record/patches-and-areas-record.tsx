@@ -1,9 +1,6 @@
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 
-import {
-  Activity,
-  PatchResponsibilityEntityActivityData,
-} from "../../../services/activities";
+import { Activity } from "../../../services/activities";
 import { ActivityRecordItem } from "../activity-record-item";
 import { formattedDate } from "../utils";
 
@@ -17,20 +14,6 @@ interface PatchesAndAreasActivityRecordProps
   patchesAndAreasRecord: Activity;
 }
 
-// const filterProperties = (data?: PatchResponsibilityEntityActivityData | null) => {
-//   if (!data) return {};
-//   const {
-//     name,
-//     responsibleType,
-//     contactDetails,
-//   } = data;
-//   return {
-//     name,
-//     responsibleType,
-//     contactDetails,
-//   };
-// };
-
 export const PatchesAndAreasActivityRecord = ({
   patchesAndAreasRecord,
   ...props
@@ -42,15 +25,6 @@ export const PatchesAndAreasActivityRecord = ({
     newData: newDataActivty,
   } = patchesAndAreasRecord;
 
-  // const oldData = useMemo(
-  //   () => filterProperties(oldDataActivity as PatchResponsibilityEntityActivityData),
-  //   [oldDataActivity],
-  // );
-  // const newData = useMemo(
-  //   () => filterProperties(newDataActivty as PatchResponsibilityEntityActivityData),
-  //   [newDataActivty],
-  // );
-
   const oldData = useMemo(() => oldDataActivity || {}, [oldDataActivity]);
   const newData = useMemo(() => newDataActivty || {}, [newDataActivty]);
 
@@ -61,10 +35,9 @@ export const PatchesAndAreasActivityRecord = ({
   const activityRecord = useMemo(() => {
     switch (type) {
       case "update":
-        console.log("targetType: " + targetType);
         return (
           <UpdatedPatchesAndAreasRecord
-            targetType="patchesAndAreas"
+            targetType={targetType}
             oldData={oldData}
             newData={newData}
           />
@@ -85,11 +58,6 @@ export const PatchesAndAreasActivityRecord = ({
   );
 };
 
-interface UpdatedPatchesAndAreasRecordProps {
-  targetType: string;
-  oldData: PatchResponsibilityEntityActivityData;
-  newData: PatchResponsibilityEntityActivityData;
-}
 const UpdatedPatchesAndAreasRecord = ({
   targetType,
   oldData,

@@ -1,5 +1,4 @@
 import { EqualityData } from "@mtfh/common/lib/api/equality-information/v1";
-import { ResponsibleEntity } from "@mtfh/common/lib/api/patch/v1";
 import { Person } from "@mtfh/common/lib/api/person/v1";
 import { ReferenceData } from "@mtfh/common/lib/api/reference-data/v1";
 import { HouseholdMember } from "@mtfh/common/lib/api/tenure/v1";
@@ -34,14 +33,12 @@ export type TenurePersonActivityData = {
 export type ProcessActivityData = {
   processData: any;
 };
-export type PatchResponsibilityEntityActivityData = Partial<Nullable<ResponsibleEntity>>;
 
 export type ActivityData = (
   | PersonEqualityDataActivityData
   | PersonActivityData
   | TenurePersonActivityData
   | ProcessActivityData
-  | PatchResponsibilityEntityActivityData
 ) & {
   [key: string]: any;
 };
