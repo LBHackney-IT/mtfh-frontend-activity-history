@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { ActivityHistoryHeaders } from "./activity-history-headers";
 import { CautionaryAlertActivityRecord } from "./cautionary-alert-record";
 import { ContactDetailsActivityRecord } from "./contact-details-record";
+import { PatchesAndAreasActivityRecord } from "./patches-and-areas-record";
 import { PersonEqualityInformationActivityRecord } from "./person-equality-information-record";
 import { PersonActivityRecord } from "./person-record";
 import { ProcessActivityRecord } from "./process-record";
@@ -126,6 +127,14 @@ export const ActivityHistoryList = ({
                 <CautionaryAlertActivityRecord
                   key={index}
                   cautionaryAlertRecord={activity}
+                />
+              );
+            }
+            if (targetType === "patchesAndAreas") {
+              return (
+                <PatchesAndAreasActivityRecord
+                  key={index}
+                  patchesAndAreasRecord={activity}
                 />
               );
             }

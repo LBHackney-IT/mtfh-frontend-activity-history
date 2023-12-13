@@ -29,6 +29,7 @@ import {
   mockUpdatedFirstName,
   mockUpdatedIdentifications,
   mockUpdatedLanguages,
+  mockUpdatedPatchesAndAreas,
   mockUpdatedPersonEqualityInformation,
   mockUpdatedPlaceOfBirth,
   mockUpdatedTenure,
@@ -750,4 +751,29 @@ test("it should display a row for ended cautionary alert", async () => {
   routeRender(<ActivityHistoryList targetId="123" entityType="person" />);
 
   await expect(screen.findByText(/Cautionary Alert ended/)).resolves.toBeInTheDocument();
+});
+
+test("it should display a row for updated patches and areas", async () => {
+  get("/api/activityhistory", {
+    results: [mockUpdatedPatchesAndAreas],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" entityType="property" />);
+
+  await waitFor(() => {
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.oldData?.name),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.oldData?.contactDetails?.emailAddress),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.newData?.name),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedPatchesAndAreas.newData?.contactDetails?.emailAddress),
+    ).resolves.toBeInTheDocument();
+  });
 });

@@ -696,3 +696,29 @@ export const mockEndedCautionaryAlert: Activity = {
   newData: {},
   authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
 };
+
+export const mockUpdatedPatchesAndAreas: Activity = {
+  id: "8aa5b9ca-b1d0-46d4-9008-7153eb854214",
+  targetId: "d2d400c6-f31c-4db5-be18-87dedcf760d7",
+  type: "update",
+  targetType: "patchesAndAreas",
+  createdAt: "2023-10-23T07:15:11",
+  timeToLiveForRecordInDays: 0,
+  oldData: {
+    name: "FAKE_TESTER FAKE_TESTING",
+    responsibleType: "HousingOfficer",
+    id: "9efa7ed3-6e09-4fbe-b99b-f77b8535e909",
+    contactDetails: {
+      emailAddress: "tester.testing@hackney.gov.uk",
+    },
+  },
+  newData: {
+    name: "FAKE_JANE FAKE_DOE",
+    responsibleType: "HousingOfficer",
+    id: "9efa7ed3-6e09-4fbe-b99b-f77b8535e909",
+    contactDetails: {
+      emailAddress: "tester.testing@hackney.gov.uk",
+    },
+  },
+  authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
+};
