@@ -323,6 +323,10 @@ const locale = {
           return format(parseISO(value), "dd/MM/yy");
         },
       },
+      paymentReference: {
+        field: "Payment Reference",
+        output: (value: string): string => value ?? locale.activities.noEntryLabel,
+      },
     },
     tenurePaymentRef: "Tenure payment ref",
   },
