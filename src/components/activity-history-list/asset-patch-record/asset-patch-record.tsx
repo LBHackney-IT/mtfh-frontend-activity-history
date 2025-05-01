@@ -50,7 +50,6 @@ export const AssetActivityRecord = ({
         return null;
     }
   }, [type, targetType, oldAssetPatch, newAssetPatch]);
-  console.log("activityRecord", activityRecord);
   return (
     <ActivityRecordItem
       {...props}
