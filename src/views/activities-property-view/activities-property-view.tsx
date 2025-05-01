@@ -43,6 +43,7 @@ export const ActivitiesPropertyView = ({
     <div data-testid="property-activities">
       <PropertyInformation asset={asset} />
       <ActivityHistoryList targetId={asset.patchId} entityType={entityType} />
+      <ActivityHistoryList targetId={asset.id} entityType={entityType} />
       <Button as={RouterLink} to={`/property/${assetPK}`} variant="secondary">
         {closeButton}
       </Button>

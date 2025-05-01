@@ -722,3 +722,26 @@ export const mockUpdatedPatchesAndAreas: Activity = {
   },
   authorDetails: { id: "", fullName: "Jane", email: "email@email.com" },
 };
+
+export const mockUpdatedAssetPatch: Activity = {
+  targetId: "2d13b5cb-baf2-91fd-c231-8c5c2ee9548c",
+  id: "518d2a45-6820-4a7e-9250-3d9f34e0aa23",
+  authorDetails: {
+    id: "",
+    email: "email@email.com",
+    fullName: "Jane",
+  },
+  createdAt: "2025-04-30T08:52:44.3538476Z",
+  newData: {
+    areaId: "3887a798-1e38-4265-9279-bd8097d23b8d",
+    patchId: "7d89aa69-89dd-41e9-bf11-19de8634ce3d",
+  },
+  oldData: {
+    areaId: "8251f11a-84b8-485f-a5b5-6dd9437fbf02",
+    patchId: "f19cc7cd-f64f-4a91-b23a-1b62ab47ae36",
+  },
+  sourceDomain: "Asset",
+  targetType: "asset",
+  timeToLiveForRecordInDays: 0,
+  type: "update",
+};

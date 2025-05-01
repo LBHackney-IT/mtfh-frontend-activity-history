@@ -25,6 +25,7 @@ import {
   mockRemovedPersonFromTenure,
   mockRemovedPhoneNumber,
   mockStartedProcess,
+  mockUpdatedAssetPatch,
   mockUpdatedDateOfBirth,
   mockUpdatedFirstName,
   mockUpdatedIdentifications,
@@ -774,6 +775,24 @@ test("it should display a row for updated patches and areas", async () => {
     ).resolves.toBeInTheDocument();
     expect(
       screen.findByText(mockUpdatedPatchesAndAreas.newData?.contactDetails?.emailAddress),
+    ).resolves.toBeInTheDocument();
+  });
+});
+test("it should display a row for updated asset patch", async () => {
+  get("/api/activityhistory", {
+    results: [mockUpdatedAssetPatch],
+    paginationDetails: {
+      nextToken: null,
+    },
+  });
+  routeRender(<ActivityHistoryList targetId="123" entityType="property" />);
+
+  await waitFor(() => {
+    expect(
+      screen.findByText(mockUpdatedAssetPatch.oldData?.patchId),
+    ).resolves.toBeInTheDocument();
+    expect(
+      screen.findByText(mockUpdatedAssetPatch.newData?.patchId),
     ).resolves.toBeInTheDocument();
   });
 });

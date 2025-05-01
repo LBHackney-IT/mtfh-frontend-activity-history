@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import { ActivityHistoryHeaders } from "./activity-history-headers";
+import { AssetActivityRecord } from "./asset-patch-record";
 import { CautionaryAlertActivityRecord } from "./cautionary-alert-record";
 import { ContactDetailsActivityRecord } from "./contact-details-record";
 import { PatchesAndAreasActivityRecord } from "./patches-and-areas-record";
@@ -138,6 +139,10 @@ export const ActivityHistoryList = ({
                 />
               );
             }
+            if (targetType === "asset") {
+              return <AssetActivityRecord key={index} assetRecord={activity} />;
+            }
+
             return null;
           })}
         </Tbody>
