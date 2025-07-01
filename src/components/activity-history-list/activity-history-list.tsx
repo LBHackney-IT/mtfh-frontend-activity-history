@@ -131,18 +131,17 @@ export const ActivityHistoryList = ({
                 />
               );
             }
-            if (targetType === "patchesAndAreas") {
+            if (targetType === "patchesAndAreas" || targetType === "asset") {
               return (
-                <PatchesAndAreasActivityRecord
-                  key={index}
-                  patchesAndAreasRecord={activity}
-                />
+                <>
+                  <PatchesAndAreasActivityRecord
+                    key={index}
+                    patchesAndAreasRecord={activity}
+                  />
+                  <AssetActivityRecord key={index} assetRecord={activity} />
+                </>
               );
             }
-            if (targetType === "asset") {
-              return <AssetActivityRecord key={index} assetRecord={activity} />;
-            }
-
             return null;
           })}
         </Tbody>
